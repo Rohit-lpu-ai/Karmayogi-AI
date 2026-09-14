@@ -51,3 +51,7 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# Backend virtual environment and local storage
+backend/.venv/
+var/

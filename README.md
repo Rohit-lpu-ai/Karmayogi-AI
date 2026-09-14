@@ -1,6 +1,6 @@
 # KaramYogiAI — AI-Enabled Learning Platform for India's Official Statistical System
 
-**Current phase: data and API discovery. Not platform development.**
+**Current phase: MVP implementation, roadmap Phase 2 (backend foundation and reference schema).** Discovery and data collection (Phase 1) are complete. See [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md) and [`docs/IMPLEMENTATION_ROADMAP.md`](docs/IMPLEMENTATION_ROADMAP.md). The discovery notes below are kept for provenance and describe the state before collection (DEC-042).
 
 This repository currently holds the discovery scaffold only: a registry of
 candidate sources, the procedure for assessing them, the schema we intend to

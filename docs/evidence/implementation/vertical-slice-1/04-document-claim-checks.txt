@@ -1,0 +1,29 @@
+$ grep -n (stale-claim patterns) docs/MVP_SCOPE.md docs/AGENT_CONTEXT.md docs/IMPLEMENTATION_ROADMAP.md docs/API_INTEGRATION_SPEC.md docs/DATA_MODEL.md docs/IMPLEMENTATION_STATUS.md
+docs/MVP_SCOPE.md:27:- **API paths** are *planned internal* endpoints of this platform ([API_INTEGRATION_SPEC.md](API_INTEGRATION_SPEC.md)). None exist yet.
+docs/MVP_SCOPE.md:28:- **Implementation status today:** only IGOT-010 (Implemented) and IGOT-011 / AI-006 / IGOT-002 (Mocked) have code. A small number of features have partial offline data tooling ([AGENT_CONTEXT.md](AGENT_CONTEXT.md) §5). Everything else is Planned.
+docs/AGENT_CONTEXT.md:109:| Backend application | In progress (Phase 2) |
+docs/IMPLEMENTATION_ROADMAP.md:6:| **Status** | Active. Phase 1 complete; Phase 2 in progress (see [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)) |
+docs/API_INTEGRATION_SPEC.md:6:| **Status** | Proposed. **Implemented so far:** `GET /healthz`, `GET /readyz`, `GET /api/v1/openapi.json` (local/ci only), problem responses (see §1.4.1). All other endpoints are planned ([IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)) |
+docs/DATA_MODEL.md:6:| **Status** | Partially implemented: migrations `0001`-`0002` create the reference schema (§18). Other entities are planned |
+docs/IMPLEMENTATION_STATUS.md:45:| Backend tests | `cd backend && .venv/Scripts/python -m pytest` | **73 passed**, 0 skipped (unit tests + tests against PostgreSQL 17.11) |
+
+$ grep -rn "@router\.\(get\|post\|put\|patch\|delete\)" backend/app
+backend/app/modules/platform/api.py:21:@router.get("/healthz", operation_id="platform_get_healthz", summary="Liveness probe")
+backend/app/modules/platform/api.py:26:@router.get(
+
+$ grep -c "==" backend/requirements.lock; grep -E "^(fastapi|SQLAlchemy|alembic|psycopg|jsonschema|pytest)==" backend/requirements.lock
+37
+alembic==1.20.0
+fastapi==0.141.1
+jsonschema==4.26.0
+psycopg==3.3.5
+pytest==9.1.1
+SQLAlchemy==2.0.52
+
+$ git check-ignore -v .env backend/.venv
+.gitignore:2:.env	.env
+.gitignore:56:backend/.venv/	backend/.venv
+
+$ grep -rn "is_synthetic" backend/app --include=*.py | grep -v models.py
+backend/app/seed/demo_users.py:3:Only allowed in local, ci and staging. Every account is ``is_synthetic=true``,
+backend/app/seed/demo_users.py:57:            is_synthetic=True,

@@ -1,0 +1,103 @@
+$ cd backend && .venv/Scripts/python -m pytest -v -p no:warnings
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\asus\Desktop\KaramYogiAI\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\asus\Desktop\KaramYogiAI\backend
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 73 items
+
+tests/db/test_migrations.py::test_single_migration_head PASSED           [  1%]
+tests/db/test_migrations.py::test_upgrade_creates_required_extensions PASSED [  2%]
+tests/db/test_migrations.py::test_models_and_migrations_in_sync PASSED   [  4%]
+tests/db/test_migrations.py::test_downgrade_to_base_then_upgrade_again PASSED [  5%]
+tests/db/test_migrations.py::test_readyz_ok_with_database PASSED         [  6%]
+tests/db/test_migrations.py::test_destructive_fixture_guard PASSED       [  8%]
+tests/db/test_reference_schema.py::test_every_tenant_table_has_non_null_organization_fk PASSED [  9%]
+tests/db/test_reference_schema.py::test_primary_keys_generated_by_database PASSED [ 10%]
+tests/db/test_reference_schema.py::test_organization_code_and_name_unique PASSED [ 12%]
+tests/db/test_reference_schema.py::test_organization_code_must_be_slug PASSED [ 13%]
+tests/db/test_reference_schema.py::test_department_name_unique_per_org_case_insensitive PASSED [ 15%]
+tests/db/test_reference_schema.py::test_user_email_unique_per_org_case_insensitive PASSED [ 16%]
+tests/db/test_reference_schema.py::test_user_enumerations_checked[status-suspended] PASSED [ 17%]
+tests/db/test_reference_schema.py::test_user_enumerations_checked[locale-fr] PASSED [ 19%]
+tests/db/test_reference_schema.py::test_access_role_enumeration_and_department_admin_scope PASSED [ 20%]
+tests/db/test_reference_schema.py::test_access_role_unique_when_scope_is_null PASSED [ 21%]
+tests/db/test_reference_schema.py::test_restricted_framework_rejects_description PASSED [ 23%]
+tests/db/test_reference_schema.py::test_cannot_restrict_framework_that_has_descriptions PASSED [ 24%]
+tests/db/test_reference_schema.py::test_min_score_must_increase_with_level PASSED [ 26%]
+tests/db/test_reference_schema.py::test_min_score_range_checked PASSED   [ 27%]
+tests/db/test_reference_schema.py::test_role_mapping_level_must_exist_in_scale PASSED [ 28%]
+tests/db/test_reference_schema.py::test_approval_requires_approver_and_time PASSED [ 30%]
+tests/db/test_reference_schema.py::test_only_one_approved_mapping_per_role_and_competency PASSED [ 31%]
+tests/db/test_reference_schema.py::test_mock_data_rejected_everywhere PASSED [ 32%]
+tests/db/test_reference_schema.py::test_external_igot_course_type_not_allowed_in_mvp PASSED [ 34%]
+tests/db/test_reference_schema.py::test_programme_listing_requires_provenance PASSED [ 35%]
+tests/db/test_reference_schema.py::test_audit_log_is_append_only PASSED  [ 36%]
+tests/db/test_reference_schema.py::test_audit_action_format_checked PASSED [ 38%]
+tests/db/test_reference_schema.py::test_audit_before_after_are_redacted PASSED [ 39%]
+tests/db/test_reference_schema.py::test_optimistic_locking PASSED        [ 41%]
+tests/db/test_seed.py::test_validator_gate_passes_for_current_datasets PASSED [ 42%]
+tests/db/test_seed.py::test_import_counts PASSED                         [ 43%]
+tests/db/test_seed.py::test_restricted_content_and_review_state PASSED   [ 45%]
+tests/db/test_seed.py::test_provenance_preserved PASSED                  [ 46%]
+tests/db/test_seed.py::test_import_is_idempotent PASSED                  [ 47%]
+tests/db/test_seed.py::test_audit_event_records_dataset_fingerprint PASSED [ 49%]
+tests/db/test_seed.py::test_refuses_invalid_verdict PASSED               [ 50%]
+tests/db/test_seed.py::test_refuses_definition_text PASSED               [ 52%]
+tests/db/test_seed.py::test_refuses_mock_records PASSED                  [ 53%]
+tests/db/test_seed.py::test_refuses_human_only_statuses PASSED           [ 54%]
+tests/db/test_seed.py::test_demo_users_are_synthetic_and_idempotent PASSED [ 56%]
+tests/db/test_seed.py::test_demo_users_refused_outside_development[pilot] PASSED [ 57%]
+tests/db/test_seed.py::test_demo_users_refused_outside_development[production] PASSED [ 58%]
+tests/db/test_seed.py::test_seed_cli_runs_twice_without_changes PASSED   [ 60%]
+tests/unit/test_config.py::test_database_url_is_secret PASSED            [ 61%]
+tests/unit/test_config.py::test_non_postgres_database_rejected PASSED    [ 63%]
+tests/unit/test_config.py::test_invalid_app_env_rejected PASSED          [ 64%]
+tests/unit/test_config.py::test_invalid_log_level_rejected PASSED        [ 65%]
+tests/unit/test_config.py::test_igot_mode_validated PASSED               [ 67%]
+tests/unit/test_config.py::test_openapi_public_only_in_local_and_ci[local-True] PASSED [ 68%]
+tests/unit/test_config.py::test_openapi_public_only_in_local_and_ci[ci-True] PASSED [ 69%]
+tests/unit/test_config.py::test_openapi_public_only_in_local_and_ci[staging-False] PASSED [ 71%]
+tests/unit/test_config.py::test_openapi_public_only_in_local_and_ci[pilot-False] PASSED [ 72%]
+tests/unit/test_config.py::test_openapi_public_only_in_local_and_ci[production-False] PASSED [ 73%]
+tests/unit/test_config.py::test_database_url_required PASSED             [ 75%]
+tests/unit/test_http_foundation.py::test_healthz PASSED                  [ 76%]
+tests/unit/test_http_foundation.py::test_readyz_unavailable_without_database PASSED [ 78%]
+tests/unit/test_http_foundation.py::test_unknown_route_is_problem_json PASSED [ 79%]
+tests/unit/test_http_foundation.py::test_method_not_allowed_is_problem_json PASSED [ 80%]
+tests/unit/test_http_foundation.py::test_validation_error_lists_fields_without_echoing_input PASSED [ 82%]
+tests/unit/test_http_foundation.py::test_problem_error_raised_by_route PASSED [ 83%]
+tests/unit/test_http_foundation.py::test_unhandled_exception_hides_details PASSED [ 84%]
+tests/unit/test_http_foundation.py::test_valid_correlation_id_is_propagated PASSED [ 86%]
+tests/unit/test_http_foundation.py::test_invalid_correlation_id_is_replaced PASSED [ 87%]
+tests/unit/test_http_foundation.py::test_security_headers_present PASSED [ 89%]
+tests/unit/test_http_foundation.py::test_openapi_served_in_ci PASSED     [ 90%]
+tests/unit/test_http_foundation.py::test_openapi_hidden_outside_local PASSED [ 91%]
+tests/unit/test_logging.py::test_sensitive_keys_redacted PASSED          [ 93%]
+tests/unit/test_logging.py::test_personal_data_patterns_redacted_in_message PASSED [ 94%]
+tests/unit/test_logging.py::test_url_credentials_redacted PASSED         [ 95%]
+tests/unit/test_logging.py::test_nested_structures_redacted PASSED       [ 97%]
+tests/unit/test_logging.py::test_correlation_id_included PASSED          [ 98%]
+tests/unit/test_logging.py::test_exception_text_redacted PASSED          [100%]
+
+============================= 73 passed in 14.82s =============================
+
+$ python -m unittest discover -s tests -t .
+...................................
+----------------------------------------------------------------------
+Ran 35 tests in 10.622s
+
+OK
+
+$ cd backend && .venv/Scripts/alembic check
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+No new upgrade operations detected.

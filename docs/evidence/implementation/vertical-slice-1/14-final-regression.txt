@@ -1,0 +1,22 @@
+$ cd backend && .venv/Scripts/python -m pytest -p no:warnings -p no:logging -q
+........................................................................ [ 86%]
+.......................                                                  [100%]
+167 passed in 32.86s
+
+$ python -m unittest discover -s tests -t .
+----------------------------------------------------------------------
+Ran 35 tests in 5.673s
+
+OK
+
+$ cd frontend && npm test
+ Test Files  2 passed (2)
+      Tests  12 passed (12)
+
+$ cd frontend && npm run build
+[32m✓ built in 132ms[39m
+
+$ cd backend && .venv/Scripts/alembic check
+No new upgrade operations detected.
+
+$ git status --short data docs/DATASET_VALIDATION_REPORT.md

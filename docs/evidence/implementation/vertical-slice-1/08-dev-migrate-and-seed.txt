@@ -1,0 +1,61 @@
+$ .venv/Scripts/alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Vertical slice 1: sessions, notice acknowledgements, assessments, evidence and estimates.
+
+$ .venv/Scripts/alembic check
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+No new upgrade operations detected.
+
+$ .venv/Scripts/python -m app.seed --org-code local-demo --org-name "Local development organisation" --demo-users --demo-content
+{
+  "organization_created": false,
+  "validator_verdict": "VALID_FOR_DEVELOPMENT_NOT_RELEASABLE",
+  "created": {},
+  "skipped": {
+    "topics": 23,
+    "competency_frameworks": 1,
+    "competency_levels": 5,
+    "competency_clusters": 4,
+    "competencies": 25,
+    "courses": 99
+  },
+  "warnings": [
+    "CSCD-2014-4.8: source lists levels ['Level 1', 'Level 2', 'Level 3', 'Level 4'] (framework scale has 5); status UNKNOWN, needs human check"
+  ],
+  "demo_users_created": {
+    "passwords_set": 8
+  },
+  "demo_content_created": {
+    "competency_frameworks": 1,
+    "competency_levels": 4,
+    "competencies": 2,
+    "job_roles": 1,
+    "role_competencies": 2,
+    "questions": 10,
+    "assessments": 1,
+    "course_competencies": 4,
+    "courses": 3
+  }
+}
+
+$ (second run) .venv/Scripts/python -m app.seed --org-code local-demo --org-name "Local development organisation" --demo-users --demo-content
+{
+  "organization_created": false,
+  "validator_verdict": "VALID_FOR_DEVELOPMENT_NOT_RELEASABLE",
+  "created": {},
+  "skipped": {
+    "topics": 23,
+    "competency_frameworks": 1,
+    "competency_levels": 5,
+    "competency_clusters": 4,
+    "competencies": 25,
+    "courses": 99
+  },
+  "warnings": [
+    "CSCD-2014-4.8: source lists levels ['Level 1', 'Level 2', 'Level 3', 'Level 4'] (framework scale has 5); status UNKNOWN, needs human check"
+  ],
+  "demo_users_created": {},
+  "demo_content_created": {}
+}

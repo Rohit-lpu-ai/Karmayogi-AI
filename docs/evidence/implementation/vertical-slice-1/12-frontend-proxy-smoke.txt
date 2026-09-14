@@ -1,0 +1,51 @@
+$ npx vite --port 5173 --strictPort  (background; Vite 8 listens on localhost/::1, so 127.0.0.1 is refused - first attempt used 127.0.0.1 and failed to connect)
+$ curl -s http://localhost:5173/ | head -6
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+
+$ curl -s -i http://localhost:5173/api/v1/auth/session  (through Vite proxy to 127.0.0.1:8000)
+HTTP/1.1 401 Unauthorized
+content-type: application/problem+json
+x-correlation-id: 72839e56243c4a36ba4dae042be3acb6
+x-content-type-options: nosniff
+{"type":"urn:platform:problem:unauthenticated","title":"Authentication required","status":401,"code":"UNAUTHENTICATED","instance":"/api/v1/auth/session","correlation_id":"72839e56243c4a36ba4dae042be3acb6","detail":"Sign in to continue."}
+
+$ cd backend && SMOKE_BASE_URL=http://localhost:5173 .venv/Scripts/python scripts/smoke_vertical_slice.py trainer01@example.invalid
+GET   /healthz                                                     -> 200  health
+GET   /readyz                                                      -> 200  ready
+GET   /api/v1/me                                                   -> 401  unauthenticated /me
+      problem: {'type': 'urn:platform:problem:unauthenticated', 'title': 'Authentication required', 'status': 401, 'code': 'UNAUTHENTICATED', 'instance': '/api/v1/me', 'correlation_id': '2e855753e013458389df1602fdddc89d', 'detail': 'Sign in to continue.'}
+POST  /api/v1/auth/login                                           -> 200  login
+GET   /api/v1/me                                                   -> 200  me
+PUT   /api/v1/me/job-role                                          -> 403  csrf missing
+      problem: {'type': 'urn:platform:problem:csrf-failed', 'title': 'Request blocked', 'status': 403, 'code': 'CSRF_FAILED', 'instance': '/api/v1/me/job-role', 'correlation_id': 'c9a11fd24bdc4ba8aff9fc233c38c93b', 'detail': 'Missing or invalid CSRF token. Reload and try again.'}
+POST  /api/v1/me/notice-acknowledgements                           -> 200  acknowledge notice
+GET   /api/v1/job-roles                                            -> 200  job roles
+GET   /api/v1/job-roles/911f838d-1f28-4282-8c51-a7cbff8699db/competencies -> 200  role requirements
+      requirements: [('DEMO-C1', 3), ('DEMO-C2', 3)]
+PUT   /api/v1/me/job-role                                          -> 200  select job role
+GET   /api/v1/assessments                                          -> 200  assessments
+POST  /api/v1/assessments/127ea199-76ee-43ed-8bb6-dadbff62c186/attempts -> 201  start attempt
+      saved 10 answers
+POST  /api/v1/attempts/491f170f-1887-419c-a5bd-1efdea6f4f83/submit -> 200  submit
+      score_total: 0.32143 baseline: True
+GET   /api/v1/attempts/491f170f-1887-419c-a5bd-1efdea6f4f83/result -> 200  result
+      DEMO-C1: score 0.21429 level 1 band medium
+      DEMO-C2: score 0.42857 level 2 band medium
+GET   /api/v1/me/competency-gaps                                   -> 200  gaps
+      DEMO-C1: status gap gap 2 (required 3)
+      DEMO-C2: status gap gap 1 (required 3)
+GET   /api/v1/me/recommendations                                   -> 200  recommendations
+      #1 DEMO - Working with averages (synthetic course) score 0.66667 demo=True
+      #2 DEMO - Percentages refresher (synthetic course) score 0.33333 demo=True
+      #3 DEMO - Reading simple data tables (synthetic course) score 0.33333 demo=True
+      gaps without approved content: []
+POST  /api/v1/attempts/491f170f-1887-419c-a5bd-1efdea6f4f83/submit -> 409  submit again
+      problem: {'type': 'urn:platform:problem:attempt-not-in-progress', 'title': 'Attempt already submitted', 'status': 409, 'code': 'ATTEMPT_NOT_IN_PROGRESS', 'instance': '/api/v1/attempts/491f170f-1887-419c-a5bd-1efdea6f4f83/submit', 'correlation_id': '5c241040ea8c451492224ed52e190615', 'detail': 'This attempt has already been submitted.'}
+POST  /api/v1/auth/logout                                          -> 204  logout
+GET   /api/v1/me                                                   -> 401  me after logout
+      problem: {'type': 'urn:platform:problem:unauthenticated', 'title': 'Authentication required', 'status': 401, 'code': 'UNAUTHENTICATED', 'instance': '/api/v1/me', 'correlation_id': '1f06e989d70c4759bc1e658181817e18', 'detail': 'Sign in to continue.'}
