@@ -1,0 +1,98 @@
+[
+  {
+    "doc_id": "MOSPI-DOC-001",
+    "url": "https://mospi.gov.in/sites/default/files/NSS7612dws/Estimation%20Procedure_NSS%2076.pdf",
+    "attempted_at_utc": "2026-09-14T07:04:26+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-001__Estimation_Procedure_NSS_76.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-001__Estimation_Procedure_NSS_76.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-002",
+    "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Final_Vol_I-HCES.pdf",
+    "attempted_at_utc": "2026-09-14T07:04:37+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-002__Final_Vol_I-HCES.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-002__Final_Vol_I-HCES.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-004",
+    "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/sources_method_2012%20(1).pdf",
+    "attempted_at_utc": "2026-09-14T07:04:49+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-004__sources_method_2012_1_.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-004__sources_method_2012_1_.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-006",
+    "url": "https://www.mospi.gov.in/uploads/announcements/announcements_1772117257791_84ae898f-7be2-4b7d-a135-565e1a809513_FAQ_GDP_26022026_1902.pdf",
+    "attempted_at_utc": "2026-09-14T07:04:51+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-006__announcements_1772117257791_84ae898f-7be2-4b7d-a135-565e1a809513_FAQ_GDP_26022026_1902.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-006__announcements_1772117257791_84ae898f-7be2-4b7d-a135-565e1a809513_FAQ_GDP_26022026_1902.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-008",
+    "url": "https://www.mospi.gov.in/uploads/documents/documents/1770891066052-Annexure_V.pdf",
+    "attempted_at_utc": "2026-09-14T07:04:54+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-008__1770891066052-Annexure_V.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-008__1770891066052-Annexure_V.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-012",
+    "url": "https://www.mospi.gov.in/uploads/Marquee/doc-0aee0026-bf32-4213-ae4f-c5308088444e.pdf",
+    "attempted_at_utc": "2026-09-14T07:05:01+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-012__doc-0aee0026-bf32-4213-ae4f-c5308088444e.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-012__doc-0aee0026-bf32-4213-ae4f-c5308088444e.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-013",
+    "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/PLFS_changes_in_2025_Final.pdf",
+    "attempted_at_utc": "2026-09-14T07:05:05+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-013__PLFS_changes_in_2025_Final.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-013__PLFS_changes_in_2025_Final.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-015",
+    "url": "https://mospi.gov.in/sites/default/files/NMDS_2.0_PLFS_final_update.pdf",
+    "attempted_at_utc": "2026-09-14T07:05:07+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-015__NMDS_2.0_PLFS_final_update.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-015__NMDS_2.0_PLFS_final_update.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-016",
+    "url": "https://mospi.gov.in/sites/default/files/committee_reports/NSC_REPORT_PLFS.pdf",
+    "attempted_at_utc": "2026-09-14T07:05:12+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-016__NSC_REPORT_PLFS.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-016__NSC_REPORT_PLFS.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-026",
+    "url": "https://www.mospi.gov.in/uploads/publications_reports/publications_reports1782719243840_1f31af3d-72ef-43f0-8038-c029553699f3_SDG_NIF_2026_(along_with_metadata).pdf",
+    "attempted_at_utc": "2026-09-14T07:05:16+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-026__publications_reports1782719243840_1f31af3d-72ef-43f0-8038-c029553699f3_SDG_NIF_2026__along_with_metadata_.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-026__publications_reports1782719243840_1f31af3d-72ef-43f0-8038-c029553699f3_SDG_NIF_2026__along_with_metadata_.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-029",
+    "url": "https://www.mospi.gov.in/sites/default/files/NMDS%202.0_05122024.pdf",
+    "attempted_at_utc": "2026-09-14T07:05:19+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-029__NMDS_2.0_05122024.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-029__NMDS_2.0_05122024.pdf.meta.json"
+  },
+  {
+    "doc_id": "MOSPI-DOC-031",
+    "url": "https://www.mospi.gov.in/sites/default/files/Statistical-Quality-Assessment-Framework-Guidelines%20.pdf",
+    "attempted_at_utc": "2026-09-14T07:05:21+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/mospi/MOSPI-DOC-031__Statistical-Quality-Assessment-Framework-Guidelines_.pdf",
+    "sidecar": "data/raw/mospi/MOSPI-DOC-031__Statistical-Quality-Assessment-Framework-Guidelines_.pdf.meta.json"
+  }
+]

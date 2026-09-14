@@ -1,0 +1,74 @@
+{
+  "_WARNING": "MOCK DATA - NOT FROM iGOT KARMAYOGI - SYNTHETIC FIXTURES FOR DEVELOPMENT ONLY",
+  "data_status": "MOCK",
+  "source_id": "SRC-024",
+  "created_on": "2026-09-14",
+  "notes": [
+    "No record here was obtained from iGOT Karmayogi or any other system.",
+    "Course titles, providers and competencies are invented and prefixed MOCK.",
+    "Users are opaque synthetic IDs with no names or any other personal attributes.",
+    "Must never be displayed without a visible MOCK label, or mixed with real data."
+  ],
+  "courses": [
+    {
+      "course_id": "MOCK-COURSE-001",
+      "title": "MOCK - Introduction to Sampling Design",
+      "provider": "MOCK Provider A",
+      "description": "MOCK course description. Synthetic fixture; not a real course.",
+      "competencies": ["MOCK: Survey methodology", "MOCK: Sampling"],
+      "duration_minutes": 120,
+      "languages": ["en", "hi"],
+      "data_status": "MOCK"
+    },
+    {
+      "course_id": "MOCK-COURSE-002",
+      "title": "MOCK - Reading National Accounts",
+      "provider": "MOCK Provider A",
+      "description": "MOCK course description. Synthetic fixture; not a real course.",
+      "competencies": ["MOCK: National accounts"],
+      "duration_minutes": 180,
+      "languages": ["en"],
+      "data_status": "MOCK"
+    },
+    {
+      "course_id": "MOCK-COURSE-003",
+      "title": "MOCK - Price Index Basics",
+      "provider": "MOCK Provider B",
+      "description": "MOCK course description. Synthetic fixture; not a real course.",
+      "competencies": ["MOCK: Price statistics"],
+      "duration_minutes": 90,
+      "languages": ["en", "hi"],
+      "data_status": "MOCK"
+    },
+    {
+      "course_id": "MOCK-COURSE-004",
+      "title": "MOCK - Data Quality Fundamentals",
+      "provider": "MOCK Provider B",
+      "description": "MOCK course description. Synthetic fixture; not a real course.",
+      "competencies": ["MOCK: Data quality", "MOCK: Survey methodology"],
+      "duration_minutes": null,
+      "languages": ["en"],
+      "data_status": "MOCK"
+    }
+  ],
+  "users": ["MOCK-USER-001", "MOCK-USER-002", "MOCK-USER-003"],
+  "enrollments": [
+    {"user_id": "MOCK-USER-001", "course_id": "MOCK-COURSE-001", "enrolled_on": "2000-01-03", "status": "completed", "progress_percent": 100, "completed_on": "2000-01-20", "certificate_id": "MOCK-CERT-0001", "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-001", "course_id": "MOCK-COURSE-002", "enrolled_on": "2000-02-01", "status": "in_progress", "progress_percent": 40, "completed_on": null, "certificate_id": null, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-003", "enrolled_on": "2000-01-10", "status": "completed", "progress_percent": 100, "completed_on": "2000-01-15", "certificate_id": "MOCK-CERT-0002", "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-004", "enrolled_on": "2000-01-12", "status": "completed", "progress_percent": 100, "completed_on": "2000-02-05", "certificate_id": null, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-001", "enrolled_on": "2000-03-01", "status": "not_started", "progress_percent": 0, "completed_on": null, "certificate_id": null, "data_status": "MOCK"}
+  ],
+  "learning_events": [
+    {"user_id": "MOCK-USER-001", "course_id": "MOCK-COURSE-001", "event_type": "enrolled", "occurred_at": "2000-01-03T09:00:00Z", "progress_percent": 0, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-001", "course_id": "MOCK-COURSE-001", "event_type": "progress", "occurred_at": "2000-01-10T09:00:00Z", "progress_percent": 50, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-001", "course_id": "MOCK-COURSE-001", "event_type": "completed", "occurred_at": "2000-01-20T09:00:00Z", "progress_percent": 100, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-001", "course_id": "MOCK-COURSE-002", "event_type": "enrolled", "occurred_at": "2000-02-01T09:00:00Z", "progress_percent": 0, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-001", "course_id": "MOCK-COURSE-002", "event_type": "progress", "occurred_at": "2000-02-08T09:00:00Z", "progress_percent": 40, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-003", "event_type": "enrolled", "occurred_at": "2000-01-10T09:00:00Z", "progress_percent": 0, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-004", "event_type": "enrolled", "occurred_at": "2000-01-12T09:00:00Z", "progress_percent": 0, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-003", "event_type": "completed", "occurred_at": "2000-01-15T09:00:00Z", "progress_percent": 100, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-004", "event_type": "completed", "occurred_at": "2000-02-05T09:00:00Z", "progress_percent": 100, "data_status": "MOCK"},
+    {"user_id": "MOCK-USER-002", "course_id": "MOCK-COURSE-001", "event_type": "enrolled", "occurred_at": "2000-03-01T09:00:00Z", "progress_percent": 0, "data_status": "MOCK"}
+  ]
+}

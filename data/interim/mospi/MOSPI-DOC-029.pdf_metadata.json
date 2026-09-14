@@ -1,0 +1,41 @@
+{
+  "doc_id": "MOSPI-DOC-029",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-029__NMDS_2.0_05122024.pdf",
+  "page_count": 31,
+  "pdf_info": {
+    "Author": "Administrator",
+    "ContentTypeId": "0x010100ABC52A6CF623B04A9B81269B4A36B29C",
+    "CreationDate": "D:20241205123631+05'30'",
+    "Creator": "Acrobat PDFMaker 24 for Word",
+    "ModDate": "D:20241205123640+05'30'",
+    "Producer": "Adobe PDF Library 24.4.48",
+    "SourceModified": "D:20241204044837",
+    "Title": "common meta data structure (CMDS) for mospi"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 48795,
+  "pages_without_text": [],
+  "first_page_lines": [
+    "ASPD/Oct/2024/2",
+    "Government of India",
+    "Ministry of Statistics and Programme Implementation",
+    "Data Dissemination: National Metadata Structure",
+    "(NMDS)",
+    "October 2024"
+  ],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      6,
+      10,
+      19,
+      26,
+      27,
+      28
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

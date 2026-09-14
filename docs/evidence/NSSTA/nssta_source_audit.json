@@ -1,0 +1,393 @@
+{
+  "audit_id": "AUDIT-NSSTA-001",
+  "schema_version": "0.1.0-draft",
+  "source_id": "SRC-025",
+  "subject": "National Statistical Systems Training Academy (NSSTA), MoSPI - Documents and Offerings pages",
+  "collection_date": "2026-09-14",
+  "collected_by": "AI assistant (Claude Opus 5) under human direction",
+  "collection_method": "Bounded manual-equivalent audit: targeted HTTP GET/HEAD requests to named public pages and candidate document URLs. No crawling, no link-following beyond the named pages, no bulk download.",
+  "user_agent_used": "KaramYogiAI-discovery/0.1",
+  "authorisation_note": "Explicitly authorised by the project owner on 2026-09-14 as Gate B desk research. This is a documented exception to standing rule R1 ('do not scrape') in DATA_COLLECTION_CHECKLIST.md.",
+  "personal_data_collected": false,
+  "personal_data_note": "No participant names, officer names, attendance records, or any personal information were collected, stored, or transcribed. One discovered host (nssta.attendance.gov.in) serves personal attendance data and was deliberately excluded after recording its title only.",
+
+  "status_legend": {
+    "MACHINE_OBSERVED": "Directly observed by an automated request during this audit, with method and timestamp recorded. Pending human confirmation before it may become VERIFIED.",
+    "UNVERIFIED_SECONDHAND": "Reported by a third party (a search-engine summary), NOT observed first-hand at the source. A lead to check, not a fact.",
+    "UNKNOWN": "Not established. Not guessed.",
+    "UNAVAILABLE": "Investigated and confirmed not retrievable from this environment, with the reason recorded.",
+    "EXCLUDED_BY_POLICY": "Discovered but deliberately not collected, on privacy grounds."
+  },
+  "verified_count": 0,
+  "verified_note": "Zero items are VERIFIED. Per STATUS_VOCABULARY.md, only a human may set VERIFIED. Everything first-hand here is MACHINE_OBSERVED and awaits human sign-off.",
+
+  "headline_findings": [
+    {
+      "id": "F1",
+      "finding": "Both nssta.gov.in and mospi.gov.in are client-side-rendered single-page applications. They return an HTML shell of roughly 1-2.7 KB containing no content, navigation, or links to any non-JavaScript client.",
+      "status": "MACHINE_OBSERVED",
+      "consequence": "Page-level HTML auditing and link discovery are impossible by plain HTTP fetch. Document discovery currently depends on direct file URLs found via external search indexes."
+    },
+    {
+      "id": "F2",
+      "finding": "No documented public API was found for NSSTA training data, programmes, or documents.",
+      "status": "UNKNOWN",
+      "consequence": "The SPA architecture implies an undocumented JSON backend exists. It was deliberately NOT probed, per API_REQUIREMENTS.md section 3: an undocumented endpoint is not a contract and using one is not authorised."
+    },
+    {
+      "id": "F3",
+      "finding": "Six NSSTA-related PDF documents were confirmed live with full HTTP metadata.",
+      "status": "MACHINE_OBSERVED",
+      "consequence": "These are the only confirmed machine-retrievable artefacts for NSSTA at this time."
+    },
+    {
+      "id": "F4",
+      "finding": "PDF text could not be extracted in this environment. The training calendar uses embedded subset fonts with no recoverable ToUnicode mapping, and no PDF tooling (poppler, pypdf, PyMuPDF) is installed.",
+      "status": "MACHINE_OBSERVED",
+      "consequence": "Training categories, programme names, and subject areas remain UNKNOWN first-hand. They were NOT guessed."
+    },
+    {
+      "id": "F5",
+      "finding": "nssta.attendance.gov.in is a live, server-rendered attendance portal for the academy.",
+      "status": "EXCLUDED_BY_POLICY",
+      "consequence": "Attendance data is personal data. Audit stopped at the page title. This host must be added to a permanent exclusion list."
+    }
+  ],
+
+  "pages_audited": [
+    {
+      "source_url": "https://nssta.gov.in/",
+      "page_title": "NSSTA",
+      "title_status": "MACHINE_OBSERVED",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 1048,
+      "access_status": "REACHABLE_BUT_EMPTY",
+      "rendering": "client-side SPA; body contains only the string 'NSSTA'",
+      "discovered_links": [],
+      "discovered_links_status": "UNAVAILABLE",
+      "discovered_links_reason": "No links present in server-delivered HTML.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "source_url": "https://nssta.gov.in/offerings",
+      "page_title": "NSSTA",
+      "title_status": "MACHINE_OBSERVED",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": null,
+      "response_bytes_status": "UNKNOWN",
+      "access_status": "REACHABLE_BUT_EMPTY",
+      "rendering": "client-side SPA; identical empty shell to the site root",
+      "discovered_links": [],
+      "discovered_links_status": "UNAVAILABLE",
+      "training_categories": "UNKNOWN",
+      "programme_names": "UNKNOWN",
+      "subject_areas": "UNKNOWN",
+      "note": "This is the 'Offerings' page named in the audit request. Its existence is confirmed; its content is not retrievable without a JavaScript-executing client.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "source_url": "https://nssta.gov.in/documents",
+      "page_title": "NSSTA",
+      "title_status": "MACHINE_OBSERVED",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": null,
+      "response_bytes_status": "UNKNOWN",
+      "access_status": "REACHABLE_BUT_EMPTY",
+      "rendering": "client-side SPA; identical empty shell to the site root",
+      "discovered_links": [],
+      "discovered_links_status": "UNAVAILABLE",
+      "document_listing": "UNKNOWN",
+      "note": "This is the 'Documents' page named in the audit request. Existence confirmed; content not retrievable.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "source_url": "https://mospi.gov.in/training",
+      "page_title": "Ministry of Statistics and Program Implementation | Government Of India",
+      "title_status": "MACHINE_OBSERVED",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 2657,
+      "access_status": "REACHABLE_BUT_EMPTY",
+      "rendering": "client-side SPA (Vite build; only asset, favicon and Google Fonts links present in served HTML)",
+      "discovered_links": [
+        "/assets/index-DpcmNdVB.css",
+        "/favicon.ico",
+        "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap"
+      ],
+      "discovered_links_note": "Asset links only. No content links of any kind.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "source_url": "https://www.mospi.gov.in/NSSTA",
+      "page_title": "Ministry of Statistics and Program Implementation | Government Of India",
+      "title_status": "MACHINE_OBSERVED",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 2657,
+      "access_status": "REACHABLE_BUT_EMPTY",
+      "rendering": "client-side SPA; identical shell to /training",
+      "discovered_links": [],
+      "collection_date": "2026-09-14"
+    },
+    {
+      "source_url": "https://datainnovation.mospi.gov.in/mospi-mcp",
+      "page_title": "DI Lab",
+      "title_status": "MACHINE_OBSERVED",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 745,
+      "access_status": "REACHABLE_BUT_EMPTY",
+      "rendering": "client-side shell",
+      "relevance": "Surfaced while searching for structured APIs. Page name suggests a MoSPI Model Context Protocol offering, which would be directly relevant to programmatic data access.",
+      "api_relevance_status": "UNKNOWN",
+      "api_relevance_note": "No documentation retrieved. Whether this is an API, a prototype, or an announcement page is UNKNOWN. HIGH-PRIORITY follow-up for a human with a browser.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "source_url": "https://nssta.attendance.gov.in/",
+      "page_title": "Dashboard | Attendance | National Statistical System Training Academy  - MoSPI",
+      "title_status": "MACHINE_OBSERVED",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 32879,
+      "access_status": "EXCLUDED_BY_POLICY",
+      "exclusion_reason": "Attendance portal. Serves or fronts personal data about identifiable individuals. Audit halted at the title; no content read, stored, or transcribed. Must never be collected from.",
+      "discovered_links": [],
+      "discovered_links_status": "EXCLUDED_BY_POLICY",
+      "collection_date": "2026-09-14"
+    }
+  ],
+
+  "hosts_unreachable": [
+    {
+      "host_or_url": "https://training.niip.gov.in/web/mospi/national-statistical-systems-training-academy",
+      "access_status": "UNAVAILABLE",
+      "reason": "DNS resolution failure (getaddrinfo ENOTFOUND training.niip.gov.in)",
+      "note": "Appears in search indexes. Host does not resolve from this environment. May be internal, decommissioned, or geo-restricted.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "host_or_url": "http://mospi.nic.in/about-nssta",
+      "access_status": "UNAVAILABLE",
+      "reason": "DNS resolution failure (getaddrinfo ENOTFOUND mospi.nic.in)",
+      "note": "Legacy domain still present in search indexes. Superseded by mospi.gov.in.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "host_or_url": "https://new.mospi.gov.in/uploads/announcements/announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf",
+      "access_status": "UNAVAILABLE",
+      "reason": "No HTTP response returned (empty response, request produced no status line)",
+      "note": "Search index describes this as an NSSTA Office Memorandum dated 29.09.2025 with a metadata sheet. Title is UNVERIFIED_SECONDHAND. Worth a human retry - the filename suggests a recent and relevant document.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "host_or_url": "https://mospi.gov.in/documents/213904/0/Training+Calendar+of+NSSTA+for+FY+2021-22.pdf/f7c59f7c-ac0b-b0a0-44b7-67178532cee4",
+      "access_status": "UNAVAILABLE",
+      "reason": "Returns HTTP 200 with content-type text/html and 2657 bytes - the SPA shell, not a PDF",
+      "note": "Legacy Liferay-style document URL. Superseded. The same document is live at the /sites/default/files/ path listed in downloadable_documents.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "host_or_url": "https://www.mospi.gov.in/robots.txt",
+      "access_status": "UNKNOWN",
+      "reason": "Connection timed out after 25s on www subdomain; not retried on apex domain",
+      "note": "BLOCKING GAP. robots.txt has not been read for mospi.gov.in. Required by DATA_COLLECTION_CHECKLIST.md Gate B4 before any further automated access.",
+      "collection_date": "2026-09-14"
+    }
+  ],
+
+  "downloadable_documents": [
+    {
+      "document_id": "NSSTA-DOC-001",
+      "url": "https://mospi.gov.in/sites/default/files/announcements/Circular_NSSTA_Advance_Training_Calander_FY(25-26).pdf",
+      "filename": "Circular_NSSTA_Advance_Training_Calander_FY(25-26).pdf",
+      "document_type": "Training calendar / circular",
+      "title_as_indexed": "NSSTA - Advance Training Calendar for FY(2025-2026)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "content_length_bytes": 317053,
+      "last_modified": "2025-04-24T06:22:35Z",
+      "access_status": "PUBLICLY_RETRIEVABLE",
+      "metadata_status": "MACHINE_OBSERVED",
+      "content_extracted": false,
+      "content_extraction_status": "UNAVAILABLE",
+      "content_extraction_reason": "Embedded subset fonts with no recoverable ToUnicode map; no PDF tooling available in this environment",
+      "relevance": "HIGHEST. Most recent document found. Expected to contain the current programme list, categories, target groups and schedule.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "document_id": "NSSTA-DOC-002",
+      "url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+      "filename": "Training Calendar of NSSTA for FY 2021-22.pdf",
+      "document_type": "Training calendar",
+      "title_as_indexed": "Training Calendar 2021-2022, Government of India",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "content_length_bytes": 507791,
+      "last_modified": "2022-10-17T11:13:46Z",
+      "access_status": "PUBLICLY_RETRIEVABLE",
+      "metadata_status": "MACHINE_OBSERVED",
+      "content_extracted": false,
+      "content_extraction_status": "UNAVAILABLE",
+      "relevance": "Historical programme list. Useful for tracking how the curriculum changed over time.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "document_id": "NSSTA-DOC-003",
+      "url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+      "filename": "TrainingCalenderNSSTA2020-21.pdf",
+      "document_type": "Training calendar",
+      "title_as_indexed": "Training Calendar 2020-2021, Government of India",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "content_length_bytes": 1197339,
+      "last_modified": "2020-06-18T08:48:30Z",
+      "access_status": "PUBLICLY_RETRIEVABLE",
+      "metadata_status": "MACHINE_OBSERVED",
+      "content_extracted": false,
+      "content_extraction_status": "UNAVAILABLE",
+      "relevance": "Historical programme list.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "document_id": "NSSTA-DOC-004",
+      "url": "https://mospi.gov.in/sites/default/files/content_image/(1)%20About%20NSSTA.pdf",
+      "filename": "(1) About NSSTA.pdf",
+      "document_type": "Institutional profile",
+      "title_as_indexed": "National Statistical Systems Training Academy (NSSTA)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "content_length_bytes": 351222,
+      "last_modified": "2016-11-09T11:18:24Z",
+      "access_status": "PUBLICLY_RETRIEVABLE",
+      "metadata_status": "MACHINE_OBSERVED",
+      "content_extracted": false,
+      "content_extraction_status": "UNAVAILABLE",
+      "relevance": "Likely describes mandate, target groups and training categories. Dated 2016 - treat as historical.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "document_id": "NSSTA-DOC-005",
+      "url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "filename": "refdoc_nsc_nssta_final_8aug18.pdf",
+      "document_type": "Reference manual / curriculum document",
+      "title_as_indexed": "Reference Manual for Indian Statistical Service Probationary Training",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "content_length_bytes": 1246103,
+      "last_modified": "2018-08-08T12:30:18Z",
+      "access_status": "PUBLICLY_RETRIEVABLE",
+      "metadata_status": "MACHINE_OBSERVED",
+      "content_extracted": false,
+      "content_extraction_status": "UNAVAILABLE",
+      "relevance": "HIGH for curriculum design. A probationary training reference manual is the closest thing found to a formal syllabus.",
+      "collection_date": "2026-09-14"
+    },
+    {
+      "document_id": "NSSTA-DOC-006",
+      "url": "https://mospi.gov.in/sites/default/files/announcements/Draft_Revised_NPOS.pdf",
+      "filename": "Draft_Revised_NPOS.pdf",
+      "document_type": "Policy document (draft)",
+      "title_as_indexed": "Draft Revised National Policy on Official Statistics",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "content_length_bytes": 365940,
+      "last_modified": "2023-08-10T10:55:46Z",
+      "access_status": "PUBLICLY_RETRIEVABLE",
+      "metadata_status": "MACHINE_OBSERVED",
+      "content_extracted": false,
+      "content_extraction_status": "UNAVAILABLE",
+      "relevance": "MEDIUM. MoSPI-wide policy, not NSSTA-specific. Included because it is governance context for the curriculum. Marked DRAFT - do not teach as settled policy.",
+      "collection_date": "2026-09-14"
+    }
+  ],
+
+  "audit_goals": {
+    "training_categories": {
+      "status": "UNKNOWN",
+      "first_hand_findings": [],
+      "reason": "Offerings page is JavaScript-rendered; PDF text extraction unavailable. Not guessed.",
+      "where_to_look": "NSSTA-DOC-001 (current calendar), NSSTA-DOC-004 (About NSSTA)"
+    },
+    "programme_names": {
+      "status": "UNKNOWN",
+      "first_hand_findings": [],
+      "secondhand_leads": [
+        {
+          "claim": "Calendar includes sessions for ISS batches, a Special Foundation Course, and a programme on Data Ethics and Governance",
+          "status": "UNVERIFIED_SECONDHAND",
+          "reported_by": "search-engine summary of NSSTA-DOC-001",
+          "action": "Must be confirmed by opening NSSTA-DOC-001 directly. Do not use until confirmed."
+        }
+      ],
+      "reason": "No programme name was observed first-hand. Not guessed.",
+      "where_to_look": "NSSTA-DOC-001, NSSTA-DOC-002, NSSTA-DOC-003"
+    },
+    "subject_areas": {
+      "status": "UNKNOWN",
+      "first_hand_findings": [],
+      "reason": "Same extraction blocker. Not guessed.",
+      "where_to_look": "NSSTA-DOC-005 (probationary training reference manual) is the most promising syllabus-like source"
+    },
+    "tpac_documents": {
+      "status": "UNKNOWN",
+      "documents_found": [],
+      "secondhand_leads": [
+        {
+          "claim": "TPAC stands for Training Programme Approval Committee; NSSTA programmes are conducted with TPAC approval; TPAC acts as an advisory forum assessing and designing need-based training programmes and reviewing syllabi",
+          "status": "UNVERIFIED_SECONDHAND",
+          "reported_by": "search-engine summaries referencing MoSPI pages",
+          "action": "Confirm against an official document before using. No TPAC-titled document was located."
+        }
+      ],
+      "reason": "No document whose title or URL identifies it as a TPAC document was found. TPAC appears only as a referenced body, not as a document series.",
+      "where_to_look": "TPAC minutes or approval orders may exist behind the nssta.gov.in Documents page, which is not machine-readable. Requires a human with a browser."
+    },
+    "downloadable_documents": {
+      "status": "MACHINE_OBSERVED",
+      "count": 6,
+      "note": "All six confirmed live with content-type application/pdf and full HTTP metadata. Metadata only - no content was extracted."
+    },
+    "structured_apis": {
+      "status": "UNKNOWN",
+      "documented_api_found": false,
+      "note": "No official API documentation was located for NSSTA training data. Both mospi.gov.in and nssta.gov.in are SPAs, which implies an undocumented JSON backend exists. It was deliberately NOT probed, per API_REQUIREMENTS.md section 3. https://datainnovation.mospi.gov.in/mospi-mcp is a HIGH-PRIORITY lead whose nature is UNKNOWN."
+    }
+  },
+
+  "licence": {
+    "status": "UNKNOWN",
+    "note": "BLOCKING GAP. No terms of use, licence, or copyright statement was located for NSSTA or MoSPI content. Gate B4 is not satisfied. Nothing here may be redistributed or re-served to learners until this is resolved."
+  },
+  "robots_txt": {
+    "status": "UNKNOWN",
+    "note": "BLOCKING GAP. Not retrieved (timeout). Must be read before any further automated access."
+  },
+
+  "next_actions": [
+    {"priority": "P1", "action": "A human opens NSSTA-DOC-001 in a browser and transcribes programme names, categories and target groups. This unblocks three of the six audit goals.", "owner": "UNASSIGNED"},
+    {"priority": "P1", "action": "Read mospi.gov.in robots.txt and the site terms of use. Blocking for Gate B4 and Gate C.", "owner": "UNASSIGNED"},
+    {"priority": "P1", "action": "Add nssta.attendance.gov.in and any other attendance or participant system to a permanent exclusion list in the repository.", "owner": "UNASSIGNED"},
+    {"priority": "P2", "action": "Investigate https://datainnovation.mospi.gov.in/mospi-mcp with a browser. If MoSPI publishes a documented MCP or API, it changes the integration strategy substantially.", "owner": "UNASSIGNED"},
+    {"priority": "P2", "action": "Install PDF tooling (poppler-utils or pypdf) so future document audits can extract text reproducibly.", "owner": "UNASSIGNED"},
+    {"priority": "P2", "action": "Retry the new.mospi.gov.in Office Memorandum URL (29.09.2025) from a different network.", "owner": "UNASSIGNED"},
+    {"priority": "P3", "action": "Decide whether a JavaScript-rendering fetch of the Offerings and Documents pages is appropriate. This is a materially different access posture from plain HTTP and needs an explicit decision, not a default.", "owner": "UNASSIGNED"}
+  ],
+
+  "sign_off": {
+    "auditor": "AI assistant - findings are MACHINE_OBSERVED, not VERIFIED",
+    "human_reviewer": "UNASSIGNED",
+    "human_review_date": "UNKNOWN",
+    "gate_b_complete": false,
+    "gate_c_signed": false
+  }
+}

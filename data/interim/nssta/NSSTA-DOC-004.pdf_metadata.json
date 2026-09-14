@@ -1,0 +1,27 @@
+{
+  "doc_id": "NSSTA-DOC-004",
+  "local_file_path": "data/raw/nssta/NSSTA-DOC-004__1_About_NSSTA.pdf",
+  "page_count": 2,
+  "pdf_info": {
+    "CreationDate": "D:20160920130814+05'30'",
+    "Author": "NAPS2",
+    "Title": "Scanned Image",
+    "Producer": "PDFsharp 0.9.653 (www.pdfsharp.com)",
+    "Subject": "Scanned Image"
+  },
+  "text_extractable": false,
+  "extracted_chars_total": 0,
+  "pages_without_text": [
+    1,
+    2
+  ],
+  "first_page_lines": [],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

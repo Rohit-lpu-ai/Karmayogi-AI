@@ -1,0 +1,43 @@
+{
+  "doc_id": "NSSTA-DOC-002",
+  "local_file_path": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf",
+  "page_count": 29,
+  "pdf_info": {
+    "Author": "HPNSSTA5",
+    "Creator": "Microsoft® Word 2019",
+    "CreationDate": "D:20210702145451+05'30'",
+    "ModDate": "D:20210702145451+05'30'",
+    "Producer": "Microsoft® Word 2019"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 44981,
+  "pages_without_text": [],
+  "first_page_lines": [
+    "P a g e  1 | 29",
+    "Training Calendar",
+    "2021-2022",
+    "Government of India",
+    "Ministry of Statistics & Programme Implementation",
+    "National Statistical Office"
+  ],
+  "keyword_pages": {
+    "TPAC": [
+      5,
+      20,
+      27
+    ],
+    "sampling": [
+      9,
+      14,
+      15,
+      19,
+      24,
+      25,
+      26
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

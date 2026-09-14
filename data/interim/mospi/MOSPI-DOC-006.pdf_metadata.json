@@ -1,0 +1,42 @@
+{
+  "doc_id": "MOSPI-DOC-006",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-006__announcements_1772117257791_84ae898f-7be2-4b7d-a135-565e1a809513_FAQ_GDP_26022026_1902.pdf",
+  "page_count": 11,
+  "pdf_info": {
+    "Author": "NAD",
+    "CreationDate": "D:20260226201321+05'30'",
+    "Creator": "Acrobat PDFMaker 25 for Word",
+    "GrammarlyDocumentId": "18bf9546-8299-41b2-a661-9764bf10a71a",
+    "ModDate": "D:20260226201329+05'30'",
+    "Producer": "Adobe PDF Library 25.1.231",
+    "SourceModified": "D:20260226144229"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 27897,
+  "pages_without_text": [],
+  "first_page_lines": [
+    "GOVERNMENT OF INDIA",
+    "MINISTRY OF STATISTICS AND PROGRAMME IMPLEMENTATION",
+    "Understanding the New Series of GDP",
+    "Frequently Asked Questions",
+    "1. What is Gross Domestic Product? How it differs from GVA?",
+    "GVA (Gross Value Added) is the total value of goods and services produced in the"
+  ],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [],
+    "base year": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      9,
+      10,
+      11
+    ]
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

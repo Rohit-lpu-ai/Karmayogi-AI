@@ -1,0 +1,53 @@
+# Secrets - never commit API keys or credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+credentials*.json
+
+# Raw collected data - large and licence-encumbered. Downloaded PDFs are never
+# committed until each source's licence is VERIFIED as permitting
+# redistribution. Provenance sidecars (*.meta.json) are committed.
+# (Directories must be re-included for the file negations to take effect.)
+data/raw/**
+!data/raw/**/
+!data/raw/**/.gitkeep
+!data/raw/**/*.meta.json
+
+# Interim: structured metadata (JSON / Markdown) is committed; extracted text
+# and anything else stays local.
+data/interim/**
+!data/interim/**/
+!data/interim/**/.gitkeep
+!data/interim/**/*.json
+!data/interim/**/*.md
+
+# Logs
+logs/**
+!logs/**/.gitkeep
+*.log
+
+# NEVER commit anything that could be microdata or personal data
+*microdata*
+*unit_level*
+*unitlevel*
+*.sav
+*.dta
+*.sas7bdat
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

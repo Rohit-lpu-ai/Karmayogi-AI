@@ -1,0 +1,97 @@
+{
+  "source_id": "SRC-001",
+  "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+  "raw_dir": "data/raw/mospi",
+  "interim_dir": "data/interim/mospi",
+  "allowed_hosts": ["mospi.gov.in", "www.mospi.gov.in"],
+  "max_bytes": 26214400,
+  "licence_status": "UNVERIFIED_SECONDHAND",
+  "licence_usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+  "authorisation": "Controlled collection explicitly directed by the project owner on 2026-09-14 (MVP data collection instruction). Small high-value corpus selected from AUDIT-MOSPI-001; public file URLs only; Gate C not signed.",
+  "items": [
+    {
+      "doc_id": "MOSPI-DOC-001",
+      "url": "https://mospi.gov.in/sites/default/files/NSS7612dws/Estimation%20Procedure_NSS%2076.pdf",
+      "title": "Note on Sample Design and Estimation Procedure: NSS 76th Round",
+      "category": "methodology_note",
+      "topic": "survey_design;sampling"
+    },
+    {
+      "doc_id": "MOSPI-DOC-002",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Final_Vol_I-HCES.pdf",
+      "title": "Instructions to Field Staff (HCES) Vol I",
+      "category": "instruction_manual",
+      "topic": "survey_design"
+    },
+    {
+      "doc_id": "MOSPI-DOC-004",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/sources_method_2012%20(1).pdf",
+      "title": "National Accounts Statistics: Sources and Methods (2012)",
+      "category": "methodology_manual",
+      "topic": "national_accounts"
+    },
+    {
+      "doc_id": "MOSPI-DOC-006",
+      "url": "https://www.mospi.gov.in/uploads/announcements/announcements_1772117257791_84ae898f-7be2-4b7d-a135-565e1a809513_FAQ_GDP_26022026_1902.pdf",
+      "title": "FAQ on GDP (26 Feb 2026)",
+      "category": "faq_definitions",
+      "topic": "national_accounts"
+    },
+    {
+      "doc_id": "MOSPI-DOC-008",
+      "url": "https://www.mospi.gov.in/uploads/documents/documents/1770891066052-Annexure_V.pdf",
+      "title": "Frequently Asked Questions (FAQs) on CPI 2024 Series",
+      "category": "faq_definitions",
+      "topic": "price_statistics"
+    },
+    {
+      "doc_id": "MOSPI-DOC-012",
+      "url": "https://www.mospi.gov.in/uploads/Marquee/doc-0aee0026-bf32-4213-ae4f-c5308088444e.pdf",
+      "title": "Expert Group Report on Comprehensive Updation of CPI",
+      "category": "committee_report",
+      "topic": "price_statistics"
+    },
+    {
+      "doc_id": "MOSPI-DOC-013",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/PLFS_changes_in_2025_Final.pdf",
+      "title": "Periodic Labour Force Survey (PLFS) - changes in 2025",
+      "category": "methodology_note",
+      "topic": "labour_statistics;sampling"
+    },
+    {
+      "doc_id": "MOSPI-DOC-015",
+      "url": "https://mospi.gov.in/sites/default/files/NMDS_2.0_PLFS_final_update.pdf",
+      "title": "NMDS 2.0 metadata - PLFS",
+      "category": "metadata_sheet",
+      "topic": "labour_statistics;data_quality"
+    },
+    {
+      "doc_id": "MOSPI-DOC-016",
+      "url": "https://mospi.gov.in/sites/default/files/committee_reports/NSC_REPORT_PLFS.pdf",
+      "title": "Report of the NSC Committee on Periodic Labour Force Survey",
+      "category": "committee_report",
+      "topic": "labour_statistics;survey_design"
+    },
+    {
+      "doc_id": "MOSPI-DOC-026",
+      "url": "https://www.mospi.gov.in/uploads/publications_reports/publications_reports1782719243840_1f31af3d-72ef-43f0-8038-c029553699f3_SDG_NIF_2026_(along_with_metadata).pdf",
+      "title": "Sustainable Development Goals National Indicator Framework, 2026 (along with metadata)",
+      "category": "indicator_framework",
+      "topic": "sdg_indicators"
+    },
+    {
+      "doc_id": "MOSPI-DOC-029",
+      "url": "https://www.mospi.gov.in/sites/default/files/NMDS%202.0_05122024.pdf",
+      "title": "National Metadata Structure NMDS 2.0",
+      "category": "standard",
+      "topic": "data_quality;metadata"
+    },
+    {
+      "doc_id": "MOSPI-DOC-031",
+      "url": "https://www.mospi.gov.in/sites/default/files/Statistical-Quality-Assessment-Framework-Guidelines%20.pdf",
+      "title": "Statistical Quality Assessment Framework (SQAF) Guidelines",
+      "category": "framework",
+      "topic": "data_quality"
+    }
+  ]
+}

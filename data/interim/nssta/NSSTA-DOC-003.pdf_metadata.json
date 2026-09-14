@@ -1,0 +1,44 @@
+{
+  "doc_id": "NSSTA-DOC-003",
+  "local_file_path": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf",
+  "page_count": 26,
+  "pdf_info": {
+    "Author": "Dell",
+    "Creator": "Microsoft® Word 2013",
+    "CreationDate": "D:20200618112406+05'30'",
+    "ModDate": "D:20200618112406+05'30'",
+    "Producer": "Microsoft® Word 2013"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 42682,
+  "pages_without_text": [],
+  "first_page_lines": [
+    "1",
+    "Training Calendar",
+    "2020-2021",
+    "Government of India",
+    "Ministry of Statistics & Programme Implementation",
+    "Central Statistics Office"
+  ],
+  "keyword_pages": {
+    "TPAC": [
+      5,
+      18,
+      24
+    ],
+    "sampling": [
+      8,
+      9,
+      11,
+      13,
+      17,
+      21,
+      22,
+      23
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

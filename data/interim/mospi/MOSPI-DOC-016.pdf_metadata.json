@@ -1,0 +1,52 @@
+{
+  "doc_id": "MOSPI-DOC-016",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-016__NSC_REPORT_PLFS.pdf",
+  "page_count": 82,
+  "pdf_info": {
+    "CreationDate": "D:20100112183836+05'30'",
+    "ModDate": "D:20100112183836+05'30'",
+    "Producer": "BCL easyPDF 6.00.20",
+    "Creator": "NitroPDF 6.0"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 164249,
+  "pages_without_text": [
+    1,
+    3
+  ],
+  "first_page_lines": [],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      4,
+      7,
+      9,
+      11,
+      15,
+      17,
+      24,
+      27,
+      31,
+      33,
+      34,
+      35,
+      37,
+      38,
+      39,
+      44,
+      52,
+      58,
+      59,
+      60,
+      61,
+      63,
+      64
+    ],
+    "base year": [
+      22
+    ]
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

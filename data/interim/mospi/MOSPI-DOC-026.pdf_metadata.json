@@ -1,0 +1,39 @@
+{
+  "doc_id": "MOSPI-DOC-026",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-026__publications_reports1782719243840_1f31af3d-72ef-43f0-8038-c029553699f3_SDG_NIF_2026__along_with_metadata_.pdf",
+  "page_count": 166,
+  "pdf_info": {
+    "CreationDate": "D:20260625154558+05'30'",
+    "Creator": "Adobe Acrobat (64-bit) 26.1.21662",
+    "ModDate": "D:20260625154639+05'30'",
+    "Producer": "Adobe Acrobat (64-bit) 26.1.21662"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 387711,
+  "pages_without_text": [
+    2,
+    4,
+    165
+  ],
+  "first_page_lines": [
+    "Sustainable Development Goals National Indicator Framework, 2026   (along with Metadata)",
+    "Sustainable Development Goals",
+    "National Indicator Framework, 2026",
+    "(along with Metadata)",
+    "Government of India",
+    "Ministry of Statistics and Programme Implementation"
+  ],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      38,
+      128
+    ],
+    "base year": [
+      116
+    ]
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

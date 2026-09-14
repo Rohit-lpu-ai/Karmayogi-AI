@@ -1,0 +1,63 @@
+{
+  "doc_id": "CSCD-DOC-001",
+  "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+  "page_count": 40,
+  "pdf_info": {
+    "CreationDate": "D:20140312104547+05'30'",
+    "Creator": "Adobe InDesign CS6 (Windows)",
+    "ModDate": "D:20140415165018+05'30'",
+    "Producer": "Adobe PDF Library 10.0.1",
+    "Trapped": "/False"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 71685,
+  "pages_without_text": [
+    2,
+    6
+  ],
+  "first_page_lines": [
+    "Civil Services",
+    "Competency",
+    "Dictionary",
+    "GoI-UNDP Project:",
+    "Strengthening Human Resource",
+    "Management of Civil Service"
+  ],
+  "keyword_pages": {
+    "Proficiency": [
+      9
+    ],
+    "Level": [
+      9,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ]
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

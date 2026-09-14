@@ -1,0 +1,132 @@
+{
+  "source_id": "SRC-026",
+  "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+  "generated_at_utc": "2026-09-14T07:14:23+00:00",
+  "manifest": "scripts/collectors/manifests/cscd.json",
+  "authorisation": "Controlled collection explicitly directed by the project owner on 2026-09-14 (MVP data collection instruction). Local reference copy only, git-ignored; no reproduction of content.",
+  "verification_note": "Nothing in this file is VERIFIED. All human_verification blocks await review.",
+  "counts": {
+    "items": 3,
+    "by_status": {
+      "DOWNLOADED": 1,
+      "LINK_RECORDED_NOT_DOWNLOADED": 2
+    },
+    "bytes_downloaded": 2056035
+  },
+  "derived_datasets": [
+    "data/interim/cscd/competency_structure.json"
+  ],
+  "items": [
+    {
+      "item_id": "CSCD-DOC-001",
+      "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+      "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+      "retrieval_date": "2026-09-14",
+      "retrieved_at_utc": "2026-09-14T07:10:46+00:00",
+      "document_title": "Competency Dictionary for the Civil Services",
+      "document_title_status": "UNVERIFIED_SECONDHAND",
+      "first_page_lines_for_title_check": [
+        "Civil Services",
+        "Competency",
+        "Dictionary",
+        "GoI-UNDP Project:",
+        "Strengthening Human Resource",
+        "Management of Civil Service"
+      ],
+      "category": "competency_framework",
+      "topic": [
+        "competency_framework_references"
+      ],
+      "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+      "status": "DOWNLOADED",
+      "verification_status": "MACHINE_OBSERVED",
+      "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+      "provenance_sidecar": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf.meta.json",
+      "sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+      "bytes": 2056035,
+      "server_last_modified": "Mon, 19 Feb 2018 10:38:15 GMT",
+      "server_last_modified_caveat": "Upload time on the server, not a publication date.",
+      "pdf_creation_date": "D:20140312104547+05'30'",
+      "page_count": 40,
+      "text_extractable": true,
+      "licence_usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+      "licence_status": "MACHINE_OBSERVED",
+      "usage_notice_in_document_text": "None found by keyword scan of extracted text",
+      "usage_notice_snippets": [],
+      "authorisation": "Controlled collection explicitly directed by the project owner on 2026-09-14 (MVP data collection instruction). Local reference copy only, git-ignored; no reproduction of content.",
+      "human_verification": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "title_confirmed": null,
+        "organisation_confirmed": null,
+        "publication_date_confirmed": null,
+        "licence_confirmed": null,
+        "personal_data_absent_confirmed": null,
+        "notes": null
+      }
+    },
+    {
+      "item_id": "CSCD-LINK-001",
+      "source_url": "https://dopt.gov.in/sites/default/files/Implementation%20Tool-kit.pdf",
+      "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+      "retrieval_date": null,
+      "document_title": "Implementation Tool-kit (companion to the Competency Dictionary)",
+      "document_title_status": "UNVERIFIED_SECONDHAND",
+      "category": "competency_framework_toolkit",
+      "topic": [
+        "competency_framework_references"
+      ],
+      "access_method": "Link recorded only; not downloaded",
+      "status": "LINK_RECORDED_NOT_DOWNLOADED",
+      "verification_status": "MACHINE_OBSERVED",
+      "observation": "Linked from https://dopt.gov.in/tool-kit-competency-dictionary-civil-services-officers; HEAD 2026-09-14: HTTP 200, application/pdf, 551841 bytes, Last-Modified 2018-02-19",
+      "reason_not_downloaded": "Outside the requested scope (dictionary only); same DoPT copyright restriction applies.",
+      "local_file_path": null,
+      "licence_usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+      "licence_status": "MACHINE_OBSERVED",
+      "human_verification": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "title_confirmed": null,
+        "organisation_confirmed": null,
+        "publication_date_confirmed": null,
+        "licence_confirmed": null,
+        "personal_data_absent_confirmed": null,
+        "notes": null
+      }
+    },
+    {
+      "item_id": "CSCD-LINK-002",
+      "source_url": "https://dopttrg.nic.in/igotmk/FRAC.html",
+      "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+      "retrieval_date": null,
+      "document_title": "DoPT Training Division - FRAC (Framework of Roles, Activities and Competencies) page",
+      "document_title_status": "UNVERIFIED_SECONDHAND",
+      "category": "competency_framework_reference",
+      "topic": [
+        "competency_framework_references"
+      ],
+      "access_method": "Link recorded only; not downloaded",
+      "status": "LINK_RECORDED_NOT_DOWNLOADED",
+      "verification_status": "UNKNOWN",
+      "observation": "2026-09-14: first attempt no HTTP response; retry 'Could not resolve host: dopttrg.nic.in'. Title taken from search index only (UNVERIFIED_SECONDHAND).",
+      "reason_not_downloaded": "UNAVAILABLE from this environment.",
+      "local_file_path": null,
+      "licence_usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+      "licence_status": "MACHINE_OBSERVED",
+      "human_verification": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "title_confirmed": null,
+        "organisation_confirmed": null,
+        "publication_date_confirmed": null,
+        "licence_confirmed": null,
+        "personal_data_absent_confirmed": null,
+        "notes": null
+      }
+    }
+  ]
+}

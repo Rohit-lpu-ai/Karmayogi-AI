@@ -1,0 +1,252 @@
+{
+  "taxonomy_id": "karmayogiai-topics",
+  "version": "0.1.2",
+  "status": "ASSUMED",
+  "note": "Project-defined taxonomy for linking programmes, documents and competencies. Keyword rules are transparent heuristics: every tag they produce is marked ASSUMED and must be reviewed. A programme matching no rule is left untagged rather than forced into a topic.",
+  "topics": [
+    {
+      "id": "survey_design",
+      "label": "Survey design and fieldwork",
+      "rules": [
+        "\\bsurveys?\\b",
+        "field ?work",
+        "questionnaire",
+        "\\bschedules?\\b",
+        "data collection"
+      ]
+    },
+    {
+      "id": "sampling",
+      "label": "Sampling and estimation",
+      "rules": [
+        "\\bsampl",
+        "estimation procedure"
+      ]
+    },
+    {
+      "id": "national_accounts",
+      "label": "National accounts",
+      "rules": [
+        "national accounts?",
+        "\\bGDP\\b",
+        "macro ?economic",
+        "\\bSEEA\\b",
+        "national income"
+      ]
+    },
+    {
+      "id": "price_statistics",
+      "label": "Price statistics",
+      "rules": [
+        "\\bprices?\\b",
+        "\\bCPI\\b",
+        "\\bWPI\\b",
+        "inflation"
+      ]
+    },
+    {
+      "id": "labour_statistics",
+      "label": "Labour and employment statistics",
+      "rules": [
+        "\\blabou?r\\b",
+        "employment",
+        "\\bPLFS\\b"
+      ]
+    },
+    {
+      "id": "industrial_statistics",
+      "label": "Industrial statistics",
+      "rules": [
+        "industr",
+        "\\bASI\\b",
+        "\\bIIP\\b"
+      ]
+    },
+    {
+      "id": "agricultural_statistics",
+      "label": "Agricultural statistics",
+      "rules": [
+        "agricultur",
+        "\\bcrops?\\b"
+      ]
+    },
+    {
+      "id": "population_and_social_statistics",
+      "label": "Population and social statistics",
+      "rules": [
+        "population",
+        "demograph",
+        "social statistics",
+        "gender",
+        "education statistics",
+        "health statistics",
+        "poverty",
+        "inequality"
+      ]
+    },
+    {
+      "id": "environment_statistics",
+      "label": "Environment and energy statistics",
+      "rules": [
+        "environment",
+        "\\benergy\\b",
+        "forest"
+      ]
+    },
+    {
+      "id": "data_quality",
+      "label": "Data quality",
+      "rules": [
+        "\\bquality\\b",
+        "\\bSQAF\\b"
+      ]
+    },
+    {
+      "id": "metadata",
+      "label": "Metadata standards",
+      "rules": [
+        "metadata",
+        "\\bNMDS\\b"
+      ]
+    },
+    {
+      "id": "sdg_indicators",
+      "label": "SDG indicators",
+      "rules": [
+        "\\bSDGs?\\b",
+        "sustainable development"
+      ]
+    },
+    {
+      "id": "economic_and_financial_statistics",
+      "label": "Economic and financial statistics",
+      "rules": [
+        "financial statistics"
+      ]
+    },
+    {
+      "id": "official_statistics_general",
+      "label": "Official statistics (general)",
+      "rules": [
+        "official statistics",
+        "statistical system",
+        "administrative statistics",
+        "derived statistics",
+        "basic statistics",
+        "development of statistics",
+        "miscellaneous statistics"
+      ]
+    },
+    {
+      "id": "data_analysis_and_computing",
+      "label": "Data analysis and computing",
+      "rules": [
+        "data analysis",
+        "using R\\b",
+        "\\bpython\\b",
+        "machine learning",
+        "artificial intelligence",
+        "big data",
+        "visuali[sz]ation",
+        "data extraction",
+        "\\bAI\\b",
+        "econometric",
+        "time series",
+        "\\bGIS\\b"
+      ]
+    },
+    {
+      "id": "data_governance_and_ethics",
+      "label": "Data governance, ethics and security",
+      "rules": [
+        "ethic",
+        "governance",
+        "integrity",
+        "security"
+      ]
+    },
+    {
+      "id": "monitoring_and_evaluation",
+      "label": "Monitoring and evaluation",
+      "rules": [
+        "monitoring",
+        "evaluat"
+      ]
+    },
+    {
+      "id": "leadership_and_management",
+      "label": "Leadership, management and soft skills",
+      "rules": [
+        "leadership",
+        "management",
+        "team building",
+        "communication",
+        "soft skills",
+        "personality",
+        "public speak",
+        "persuasion",
+        "professional skills",
+        "procurement",
+        "e-office",
+        "office procedure",
+        "stress manag",
+        "parliamentary",
+        "budget"
+      ]
+    },
+    {
+      "id": "training_and_capacity_building",
+      "label": "Training and capacity building",
+      "rules": [
+        "imparting training",
+        "training of trainers",
+        "\\bToT\\b"
+      ]
+    },
+    {
+      "id": "training_governance",
+      "label": "Training governance (TPAC approvals)",
+      "rules": [
+        "\\bTPAC\\b",
+        "training programme approval committee"
+      ]
+    },
+    {
+      "id": "field_attachment_and_practice",
+      "label": "Attachments, on-the-job training and project work",
+      "rules": [
+        "attachment",
+        "on-the-job",
+        "project work",
+        "exposure"
+      ]
+    },
+    {
+      "id": "induction_and_administration",
+      "label": "Induction and administration",
+      "rules": [
+        "joining formalities",
+        "block leave",
+        "fundamental rules",
+        "establishment",
+        "induction"
+      ]
+    },
+    {
+      "id": "competency_framework",
+      "label": "Competency frameworks",
+      "rules": [
+        "competenc"
+      ]
+    }
+  ],
+  "document_topic_aliases": {
+    "training_programmes_and_offerings": "training_and_capacity_building",
+    "competency_framework_references": "competency_framework",
+    "tpac_related": "training_governance"
+  },
+  "changelog": [
+    "0.1.2 (2026-09-14): added training_governance topic and tpac_related alias (validator LP-04 found NSSTA-LINK-001 referencing an undefined topic).",
+    "0.1.1 (2026-09-14): rules extended after inspecting programmes left untagged by 0.1.0 (econometrics, time series, GIS, forest, poverty/inequality, data collection, M&E, budgets, financial statistics). Placeholder topics (TBD, DBTP for UT of Ladakh, Foundation Day) intentionally remain untagged."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "doc_id": "NSSTA-DOC-005",
+  "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+  "page_count": 56,
+  "pdf_info": {
+    "Author": "Lenovo",
+    "CreationDate": "D:20180117165042+05'30'",
+    "Creator": "Microsoft® Word 2013",
+    "ModDate": "D:20180808114222+05'30'",
+    "Producer": "Microsoft® Word 2013"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 107253,
+  "pages_without_text": [
+    56
+  ],
+  "first_page_lines": [
+    "1",
+    "Reference Manual for Indian Statistical Service",
+    "Probationary Training"
+  ],
+  "keyword_pages": {
+    "TPAC": [
+      2,
+      6,
+      7,
+      40,
+      47
+    ],
+    "sampling": [
+      19,
+      20,
+      30,
+      31,
+      44,
+      51
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

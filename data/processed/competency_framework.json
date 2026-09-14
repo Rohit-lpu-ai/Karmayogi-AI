@@ -1,0 +1,1592 @@
+{
+  "schema_version": "0.2.0",
+  "dataset_id": "competency_framework",
+  "title": "Civil Services Competency Dictionary (DoPT) - structure only",
+  "generated_at_utc": "2026-09-14T12:36:27+00:00",
+  "generator": "scripts/processing/build_canonical_datasets.py",
+  "inputs": [
+    {
+      "path": "data/interim/cscd/competency_structure.json",
+      "sha256": "c89fa7131122d3f401e1a0d9f8c5fdb32e86e3fa48a6aa93e159983b8208528e"
+    }
+  ],
+  "record_count": 25,
+  "framework": {
+    "id": "CSCD-2014",
+    "name": "Civil Services Competency Dictionary (GoI-UNDP Project: Strengthening Human Resource Management of Civil Service)",
+    "publisher": "Department of Personnel and Training (DoPT), Government of India",
+    "publication_date": "2014-02-26",
+    "publication_date_status": "MACHINE_OBSERVED (date on the foreword message, page 4; formal imprint date UNKNOWN)",
+    "source_document_id": "CSCD-DOC-001",
+    "proficiency_scale": [
+      "Level 1",
+      "Level 2",
+      "Level 3",
+      "Level 4",
+      "Level 5"
+    ],
+    "clusters": [
+      {
+        "id": "CSCD-2014-C1",
+        "code": "1",
+        "name": "Ethos",
+        "source_page": 14
+      },
+      {
+        "id": "CSCD-2014-C2",
+        "code": "2",
+        "name": "Ethics",
+        "source_page": 19
+      },
+      {
+        "id": "CSCD-2014-C3",
+        "code": "3",
+        "name": "Equity",
+        "source_page": 23
+      },
+      {
+        "id": "CSCD-2014-C4",
+        "code": "4",
+        "name": "Efficiency",
+        "source_page": 27
+      }
+    ]
+  },
+  "records": [
+    {
+      "id": "CSCD-2014-1.1",
+      "framework_id": "CSCD-2014",
+      "code": "1.1",
+      "name": "People First",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C1",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.14); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 14
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          14
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-1.2",
+      "framework_id": "CSCD-2014",
+      "code": "1.2",
+      "name": "Strategic Thinking",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C1",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.15); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 15
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          15
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-1.3",
+      "framework_id": "CSCD-2014",
+      "code": "1.3",
+      "name": "Organisational Awareness",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C1",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.16); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 16
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          16
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-1.4",
+      "framework_id": "CSCD-2014",
+      "code": "1.4",
+      "name": "Commitment to the Organisation",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C1",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.17); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 17
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          17
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-1.5",
+      "framework_id": "CSCD-2014",
+      "code": "1.5",
+      "name": "Leading Others",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C1",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.18); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 18
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          18
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-2.1",
+      "framework_id": "CSCD-2014",
+      "code": "2.1",
+      "name": "Integrity",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C2",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.19); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 19
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          19
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-2.2",
+      "framework_id": "CSCD-2014",
+      "code": "2.2",
+      "name": "Self-Confidence",
+      "name_variants": [
+        "Self Confidence"
+      ],
+      "cluster_id": "CSCD-2014-C2",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.20); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 20
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          20
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-2.3",
+      "framework_id": "CSCD-2014",
+      "code": "2.3",
+      "name": "Attention to detail",
+      "name_variants": [
+        "Attention to Detail"
+      ],
+      "cluster_id": "CSCD-2014-C2",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.21); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 21
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          21
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-2.4",
+      "framework_id": "CSCD-2014",
+      "code": "2.4",
+      "name": "Taking Accountability",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C2",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.22); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 22
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          22
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-3.1",
+      "framework_id": "CSCD-2014",
+      "code": "3.1",
+      "name": "Consultation and Consensus Building",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C3",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.23); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 23
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          23
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-3.2",
+      "framework_id": "CSCD-2014",
+      "code": "3.2",
+      "name": "Decision Making",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C3",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.24); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 24
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          24
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-3.3",
+      "framework_id": "CSCD-2014",
+      "code": "3.3",
+      "name": "Empathy",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C3",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.25); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 25
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          25
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-3.4",
+      "framework_id": "CSCD-2014",
+      "code": "3.4",
+      "name": "Delegation",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C3",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.12, proficiency indicators p.26); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 12,
+        "detail": 26
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          12,
+          26
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.1",
+      "framework_id": "CSCD-2014",
+      "code": "4.1",
+      "name": "Result Orientation",
+      "name_variants": [
+        "Results Orientation"
+      ],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.27); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 27
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          27
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.2",
+      "framework_id": "CSCD-2014",
+      "code": "4.2",
+      "name": "Conceptual Thinking",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.28); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 28
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          28
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.3",
+      "framework_id": "CSCD-2014",
+      "code": "4.3",
+      "name": "Initiative and Drive",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.29); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 29
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          29
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.4",
+      "framework_id": "CSCD-2014",
+      "code": "4.4",
+      "name": "Seeking Information",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.30); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 30
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          30
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.5",
+      "framework_id": "CSCD-2014",
+      "code": "4.5",
+      "name": "Planning and Coordination",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.31); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 31
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          31
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.6",
+      "framework_id": "CSCD-2014",
+      "code": "4.6",
+      "name": "Desire for Knowledge",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.32); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 32
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          32
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.7",
+      "framework_id": "CSCD-2014",
+      "code": "4.7",
+      "name": "Innovative Thinking",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.33); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 33
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          33
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.8",
+      "framework_id": "CSCD-2014",
+      "code": "4.8",
+      "name": "Problem Solving",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.34); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 34
+      },
+      "extraction_issues": [
+        "4.8: proficiency level labels in the PDF text layer on page 34 = [1, 2, 3, 4]; whether the page itself omits a level is UNKNOWN - check the rendered page"
+      ],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          34
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction",
+        "extraction_issue"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.9",
+      "framework_id": "CSCD-2014",
+      "code": "4.9",
+      "name": "Developing Others",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.35); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 35
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          35
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.10",
+      "framework_id": "CSCD-2014",
+      "code": "4.10",
+      "name": "Self Awareness and Self Control",
+      "name_variants": [
+        "Self-Awareness and Self-Control"
+      ],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.36); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 36
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          36
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.11",
+      "framework_id": "CSCD-2014",
+      "code": "4.11",
+      "name": "Communication Skills",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.37); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 37
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          37
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-2014-4.12",
+      "framework_id": "CSCD-2014",
+      "code": "4.12",
+      "name": "Team-Working",
+      "name_variants": [],
+      "cluster_id": "CSCD-2014-C4",
+      "proficiency_levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+      ],
+      "definition": null,
+      "definition_availability": "In the official document only (definitions p.13, proficiency indicators p.38); not reproduced under the DoPT copyright policy",
+      "source_pages": {
+        "definition": 13,
+        "detail": 38
+      },
+      "extraction_issues": [],
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500",
+        "source_pages": [
+          13,
+          38
+        ]
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "name_matches_pdf": null,
+          "cluster_confirmed": null,
+          "proficiency_levels_confirmed": null,
+          "dopt_permission_for_display": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    }
+  ]
+}
