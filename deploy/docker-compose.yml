@@ -1,0 +1,28 @@
+# Local development services (docs/SYSTEM_ARCHITECTURE.md §20, DEC-037).
+# Run from the repository root:
+#   docker compose --env-file .env -f deploy/docker-compose.yml up -d db
+# Credentials come from the git-ignored .env; see .env.example.
+name: platform-local
+
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-platform}
+    ports:
+      # 5433 on the host so an existing host PostgreSQL on 5432 is not affected.
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5433}:5432"
+    volumes:
+      - platform_pgdata:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  platform_pgdata:

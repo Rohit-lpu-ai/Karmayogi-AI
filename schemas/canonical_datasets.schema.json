@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karmayogiai.local/schemas/canonical_datasets.schema.json",
+  "title": "KaramYogiAI canonical datasets",
+  "description": "Schemas for data/processed/*.json. Validate a dataset with {\"$ref\": \"#/$defs/<dataset_id>_dataset\"}. See docs/LEARNING_PLATFORM_DATA_REQUIREMENTS.md.",
+  "$defs": {
+    "status": {
+      "enum": ["VERIFIED", "UNKNOWN", "UNAVAILABLE", "MOCK", "ASSUMED", "MACHINE_OBSERVED", "UNVERIFIED_SECONDHAND", "EXCLUDED_BY_POLICY", "NOT_APPLICABLE"]
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "non_empty": {"type": "string", "minLength": 1},
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "source_document_id", "source_url", "source_organisation", "retrieval_date", "access_method", "local_file_path", "source_sha256"],
+      "properties": {
+        "source_id": {"type": "string", "pattern": "^SRC-\\d{3}$"},
+        "source_document_id": {"$ref": "#/$defs/non_empty"},
+        "source_url": {"type": "string", "pattern": "^https?://"},
+        "source_organisation": {"$ref": "#/$defs/non_empty"},
+        "retrieval_date": {"oneOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+        "access_method": {"$ref": "#/$defs/non_empty"},
+        "local_file_path": {"type": ["string", "null"]},
+        "source_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "source_pages": {"type": "array", "items": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "licence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "usage_notes", "attribution_text", "permits_learner_display"],
+      "properties": {
+        "status": {"$ref": "#/$defs/status"},
+        "usage_notes": {"$ref": "#/$defs/non_empty"},
+        "attribution_text": {"$ref": "#/$defs/non_empty"},
+        "permits_learner_display": {"type": ["boolean", "null"], "description": "null = not yet established"}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verified", "verified_by", "verified_on", "checks", "notes"],
+      "properties": {
+        "verified": {"type": "boolean"},
+        "verified_by": {"type": ["string", "null"]},
+        "verified_on": {"oneOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+        "checks": {"type": "object", "additionalProperties": {"type": ["boolean", "null"]}},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "release_blocker": {
+      "enum": ["human_review_pending", "licence_not_verified", "licence_restricts_reproduction", "title_unverified", "series_base_year_unknown", "scanned_no_text_layer", "link_only_not_collected", "parse_needs_spot_check", "schedule_dates_unknown", "extraction_issue", "topic_tags_unreviewed"]
+    },
+    "record_common": {
+      "type": "object",
+      "required": ["id", "data_status", "provenance", "licence", "review", "learner_visible", "release_blockers"],
+      "properties": {
+        "id": {"$ref": "#/$defs/non_empty"},
+        "data_status": {"$ref": "#/$defs/status"},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "licence": {"$ref": "#/$defs/licence"},
+        "review": {"$ref": "#/$defs/review"},
+        "learner_visible": {"type": "boolean"},
+        "release_blockers": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/release_blocker"}}
+      }
+    },
+    "topic_tag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["topic_id", "status", "method"],
+      "properties": {
+        "topic_id": {"$ref": "#/$defs/non_empty"},
+        "status": {"$ref": "#/$defs/status"},
+        "method": {"$ref": "#/$defs/non_empty"}
+      }
+    },
+    "envelope": {
+      "type": "object",
+      "required": ["schema_version", "dataset_id", "title", "generated_at_utc", "generator", "inputs", "record_count", "records"],
+      "properties": {
+        "schema_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-z0-9.]+)?$"},
+        "dataset_id": {"$ref": "#/$defs/non_empty"},
+        "title": {"$ref": "#/$defs/non_empty"},
+        "generated_at_utc": {"$ref": "#/$defs/non_empty"},
+        "generator": {"$ref": "#/$defs/non_empty"},
+        "inputs": {
+          "type": "array", "minItems": 1,
+          "items": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"],
+                    "properties": {"path": {"$ref": "#/$defs/non_empty"}, "sha256": {"$ref": "#/$defs/sha256"}}}
+        },
+        "record_count": {"type": "integer", "minimum": 0},
+        "records": {"type": "array"}
+      }
+    },
+
+    "topics_dataset": {
+      "allOf": [{"$ref": "#/$defs/envelope"}],
+      "properties": {
+        "dataset_id": {"const": "topics"},
+        "records": {"type": "array", "items": {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "label", "data_status", "rule_count"],
+          "properties": {
+            "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+            "label": {"$ref": "#/$defs/non_empty"},
+            "data_status": {"$ref": "#/$defs/status"},
+            "rule_count": {"type": "integer", "minimum": 0}
+          }
+        }}
+      }
+    },
+
+    "documents_dataset": {
+      "allOf": [{"$ref": "#/$defs/envelope"}],
+      "properties": {
+        "dataset_id": {"const": "documents"},
+        "records": {"type": "array", "items": {
+          "allOf": [{"$ref": "#/$defs/record_common"}],
+          "type": "object", "unevaluatedProperties": false,
+          "required": ["title", "title_status", "document_type", "organisation", "topics", "collection", "languages_detected", "dates", "series_base_year", "tpac_reference_count"],
+          "properties": {
+            "title": {"$ref": "#/$defs/non_empty"},
+            "title_status": {"$ref": "#/$defs/status"},
+            "document_type": {"$ref": "#/$defs/non_empty"},
+            "organisation": {"$ref": "#/$defs/non_empty"},
+            "topics": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/topic_tag"}},
+            "collection": {
+              "type": "object", "additionalProperties": false,
+              "required": ["status", "bytes", "page_count", "text_available", "scanned"],
+              "properties": {
+                "status": {"enum": ["DOWNLOADED", "LINK_RECORDED_NOT_DOWNLOADED"]},
+                "bytes": {"type": ["integer", "null"], "minimum": 0},
+                "page_count": {"type": ["integer", "null"], "minimum": 1},
+                "text_available": {"type": ["boolean", "null"]},
+                "scanned": {"type": ["boolean", "null"]},
+                "reason_not_downloaded": {"type": "string"}
+              }
+            },
+            "languages_detected": {
+              "type": "object", "additionalProperties": false, "required": ["values", "status", "method"],
+              "properties": {
+                "values": {"type": "array", "items": {"enum": ["en", "hi"]}},
+                "status": {"$ref": "#/$defs/status"},
+                "method": {"$ref": "#/$defs/non_empty"}
+              }
+            },
+            "dates": {
+              "type": "object", "additionalProperties": false,
+              "required": ["publication_date", "publication_date_status", "pdf_creation_date", "server_last_modified"],
+              "properties": {
+                "publication_date": {"oneOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+                "publication_date_status": {"$ref": "#/$defs/status"},
+                "pdf_creation_date": {"oneOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+                "server_last_modified": {"type": ["string", "null"]}
+              }
+            },
+            "series_base_year": {
+              "type": "object", "additionalProperties": false, "required": ["applicable", "value", "status"],
+              "properties": {
+                "applicable": {"type": "boolean"},
+                "value": {"type": ["string", "null"]},
+                "status": {"$ref": "#/$defs/status"}
+              }
+            },
+            "tpac_reference_count": {"type": "integer", "minimum": 0},
+            "id": true, "data_status": true, "provenance": true, "licence": true, "review": true, "learner_visible": true, "release_blockers": true
+          }
+        }}
+      }
+    },
+
+    "training_programmes_dataset": {
+      "allOf": [{"$ref": "#/$defs/envelope"}],
+      "properties": {
+        "dataset_id": {"const": "training_programmes"},
+        "records": {"type": "array", "items": {
+          "allOf": [{"$ref": "#/$defs/record_common"}],
+          "type": "object", "unevaluatedProperties": false,
+          "required": ["title", "provider", "programme_family", "programme_type_as_printed", "cohort", "target_group", "topic_as_printed", "topic_tags", "delivery", "schedule", "parse"],
+          "properties": {
+            "title": {"$ref": "#/$defs/non_empty"},
+            "provider": {"$ref": "#/$defs/non_empty"},
+            "programme_family": {"$ref": "#/$defs/non_empty"},
+            "programme_type_as_printed": {"$ref": "#/$defs/non_empty"},
+            "cohort": {"type": ["string", "null"]},
+            "target_group": {"$ref": "#/$defs/non_empty"},
+            "topic_as_printed": {"$ref": "#/$defs/non_empty"},
+            "topic_tags": {"type": "array", "items": {"$ref": "#/$defs/topic_tag"}},
+            "delivery": {
+              "type": "object", "additionalProperties": false,
+              "required": ["duration_days_per_occurrence", "occurrences_listed", "total_days_listed", "batch_size", "venue_as_printed", "venue_options"],
+              "properties": {
+                "duration_days_per_occurrence": {"type": "integer", "minimum": 1},
+                "occurrences_listed": {"type": "integer", "minimum": 1},
+                "total_days_listed": {"type": "integer", "minimum": 1},
+                "batch_size": {
+                  "type": "object", "additionalProperties": false, "required": ["min", "max", "as_printed"],
+                  "properties": {"min": {"type": ["integer", "null"]}, "max": {"type": ["integer", "null"]}, "as_printed": {"$ref": "#/$defs/non_empty"}}
+                },
+                "venue_as_printed": {"$ref": "#/$defs/non_empty"},
+                "venue_options": {"type": "array", "items": {"$ref": "#/$defs/non_empty"}}
+              }
+            },
+            "schedule": {
+              "type": "object", "additionalProperties": false,
+              "required": ["fiscal_year", "status_in_source", "dates", "dates_status"],
+              "properties": {
+                "fiscal_year": {"type": "string", "pattern": "^\\d{4}-\\d{2}$"},
+                "status_in_source": {"$ref": "#/$defs/non_empty"},
+                "dates": {"type": "null"},
+                "dates_status": {"$ref": "#/$defs/status"}
+              }
+            },
+            "parse": {
+              "type": "object", "additionalProperties": false, "required": ["method", "confidence", "interim_id"],
+              "properties": {"method": {"$ref": "#/$defs/non_empty"}, "confidence": {"enum": ["high", "medium", "low"]}, "interim_id": {"$ref": "#/$defs/non_empty"}}
+            },
+            "id": true, "data_status": true, "provenance": true, "licence": true, "review": true, "learner_visible": true, "release_blockers": true
+          }
+        }}
+      }
+    },
+
+    "competency_framework_dataset": {
+      "allOf": [{"$ref": "#/$defs/envelope"}],
+      "required": ["framework"],
+      "properties": {
+        "dataset_id": {"const": "competency_framework"},
+        "framework": {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "name", "publisher", "publication_date", "publication_date_status", "proficiency_scale", "clusters", "source_document_id"],
+          "properties": {
+            "id": {"$ref": "#/$defs/non_empty"},
+            "name": {"$ref": "#/$defs/non_empty"},
+            "publisher": {"$ref": "#/$defs/non_empty"},
+            "publication_date": {"oneOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+            "publication_date_status": {"$ref": "#/$defs/non_empty"},
+            "source_document_id": {"$ref": "#/$defs/non_empty"},
+            "proficiency_scale": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/non_empty"}},
+            "clusters": {"type": "array", "minItems": 1, "items": {
+              "type": "object", "additionalProperties": false, "required": ["id", "code", "name", "source_page"],
+              "properties": {"id": {"$ref": "#/$defs/non_empty"}, "code": {"$ref": "#/$defs/non_empty"}, "name": {"$ref": "#/$defs/non_empty"}, "source_page": {"type": "integer", "minimum": 1}}
+            }}
+          }
+        },
+        "records": {"type": "array", "items": {
+          "allOf": [{"$ref": "#/$defs/record_common"}],
+          "type": "object", "unevaluatedProperties": false,
+          "required": ["framework_id", "code", "name", "name_variants", "cluster_id", "proficiency_levels", "definition", "definition_availability", "source_pages", "extraction_issues"],
+          "properties": {
+            "framework_id": {"$ref": "#/$defs/non_empty"},
+            "code": {"type": "string", "pattern": "^\\d+\\.\\d+$"},
+            "name": {"$ref": "#/$defs/non_empty"},
+            "name_variants": {"type": "array", "items": {"$ref": "#/$defs/non_empty"}},
+            "cluster_id": {"$ref": "#/$defs/non_empty"},
+            "proficiency_levels": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/non_empty"}},
+            "definition": {"type": "null", "description": "Always null: DoPT copyright policy forbids reproduction without permission."},
+            "definition_availability": {"$ref": "#/$defs/non_empty"},
+            "source_pages": {
+              "type": "object", "additionalProperties": false, "required": ["definition", "detail"],
+              "properties": {"definition": {"type": "integer", "minimum": 1}, "detail": {"type": "integer", "minimum": 1}}
+            },
+            "extraction_issues": {"type": "array", "items": {"type": "string"}},
+            "id": true, "data_status": true, "provenance": true, "licence": true, "review": true, "learner_visible": true, "release_blockers": true
+          }
+        }}
+      }
+    },
+
+    "tpac_references_dataset": {
+      "allOf": [{"$ref": "#/$defs/envelope"}],
+      "properties": {
+        "dataset_id": {"const": "tpac_references"},
+        "records": {"type": "array", "items": {
+          "allOf": [{"$ref": "#/$defs/record_common"}],
+          "type": "object", "unevaluatedProperties": false,
+          "required": ["document_id", "page", "context"],
+          "properties": {
+            "document_id": {"$ref": "#/$defs/non_empty"},
+            "page": {"type": "integer", "minimum": 1},
+            "context": {"type": "string", "minLength": 1, "maxLength": 220},
+            "id": true, "data_status": true, "provenance": true, "licence": true, "review": true, "learner_visible": true, "release_blockers": true
+          }
+        }}
+      }
+    }
+  }
+}

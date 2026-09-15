@@ -1,0 +1,7 @@
+$ (log hygiene) count API log lines containing the demo password / session cookie / email addresses
+lines: 63
+password occurrences: 0
+platform_session occurrences: 0
+example.invalid occurrences: 0
+sample request log line:
+{"ts": "2026-09-14T19:17:13.505368+00:00", "level": "INFO", "logger": "app.request", "message": "request", "correlation_id": "3d8a8b63507e4eecab2b28f114161a7a", "method": "POST", "route": "/api/v1/attempts/{attempt_id}/submit", "status": 200, "duration_ms": 112.4}

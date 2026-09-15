@@ -1,0 +1,35 @@
+GET   /healthz                                                     -> 200  health
+GET   /readyz                                                      -> 200  ready
+GET   /api/v1/me                                                   -> 401  unauthenticated /me
+      problem: {'type': 'urn:platform:problem:unauthenticated', 'title': 'Authentication required', 'status': 401, 'code': 'UNAUTHENTICATED', 'instance': '/api/v1/me', 'correlation_id': '2420785b81d841df920ad546307888b4', 'detail': 'Sign in to continue.'}
+POST  /api/v1/auth/login                                           -> 200  login
+GET   /api/v1/me                                                   -> 200  me
+PUT   /api/v1/me/job-role                                          -> 403  csrf missing
+      problem: {'type': 'urn:platform:problem:csrf-failed', 'title': 'Request blocked', 'status': 403, 'code': 'CSRF_FAILED', 'instance': '/api/v1/me/job-role', 'correlation_id': '4b89c7d2d00e4aaeb29ab1e3d877e9c8', 'detail': 'Missing or invalid CSRF token. Reload and try again.'}
+POST  /api/v1/me/notice-acknowledgements                           -> 200  acknowledge notice
+GET   /api/v1/job-roles                                            -> 200  job roles
+GET   /api/v1/job-roles/911f838d-1f28-4282-8c51-a7cbff8699db/competencies -> 200  role requirements
+      requirements: [('DEMO-C1', 3), ('DEMO-C2', 3)]
+PUT   /api/v1/me/job-role                                          -> 200  select job role
+GET   /api/v1/assessments                                          -> 200  assessments
+POST  /api/v1/assessments/127ea199-76ee-43ed-8bb6-dadbff62c186/attempts -> 201  start attempt
+      saved 10 answers
+POST  /api/v1/attempts/19d9e37b-6e73-41dd-b2d8-095ab131e0e2/submit -> 200  submit
+      score_total: 0.35714 baseline: True
+GET   /api/v1/attempts/19d9e37b-6e73-41dd-b2d8-095ab131e0e2/result -> 200  result
+      DEMO-C1: score 0.35714 level 1 band medium
+      DEMO-C2: score 0.35714 level 1 band medium
+GET   /api/v1/me/competency-gaps                                   -> 200  gaps
+      DEMO-C1: status gap gap 2 (required 3)
+      DEMO-C2: status gap gap 2 (required 3)
+GET   /api/v1/me/recommendations                                   -> 200  recommendations
+      #1 DEMO - Percentages refresher (synthetic course) score 0.66667 demo=True
+      #2 DEMO - Working with averages (synthetic course) score 0.66667 demo=True
+      #3 DEMO - Reading simple data tables (synthetic course) score 0.33333 demo=True
+      gaps without approved content: []
+POST  /api/v1/attempts/19d9e37b-6e73-41dd-b2d8-095ab131e0e2/submit -> 409  submit again
+      problem: {'type': 'urn:platform:problem:attempt-not-in-progress', 'title': 'Attempt already submitted', 'status': 409, 'code': 'ATTEMPT_NOT_IN_PROGRESS', 'instance': '/api/v1/attempts/19d9e37b-6e73-41dd-b2d8-095ab131e0e2/submit', 'correlation_id': 'e8101474d5b544378c091e9092080465', 'detail': 'This attempt has already been submitted.'}
+POST  /api/v1/auth/logout                                          -> 204  logout
+GET   /api/v1/me                                                   -> 401  me after logout
+      problem: {'type': 'urn:platform:problem:unauthenticated', 'title': 'Authentication required', 'status': 401, 'code': 'UNAUTHENTICATED', 'instance': '/api/v1/me', 'correlation_id': '7c494689c8b240ebbbd3c5d7560452a3', 'detail': 'Sign in to continue.'}
+exit=0

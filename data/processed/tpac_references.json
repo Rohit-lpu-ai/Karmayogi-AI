@@ -1,0 +1,677 @@
+{
+  "schema_version": "0.2.0",
+  "dataset_id": "tpac_references",
+  "title": "TPAC references found in collected NSSTA documents",
+  "generated_at_utc": "2026-09-14T12:36:27+00:00",
+  "generator": "scripts/processing/build_canonical_datasets.py",
+  "inputs": [
+    {
+      "path": "data/interim/nssta/tpac_references.json",
+      "sha256": "50da901e6768396d8fe80ea6cb7ac2dd1ad29ef9fe49486a2d566b21a88a9664"
+    },
+    {
+      "path": "data/interim/nssta_metadata.json",
+      "sha256": "5d3d5c3e6abd09ece0012b5956d3877e7ff9ca88ca268b7d53834be5c255063e"
+    }
+  ],
+  "record_count": 16,
+  "note": "No standalone TPAC minutes or TPAC-issued document was found online. TPAC appears as a referenced body inside the documents below. Scanned documents (NSSTA-DOC-004, NSSTA-DOC-006) have no text layer and could not be searched.",
+  "records": [
+    {
+      "id": "TPAC-REF-3673ad0158",
+      "document_id": "NSSTA-DOC-002",
+      "page": 5,
+      "context": "ments in the subjects, within the overall broad recommendations of the Training Programme Approval Committee (TPAC), under the chairmanship of Director General (Coordination and Administration (C&A)), National Statistica",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-002",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf",
+        "source_sha256": "daf9b6fe4108b4aad2daca6b5f441814c83e3474373bd3b52e4ca22829b09ec1",
+        "source_pages": [
+          5
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-c9c91dfe14",
+      "document_id": "NSSTA-DOC-002",
+      "page": 20,
+      "context": "ersons/faculty. I f any request(s) are received from DES/Line Ministries/Departments during the year 2021-22, TPAC authorized NSSTA to honour the requests subject to the availability of hostel accommodation and or resour",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-002",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf",
+        "source_sha256": "daf9b6fe4108b4aad2daca6b5f441814c83e3474373bd3b52e4ca22829b09ec1",
+        "source_pages": [
+          20
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-878c2455e7",
+      "document_id": "NSSTA-DOC-002",
+      "page": 20,
+      "context": "ems, the training programmes offered at NSSTA may be borne by MoSPI if requested so by the State Governments. TPAC approved organizing at least 3 Demand/Request Based training programme at NSSTA subject to the availabili",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-002",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf",
+        "source_sha256": "daf9b6fe4108b4aad2daca6b5f441814c83e3474373bd3b52e4ca22829b09ec1",
+        "source_pages": [
+          20
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-ea3fb5e000",
+      "document_id": "NSSTA-DOC-002",
+      "page": 27,
+      "context": "two TOT programmes for officials of State DES and faculty of State Training Institutes have been approved by TPAC to be organized during the FY 2021- 22 based on the nominations received from the various State Directora",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-002",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf",
+        "source_sha256": "daf9b6fe4108b4aad2daca6b5f441814c83e3474373bd3b52e4ca22829b09ec1",
+        "source_pages": [
+          27
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-2c8b68ba4d",
+      "document_id": "NSSTA-DOC-003",
+      "page": 5,
+      "context": "ments in the subjects, within the overall broad recommendations of the Training Programme Approval Committee (TPAC), under the chairmanship of Director General (Social Statistics), Central Statistics Office, MoSPI. 4. Th",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-003",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf",
+        "source_sha256": "c726c3b34739aeef6f2dc232b2cbd5202101f9f6c22c207779870e3ac053d715",
+        "source_pages": [
+          5
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-8077bfd11b",
+      "document_id": "NSSTA-DOC-003",
+      "page": 18,
+      "context": "rsons/faculty. I f any request(s) are received from DES/Line Ministries/ Departments during the year 2020-21, TPAC authorized NSSTA to honour the requests subject to the availability of hostel accommodation and or resour",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-003",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf",
+        "source_sha256": "c726c3b34739aeef6f2dc232b2cbd5202101f9f6c22c207779870e3ac053d715",
+        "source_pages": [
+          18
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-36c1761bbb",
+      "document_id": "NSSTA-DOC-003",
+      "page": 18,
+      "context": "ems, the training programmes offered at NSSTA may be borne by MoSPI if requested so by the State Governments. TPAC approved organizing at least 3 Demand/Request Based training programme at NSSTA subject to the availabili",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-003",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf",
+        "source_sha256": "c726c3b34739aeef6f2dc232b2cbd5202101f9f6c22c207779870e3ac053d715",
+        "source_pages": [
+          18
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-5341cc3fca",
+      "document_id": "NSSTA-DOC-003",
+      "page": 24,
+      "context": "two TOT programmes for officials of State DES and faculty of State Training Institutes have been approved by TPAC to be organized during the FY 2020-21 based on the nominations received from the various State Directorat",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-003",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf",
+        "source_sha256": "c726c3b34739aeef6f2dc232b2cbd5202101f9f6c22c207779870e3ac053d715",
+        "source_pages": [
+          24
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-47988c045e",
+      "document_id": "NSSTA-DOC-005",
+      "page": 2,
+      "context": "ing 34 Annexure III Proposed format of ISS probationary Training 36 Annexure IV Annexure V Recommendations of TPAC for 2016-17 and 2015-16 Acronyms and Abbreviations 38 53",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          2
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-b51f042169",
+      "document_id": "NSSTA-DOC-005",
+      "page": 6,
+      "context": "roup is ISS probationary Officers. 7. After NSSTA came into existence, a Training Program Approval Committee (TPAC) was constituted with the following Terms of Reference (as per reconstitution OM dated 2 nd January, 2012",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          6
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-477df2e104",
+      "document_id": "NSSTA-DOC-005",
+      "page": 7,
+      "context": "5 8. TPAC functions under the chairmanship of DG, Social Statistics and its members include senior ISS officers and",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          7
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-fea14df326",
+      "document_id": "NSSTA-DOC-005",
+      "page": 7,
+      "context": "external members from the academia. Every year, just before the start of the financial year, a meeting of the TPAC is conducted in which a detailed agenda notes prepared by NSSTA regarding all the training programmes to",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          7
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-c7f2071238",
+      "document_id": "NSSTA-DOC-005",
+      "page": 7,
+      "context": "r is discussed threadbare and approvals/recommendations are given. In case any urgent/special issue comes up, TPAC meetings may also be conducted mid-way. Based on the approvals/recommendations 2 training programmes are",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          7
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-6b1f5ae53f",
+      "document_id": "NSSTA-DOC-005",
+      "page": 7,
+      "context": "reign National Statistics Offices (NSOs) These modules are elaborated in details in the following chapters. 2 TPAC Recommendations for the year 2016-17 and 2015-16 are given in Annexure IV.",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          7
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-1d5b0f5f74",
+      "document_id": "NSSTA-DOC-005",
+      "page": 40,
+      "context": "38 Annexure-IV TPAC Recommendations for the year 2016-17 Training Programmes for ISS Probationers Semester- I Sl. Modules Dur",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          40
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "TPAC-REF-91b2e402c1",
+      "document_id": "NSSTA-DOC-005",
+      "page": 47,
+      "context": "b training Remaining As per the posting period of order two years (Last one week will be at NSSTA for wrap up TPAC Recommendations for the year 2015-16 Training Programmes for ISS Probationers Sl. No . Modules Duration (",
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4",
+        "source_pages": [
+          47
+        ]
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "context_matches_pdf": null,
+          "licence_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "licence_not_verified"
+      ],
+      "learner_visible": false
+    }
+  ]
+}

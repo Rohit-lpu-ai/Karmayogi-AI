@@ -1,0 +1,10 @@
+[
+  {
+    "doc_id": "CSCD-DOC-001",
+    "url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+    "attempted_at_utc": "2026-09-14T07:11:09+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+    "sidecar": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf.meta.json"
+  }
+]

@@ -1,0 +1,635 @@
+{
+  "generated_at_utc": "2026-09-14T12:37:25+00:00",
+  "requirements_document": "docs/LEARNING_PLATFORM_DATA_REQUIREMENTS.md",
+  "schema": "schemas/canonical_datasets.schema.json",
+  "verdict": "VALID_FOR_DEVELOPMENT_NOT_RELEASABLE",
+  "totals": {
+    "errors": 0,
+    "warnings": 10,
+    "release_blocker_findings": 724
+  },
+  "release_blockers_by_type": {
+    "human_review_pending": 162,
+    "licence_not_verified": 162,
+    "topic_tags_unreviewed": 112,
+    "parse_needs_spot_check": 99,
+    "schedule_dates_unknown": 99,
+    "licence_restricts_reproduction": 28,
+    "title_unverified": 21,
+    "series_base_year_unknown": 7,
+    "link_only_not_collected": 3,
+    "scanned_no_text_layer": 2,
+    "extraction_issue": 1
+  },
+  "datasets": {
+    "topics": {
+      "records": 23,
+      "learner_visible": 0,
+      "verified": 0
+    },
+    "documents": {
+      "records": 22,
+      "learner_visible": 0,
+      "verified": 0
+    },
+    "training_programmes": {
+      "records": 99,
+      "learner_visible": 0,
+      "verified": 0
+    },
+    "competency_framework": {
+      "records": 25,
+      "learner_visible": 0,
+      "verified": 0
+    },
+    "tpac_references": {
+      "records": 16,
+      "learner_visible": 0,
+      "verified": 0
+    }
+  },
+  "requirements": [
+    {
+      "id": "LP-01",
+      "title": "Dataset envelope complete; record_count matches",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-02",
+      "title": "Validates against canonical JSON Schema",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-03",
+      "title": "Record IDs unique and deterministic",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-04",
+      "title": "Cross-references resolve",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-05",
+      "title": "Status values from STATUS_VOCABULARY.md",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-06",
+      "title": "Provenance complete for every record",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-07",
+      "title": "Raw source checksums match (missing local raw file = WARNING)",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-08",
+      "title": "Licence status and usage notes present",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-09",
+      "title": "No personal data",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-10",
+      "title": "No MOCK data in data/processed",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-11",
+      "title": "No reproduction of restricted content",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-12",
+      "title": "No automated verification",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-13",
+      "title": "Programme catalogue fields usable",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-14",
+      "title": "Reference library fields usable",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-15",
+      "title": "Competency framework fields usable",
+      "severity": "ERROR",
+      "outcome": "WARN",
+      "counts": {
+        "WARNING": 1
+      },
+      "findings": [
+        {
+          "severity": "WARNING",
+          "dataset": "competency_framework",
+          "record_id": "CSCD-2014-4.8",
+          "message": "levels ['Level 1', 'Level 2', 'Level 3', 'Level 4'] differ from framework scale ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5']"
+        }
+      ],
+      "findings_total": 1
+    },
+    {
+      "id": "LP-16",
+      "title": "Topic-tag linkability coverage",
+      "severity": "WARNING",
+      "outcome": "WARN",
+      "counts": {
+        "WARNING": 9
+      },
+      "findings": [
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-5e2a1a8c54",
+          "message": "untagged: 'DBTP for UT of Ladakh'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-aa0504f895",
+          "message": "untagged: 'DBTP for UT of Ladakh'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-10da2e7afe",
+          "message": "untagged: 'TBD'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-8b1a8a8a5e",
+          "message": "untagged: 'TBD'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-963861005c",
+          "message": "untagged: 'Special Foundation Course (SFC) With AIS and CCS Officers'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-f3feead5d8",
+          "message": "untagged: 'TBD'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-2a0679aea1",
+          "message": "untagged: 'TBD'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-0f81a64034",
+          "message": "untagged: 'One Day Workshop on University Campus'"
+        },
+        {
+          "severity": "WARNING",
+          "dataset": "training_programmes",
+          "record_id": "NSSTA-PRG-2a1c1f2a0f",
+          "message": "untagged: 'NSSTA Foundation Day'"
+        }
+      ],
+      "findings_total": 9
+    },
+    {
+      "id": "LP-17",
+      "title": "Schedule status recorded; unknown dates not guessed",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-18",
+      "title": "learner_visible only when review + VERIFIED licence",
+      "severity": "ERROR",
+      "outcome": "PASS",
+      "counts": {},
+      "findings": [],
+      "findings_total": 0
+    },
+    {
+      "id": "LP-19",
+      "title": "Outstanding release blockers listed",
+      "severity": "RELEASE_BLOCKER",
+      "outcome": "BLOCKED",
+      "counts": {
+        "RELEASE_BLOCKER": 696
+      },
+      "findings": [
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-DOC-001",
+          "message": "human_review_pending"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-DOC-001",
+          "message": "topic_tags_unreviewed"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-DOC-001",
+          "message": "licence_not_verified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-DOC-001",
+          "message": "licence_restricts_reproduction"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-001",
+          "message": "human_review_pending"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-001",
+          "message": "topic_tags_unreviewed"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-001",
+          "message": "licence_not_verified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-001",
+          "message": "licence_restricts_reproduction"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-001",
+          "message": "title_unverified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-001",
+          "message": "link_only_not_collected"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-002",
+          "message": "human_review_pending"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-002",
+          "message": "topic_tags_unreviewed"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-002",
+          "message": "licence_not_verified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-002",
+          "message": "licence_restricts_reproduction"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-002",
+          "message": "title_unverified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-002",
+          "message": "link_only_not_collected"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-001",
+          "message": "human_review_pending"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-001",
+          "message": "topic_tags_unreviewed"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-001",
+          "message": "licence_not_verified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-001",
+          "message": "title_unverified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-002",
+          "message": "human_review_pending"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-002",
+          "message": "topic_tags_unreviewed"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-002",
+          "message": "licence_not_verified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-002",
+          "message": "title_unverified"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-002",
+          "message": "series_base_year_unknown"
+        }
+      ],
+      "findings_total": 696
+    },
+    {
+      "id": "LP-20",
+      "title": "Methodology documents record series/base year",
+      "severity": "RELEASE_BLOCKER",
+      "outcome": "BLOCKED",
+      "counts": {
+        "RELEASE_BLOCKER": 7
+      },
+      "findings": [
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-002",
+          "message": "series/base year unknown"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-004",
+          "message": "series/base year unknown"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-006",
+          "message": "series/base year unknown"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-012",
+          "message": "series/base year unknown"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-013",
+          "message": "series/base year unknown"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-015",
+          "message": "series/base year unknown"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-016",
+          "message": "series/base year unknown"
+        }
+      ],
+      "findings_total": 7
+    },
+    {
+      "id": "LP-21",
+      "title": "Search-index titles confirmed before release",
+      "severity": "RELEASE_BLOCKER",
+      "outcome": "BLOCKED",
+      "counts": {
+        "RELEASE_BLOCKER": 21
+      },
+      "findings": [
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-001",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "CSCD-LINK-002",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-001",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-002",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-004",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-006",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-008",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-012",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-013",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-015",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-016",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-026",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-029",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "MOSPI-DOC-031",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "NSSTA-DOC-001",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "NSSTA-DOC-002",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "NSSTA-DOC-003",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "NSSTA-DOC-004",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "NSSTA-DOC-005",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "NSSTA-DOC-006",
+          "message": "title taken from search index; confirm against document"
+        },
+        {
+          "severity": "RELEASE_BLOCKER",
+          "dataset": "documents",
+          "record_id": "NSSTA-LINK-001",
+          "message": "title taken from search index; confirm against document"
+        }
+      ],
+      "findings_total": 21
+    }
+  ]
+}

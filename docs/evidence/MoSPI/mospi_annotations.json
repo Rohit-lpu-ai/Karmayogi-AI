@@ -1,0 +1,21 @@
+{
+  "MOSPI-DOC-003": "Search-index URL contained literal commas and returned HTTP 404; the percent-encoded form (%2C) is live. Also relevant to agricultural statistics (Schedule 33.1 = Situation Assessment Survey).",
+  "MOSPI-DOC-004": "Core national accounts methodology text. Filename says 2012; whether this edition reflects the 2011-12 base series is UNKNOWN until opened.",
+  "MOSPI-DOC-006": "Recent (Feb 2026). Likely tied to a GDP base revision; confirm before teaching.",
+  "MOSPI-DOC-008": "Filename is 'Annexure_V' - this is an annexure to a larger release, not a standalone publication. Parent document not identified.",
+  "MOSPI-DOC-009": "Hosted on cpi.mospi.gov.in subdomain, which refused connections (timeout on port 443) from this environment. Describes the 2012 base series, which search results indicate has been superseded by a 2024 base series.",
+  "MOSPI-DOC-010": "2010 CPI manual. Historical: predates the 2012 and 2024 base revisions. Teach as history of method, not current practice.",
+  "MOSPI-DOC-012": "Hosted under /uploads/Marquee/ - a homepage banner upload path, which may be less stable than publication paths.",
+  "MOSPI-DOC-014": "Large file (~34 MB). Search summary indicates concepts and definitions, sample design and the schedule appear as a chapter and appendices in PLFS annual reports.",
+  "MOSPI-DOC-018": "Very large file (~58 MB). Download cost should be considered before any bulk retrieval.",
+  "MOSPI-DOC-023": "Same byte size (3,188,716) as MOSPI-DOC-024 but a different ETag and Last-Modified. Probable duplicate or re-upload; identity UNKNOWN without a content hash.",
+  "MOSPI-DOC-024": "Search index title is in Devanagari, but the file is the same byte size as the English-titled MOSPI-DOC-023. The document may be bilingual or identical; actual language UNKNOWN until opened.",
+  "MOSPI-DOC-026": "Most recent SDG framework found (Last-Modified 2026-06-29) and explicitly bundles metadata. Highest-value SDG item.",
+  "MOSPI-DOC-027": "HTTP 404 on both the indexed URL and an en-dash title variant. Stale search index entry. Superseded for our purposes by MOSPI-DOC-026.",
+  "MOSPI-DOC-028": "Baseline report. Search summary says it contains Analytics, Metadata and Data Tables parts, with ten-point metadata per indicator.",
+  "MOSPI-DOC-029": "NMDS 2.0 - the current national metadata standard. Directly relevant to this project's own DATA_DICTIONARY.md design.",
+  "MOSPI-DOC-030": "Earlier NMDS document (Dec 2023). Superseded by NMDS 2.0 (MOSPI-DOC-029) for current use.",
+  "MOSPI-DOC-031": "Filename contains a trailing space before .pdf (encoded as %20). URL is fragile if re-typed by hand.",
+  "MOSPI-DOC-032": "DRAFT policy. Must never be taught as settled policy. Also recorded in AUDIT-NSSTA-001 as NSSTA-DOC-006.",
+  "MOSPI-DOC-033": "Title truncated in search index ('...Methodological Improvement for the Base'). Full title and subject UNKNOWN. Large (~8.3 MB), recent (Feb 2026)."
+}

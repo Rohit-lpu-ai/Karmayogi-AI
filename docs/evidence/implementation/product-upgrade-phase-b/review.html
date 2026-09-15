@@ -1,0 +1,382 @@
+<title>Phase B Screen Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ground: #f6f7f9;
+    --surface: #ffffff;
+    --ink: #101828;
+    --muted: #475467;
+    --line: #e3e8ef;
+    --accent: #26378f;
+    --accent-soft: #eef1fb;
+    --good: #1d6b40;
+    --good-soft: #e5f3eb;
+    --warn: #7a4a02;
+    --warn-soft: #fdf2dc;
+    --demo: #56288c;
+    --demo-soft: #f1e9fb;
+    --frame: #dfe4ec;
+    --sans: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0e1320;
+      --surface: #161c2c;
+      --ink: #e7ebf3;
+      --muted: #a3adc2;
+      --line: #273049;
+      --accent: #9db0ff;
+      --accent-soft: #1d2645;
+      --good: #7fd3a2;
+      --good-soft: #15291f;
+      --warn: #f2c677;
+      --warn-soft: #2e2413;
+      --demo: #cdb2f2;
+      --demo-soft: #261c38;
+      --frame: #0a0e18;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0e1320;
+    --surface: #161c2c;
+    --ink: #e7ebf3;
+    --muted: #a3adc2;
+    --line: #273049;
+    --accent: #9db0ff;
+    --accent-soft: #1d2645;
+    --good: #7fd3a2;
+    --good-soft: #15291f;
+    --warn: #f2c677;
+    --warn-soft: #2e2413;
+    --demo: #cdb2f2;
+    --demo-soft: #261c38;
+    --frame: #0a0e18;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible, .shot-frame:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  h1, h2, h3 { text-wrap: balance; line-height: 1.2; margin: 0; }
+  p { margin: 0; }
+  code, .mono { font-family: var(--mono); font-size: 0.86em; }
+
+  .wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 24px;
+    padding-block: 40px 72px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 48px;
+  }
+  @media (max-width: 900px) {
+    .wrap { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-inline: 16px; }
+    .index { position: static !important; }
+  }
+
+  .index { position: sticky; top: 24px; align-self: start; display: flex; flex-direction: column; gap: 20px; }
+  .index .label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .index ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+  .index a { display: flex; gap: 10px; align-items: baseline; padding: 8px 10px; border-radius: 6px; text-decoration: none; color: var(--ink); font-weight: 500; }
+  .index a:hover { background: var(--accent-soft); }
+  .index a span.mono { color: var(--muted); font-size: 12px; }
+
+  main { display: flex; flex-direction: column; gap: 56px; min-width: 0; }
+
+  header.top { display: flex; flex-direction: column; gap: 14px; max-width: 68ch; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  header.top h1 { font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.01em; }
+  header.top p { color: var(--muted); font-size: 17px; }
+
+  .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .check { background: var(--surface); padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+  .check b { font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .check span { color: var(--muted); font-size: 14px; }
+  .note { font-size: 14px; color: var(--muted); max-width: 72ch; }
+
+  section.part { display: flex; flex-direction: column; gap: 24px; scroll-margin-top: 24px; }
+  .part-head { display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--ink); padding-top: 18px; }
+  .part-head .mono { color: var(--muted); font-size: 13px; }
+  .part-head h2 { font-size: 28px; font-weight: 600; }
+
+  .verdict { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .verdict .q { font-size: 14px; color: var(--muted); }
+  .verdict .a { font-size: 20px; font-weight: 600; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .pill { font-size: 13px; font-weight: 600; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+  .pill.good { background: var(--good-soft); color: var(--good); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px 32px; }
+  .verdict-grid h3 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .verdict-grid ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; max-width: 60ch; }
+  .verdict-grid li::marker { color: var(--muted); }
+
+  .screen { display: flex; flex-direction: column; gap: 12px; }
+  .screen-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .screen-head h3 { font-size: 18px; font-weight: 600; }
+  .screen-head p { color: var(--muted); font-size: 14px; max-width: 64ch; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 16px; align-items: start; }
+  .pair.single { grid-template-columns: minmax(0, 1fr); }
+  @media (max-width: 720px) { .pair { grid-template-columns: minmax(0, 1fr); } }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+  .shot-frame { background: var(--frame); border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 640px; }
+  .shot-frame img { display: block; width: 100%; max-width: 100%; height: auto; }
+
+  .fixed { background: var(--demo-soft); color: var(--demo); border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .fixed h3 { font-size: 15px; font-weight: 600; }
+  .fixed ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; color: var(--ink); }
+
+  .next { display: flex; flex-direction: column; gap: 18px; }
+  .next ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; counter-reset: step; }
+  .next li { background: var(--surface); padding: 18px 22px 18px 64px; position: relative; counter-increment: step; display: flex; flex-direction: column; gap: 4px; }
+  .next li::before { content: counter(step); position: absolute; left: 22px; top: 18px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--surface); font-weight: 600; font-size: 14px; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+  .next li b { font-weight: 600; }
+  .next li p { color: var(--muted); max-width: 72ch; }
+  .next .why { font-size: 13px; font-family: var(--mono); color: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  html { scroll-behavior: smooth; }
+</style>
+
+<div class="wrap">
+  <nav class="index" aria-label="Review sections">
+    <p class="label">Phase B review</p>
+    <ol>
+      <li><a href="#checks"><span class="mono">00</span> Checks</a></li>
+      <li><a href="#onboarding"><span class="mono">B1</span> Onboarding</a></li>
+      <li><a href="#assessment"><span class="mono">B2</span> Assessment</a></li>
+      <li><a href="#results"><span class="mono">B3</span> Results</a></li>
+      <li><a href="#next"><span class="mono">→</span> Next steps</a></li>
+    </ol>
+    <p class="note">Competency Learning Platform (working name). All people, roles, questions and courses shown are synthetic demo content.</p>
+  </nav>
+
+  <main>
+    <header class="top" id="checks">
+      <p class="eyebrow">Product upgrade · Phase B · 15 Sept 2026</p>
+      <h1>Onboarding, assessment and results, reviewed screen by screen</h1>
+      <p>Screenshots come straight from the automated browser journeys (Microsoft Edge, 1440 px desktop and 360 px phone), each run by a freshly created synthetic learner. Scores therefore differ between captures.</p>
+    </header>
+
+    <div class="checks" role="list">
+      <div class="check" role="listitem"><b>6 / 6</b><span>Browser journeys passed (3 flows × 2 viewports)</span></div>
+      <div class="check" role="listitem"><b>0</b><span>Serious or critical axe violations across 9 checked states</span></div>
+      <div class="check" role="listitem"><b>37</b><span>Frontend component tests passed (was 22)</span></div>
+      <div class="check" role="listitem"><b>180</b><span>Backend tests passed; no API contract changed</span></div>
+    </div>
+    <p class="note">Also passed: type-check, production build, <code>npm audit</code> (0 vulnerabilities) and the live API journey through the Vite proxy. Not done: a manual screen-reader pass with NVDA or JAWS.</p>
+
+    <!-- B1 -->
+    <section class="part" id="onboarding" aria-labelledby="onboarding-title">
+      <div class="part-head">
+        <p class="mono">B1 · /get-started</p>
+        <h2 id="onboarding-title">Onboarding</h2>
+      </div>
+
+      <div class="verdict">
+        <p class="q">Does it explain the platform clearly?</p>
+        <p class="a">Yes: a new learner knows what the platform is for, that the data is synthetic, and what happens next. <span class="pill good">Ready for demo</span></p>
+        <div class="verdict-grid">
+          <div>
+            <h3>What works</h3>
+            <ul>
+              <li>Three-part promise (know your role, find where you stand, learn what helps) before any form.</li>
+              <li>A dedicated step says plainly that roles, questions and courses are synthetic and not connected to iGOT.</li>
+              <li>The draft notice is summarised in three points; the full text stays one click away.</li>
+              <li>Choosing a role previews required levels on a scale, so "Level 3 of 4" means something.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Still weak</h3>
+            <ul>
+              <li>No department or profile step (S-02 lists one; there is no API for it yet).</li>
+              <li>The notice text itself is still a legal draft.</li>
+              <li>Learners who already acknowledged the notice cannot see steps 1–2 again.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Welcome</h3><p>One primary action; stepper shows the four steps.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-1-welcome-desktop.png" alt="Onboarding welcome step on desktop: stepper, welcome heading, three ways the platform helps, development guidance note and Get started button" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-1-welcome-mobile-360.png" alt="Onboarding welcome step at 360 pixels wide, single column" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Your data and this demo</h3><p>Demo disclosure first, then the notice with its acknowledgement.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-2-notice-desktop.png" alt="Your data step on desktop: demo environment explanation, privacy and AI-use notice summary marked draft, acknowledgement checkbox" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-2-notice-mobile-360.png" alt="Your data step at 360 pixels wide" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Job role</h3><p>Selected with the keyboard in the journey; requirements load beside it.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-3-role-desktop.png" alt="Job role step on desktop: role radio card with DEMO badge and a panel listing two competencies at required level 3 of 4" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-3-role-mobile-360.png" alt="Job role step at 360 pixels wide" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Your baseline assessment</h3><p>Sets expectations before the learner reaches the assessment.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-4-assessment-desktop.png" alt="Assessment explanation step on desktop: question count, no time limit with rough guide, saved automatically, what to expect" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b1-onboarding-4-assessment-mobile-360.png" alt="Assessment explanation step at 360 pixels wide" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- B2 -->
+    <section class="part" id="assessment" aria-labelledby="assessment-title">
+      <div class="part-head">
+        <p class="mono">B2 · /assessment · /assessment/attempts/:id?q=N</p>
+        <h2 id="assessment-title">Assessment</h2>
+      </div>
+
+      <div class="verdict">
+        <p class="q">Does it feel like a real competency assessment rather than a basic questionnaire?</p>
+        <p class="a">In form, yes. In content, not yet: the ten demo items are arithmetic, which is now the most visible gap. <span class="pill warn">Structure ready, content thin</span></p>
+        <div class="verdict-grid">
+          <div>
+            <h3>What works</h3>
+            <ul>
+              <li>An introduction states purpose, rules and competencies measured before anything starts.</li>
+              <li>One question at a time, a question grid with answered and current states, and a live save status.</li>
+              <li>Reloading keeps the question and saved answers; a failed save keeps the choice and offers a retry.</li>
+              <li>Submitting needs confirmation, which lists unanswered questions with links back to them.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Still weak</h3>
+            <ul>
+              <li>Questions are synthetic arithmetic, not statistical methodology or scenarios.</li>
+              <li>Only 10 items across 2 competencies; evidence stays "medium" at best.</li>
+              <li>No "mark for review" flag; leaving through the sidebar with a failed save is not blocked (the tab-close warning is).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Introduction</h3><p>Status, facts, how it works, rules, and the role's competencies alongside.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b2-assessment-1-intro-desktop.png" alt="Assessment introduction on desktop with facts, how it works, before you start guidelines and competencies for the role" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b2-assessment-1-intro-mobile-360.png" alt="Assessment introduction at 360 pixels wide" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Answering a question</h3><p>Answered with Space on a focused option; the heading takes focus on Next.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b2-assessment-2-question-desktop.png" alt="Question screen on desktop: progress bar, question with four lettered options, previous and next buttons, question grid" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b2-assessment-2-question-mobile-360.png" alt="Question screen at 360 pixels wide" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Question grid after reload</h3><p>Two answered, question 2 current, the rest outlined.</p></div>
+        <div class="pair single">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b2-assessment-3-grid-desktop.png" alt="Question screen after a page reload showing question 2 still selected and the grid with questions 1 and 2 answered" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Submit confirmation</h3><p>Escape closes it and returns focus to the button.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b2-assessment-4-confirm-desktop.png" alt="Submit confirmation dialog listing eight unanswered questions with Go to question buttons" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b2-assessment-4-confirm-mobile-360.png" alt="Submit confirmation dialog at 360 pixels wide" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="fixed">
+        <h3>Defects the journeys caught and I fixed</h3>
+        <ul>
+          <li>Answering a question without <code>?q=</code> in the URL jumped the learner to the next unanswered question.</li>
+          <li>Option letters showed the original answer-key letters in shuffled order (A, D, C, B).</li>
+          <li>axe flagged invalid <code>&lt;dl&gt;</code> markup in the onboarding facts (<code>definition-list</code>, <code>dlitem</code>).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- B3 -->
+    <section class="part" id="results" aria-labelledby="results-title">
+      <div class="part-head">
+        <p class="mono">B3 · /attempts/:id/result</p>
+        <h2 id="results-title">Results</h2>
+      </div>
+
+      <div class="verdict">
+        <p class="q">Does it tell the learner what to do next?</p>
+        <p class="a">Yes, clearly, but both destinations are still the old dashboard, so the journey thins out after one click. <span class="pill warn">Next steps land on legacy screens</span></p>
+        <div class="verdict-grid">
+          <div>
+            <h3>What works</h3>
+            <ul>
+              <li>Score, then a one-sentence meaning ("Both competencies are below the level your role requires").</li>
+              <li>Each competency shows estimated vs required level, evidence strength and a plain explanation.</li>
+              <li>Three next steps name the competency to focus on and the actual suggested courses.</li>
+              <li>Answer review shows your answer, the correct one and why; the method sits in a closed disclosure.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Still weak</h3>
+            <ul>
+              <li>"View competency gaps" and "See recommended learning" open the legacy dashboard.</li>
+              <li>No course detail page, so a suggested course cannot be opened or started.</li>
+              <li>Reassessment is out of scope, so a learner cannot measure progress yet.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Result page</h3><p>Outcome, competencies, next steps, answers, method, top to bottom.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b3-result-1-page-desktop.png" alt="Result page on desktop: overall score ring, what this means summary, result by competency cards, three next steps, answer list" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b3-result-1-page-mobile-360.png" alt="Result page at 360 pixels wide, all sections stacked" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-head"><h3>Method and an answer opened</h3><p>Opened with the keyboard in the journey. The header and sidebar partway down the image are a full-page capture artefact.</p></div>
+        <div class="pair">
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b3-result-2-details-desktop.png" alt="Result page with the first answer expanded and the How was this calculated section open" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+          <figure><div class="shot-frame" tabindex="0"><img src="shots/b3-result-2-details-mobile-360.png" alt="Result page with details open at 360 pixels wide" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next -->
+    <section class="part next" id="next" aria-labelledby="next-title">
+      <div class="part-head">
+        <p class="mono">Recommendation</p>
+        <h2 id="next-title">What I would build next</h2>
+      </div>
+      <p class="note">Ordered by what most improves a live demo, following <code>IMPLEMENTATION_ROADMAP.md</code> and <code>MVP_SCOPE.md</code>. Nothing here needs an API key.</p>
+      <ol>
+        <li><b>Phase C: dashboard, competency profile and gap analysis</b><p>Replace the legacy dashboard with a real home (next action, top gaps, recommended learning) and build <code>/competencies</code> and <code>/competencies/gaps</code>, so the result page's next steps land on finished screens. Adds <code>GET /me/dashboard</code> and <code>GET /me/attempts</code>, both already specified in MVP-19 and MVP-06.</p><span class="why">closes the biggest gap found in B3</span></li>
+        <li><b>Demo pack <code>demo-2</code>: believable synthetic content</b><p>About 3 job roles, 8 competencies and 40 or more scenario-style questions on statistical methods, with explanations, all labelled synthetic. Uses the versioned pack mechanism from phase A.</p><span class="why">closes the biggest gap found in B2</span></li>
+        <li><b>Course catalogue and course detail</b><p>Search and filter by competency, difficulty and duration (DEC-051), plus a detail page showing why a course was recommended and which gap it serves.</p><span class="why">gives recommendations a destination</span></li>
+        <li><b>Lessons, learning player and progress</b><p>Migration proposed in writing first (DEC-049): modules, lessons as replaceable content, <code>ProgressRecord</code>, and a learning path with a "continue learning" card.</p><span class="why">completes the learn → progress loop</span></li>
+        <li><b>Migrate the login page; run a manual NVDA pass</b><p>Login is the last legacy screen in the journey. Record a screen-reader walkthrough of onboarding → result, which automated axe checks cannot replace.</p><span class="why">accessibility sign-off for MVP-F4</span></li>
+        <li><b>Commit, then add CI</b><p>Commit phases A and B on <code>Diw</code>, then run pytest, Vitest, type-check, build and the Playwright journeys on every push.</p><span class="why">protects what is now working</span></li>
+        <li><b>Later: AI/RAG interfaces with local fakes, and the official-data integration plan</b><p>Provider interfaces and fakes only, plus the source-by-source plan for authorisation, licence and citations. Real providers and iGOT wait for your decisions and credentials.</p><span class="why">keeps the platform credible and non-official</span></li>
+      </ol>
+    </section>
+  </main>
+</div>

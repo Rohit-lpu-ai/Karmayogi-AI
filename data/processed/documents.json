@@ -1,0 +1,1882 @@
+{
+  "schema_version": "0.2.0",
+  "dataset_id": "documents",
+  "title": "Reference library: NSSTA, MoSPI and DoPT documents",
+  "generated_at_utc": "2026-09-14T12:36:27+00:00",
+  "generator": "scripts/processing/build_canonical_datasets.py",
+  "inputs": [
+    {
+      "path": "scripts/processing/topic_taxonomy.json",
+      "sha256": "41f6e126c35a4b4af1c4cce42bbd1c833702796c1f03bdd3202ba7d98dbcc357"
+    },
+    {
+      "path": "data/interim/nssta/tpac_references.json",
+      "sha256": "50da901e6768396d8fe80ea6cb7ac2dd1ad29ef9fe49486a2d566b21a88a9664"
+    },
+    {
+      "path": "data/interim/cscd/competency_structure.json",
+      "sha256": "c89fa7131122d3f401e1a0d9f8c5fdb32e86e3fa48a6aa93e159983b8208528e"
+    },
+    {
+      "path": "data/interim/nssta_metadata.json",
+      "sha256": "5d3d5c3e6abd09ece0012b5956d3877e7ff9ca88ca268b7d53834be5c255063e"
+    },
+    {
+      "path": "data/interim/nssta/text/NSSTA-DOC-001.txt",
+      "sha256": "509949a99ac4d572df27e29399b6c4bdebddbea0dfef7777f0ac447aee0014c0"
+    },
+    {
+      "path": "data/interim/nssta/text/NSSTA-DOC-002.txt",
+      "sha256": "36fc213c03ba229676e88abac31c4c92ea7ff5485b138f4165de1242326dea6f"
+    },
+    {
+      "path": "data/interim/nssta/text/NSSTA-DOC-003.txt",
+      "sha256": "6c4f28beb41b9856a44fa6f72712cb01d2eb321782c6c8c312e924d63a02179c"
+    },
+    {
+      "path": "data/interim/nssta/text/NSSTA-DOC-004.txt",
+      "sha256": "53954f034655fcb11ddcf1b20bd68ce7efed0817ede56beb1787378c4547bb80"
+    },
+    {
+      "path": "data/interim/nssta/text/NSSTA-DOC-005.txt",
+      "sha256": "8c33c8573ff5e30019591511423062564297b638ce4428fce34040e53996524b"
+    },
+    {
+      "path": "data/interim/nssta/text/NSSTA-DOC-006.txt",
+      "sha256": "7eec240af1df9f933cc37b789fd90feef2d56f0cab22cddccc1f80a9146f66e7"
+    },
+    {
+      "path": "data/interim/mospi_metadata.json",
+      "sha256": "1681b91c9c869287a5c70293deece654db94dc973816e2f79570a83b01e0d0b2"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-001.txt",
+      "sha256": "8387b65712cfacbb05c445f6d81f997b3d248c927f98e26afcc13fe5be4e0aa4"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-002.txt",
+      "sha256": "4ea6f90a0991c39f87da488762b811a3b70fb67cb78fcec34babbb1c37876d41"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-004.txt",
+      "sha256": "62240b9712453506651602789ad09876b6e55465badf57d861b684ee1f629df1"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-006.txt",
+      "sha256": "711095fa772643ccdbfc2e641311e7d5c3de05c0622599935c30d897a47fd054"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-008.txt",
+      "sha256": "ef5caa4fff710e066108859d6adad38cddb2c9fef97be5f204526ee96cb8b22c"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-012.txt",
+      "sha256": "fa010574fc47ac5bc3a07c9862a8b2feb83e6a7e098c979f1c3a67ebc21ddfeb"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-013.txt",
+      "sha256": "c0b332d9786cbb1bd3b1d2ab82f73e62e4585cafbeec26c8a22b6e51baa347fe"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-015.txt",
+      "sha256": "32868e58fdbd8c99a6d9999e7512692daa83cc16d87462cacb6fb7901fcb1fbf"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-016.txt",
+      "sha256": "c3bab2529c5830b279d19e39add22d67e480a493cdd16ff7486e9f45971d96fb"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-026.txt",
+      "sha256": "7f81d277677f62bc4de2bd45c2548db08aced7f08e1f94f5a81142ab051416fa"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-029.txt",
+      "sha256": "6e3b6b7294e229b862b82b27c09330e75adac229c16de69d629c395b61a6c0f7"
+    },
+    {
+      "path": "data/interim/mospi/text/MOSPI-DOC-031.txt",
+      "sha256": "e752d118e4ff081cf75c6a0b41c3c890c0fbaa959fb7986368cf9febe9840896"
+    },
+    {
+      "path": "data/interim/cscd_metadata.json",
+      "sha256": "dfd5c1618e3146af4c1cf95cacbdadbcb3e444112770093172957571a93d4894"
+    },
+    {
+      "path": "data/interim/cscd/text/CSCD-DOC-001.txt",
+      "sha256": "19041b60d77a8009eb53f174d81365c46f62ff7aade7284465a2bf71233fb96a"
+    }
+  ],
+  "record_count": 22,
+  "records": [
+    {
+      "id": "CSCD-DOC-001",
+      "title": "Civil Services Competency Dictionary (GoI-UNDP Project: Strengthening Human Resource Management of Civil Service)",
+      "title_status": "MACHINE_OBSERVED",
+      "document_type": "competency_framework",
+      "organisation": "Department of Personnel and Training (DoPT), Government of India",
+      "topics": [
+        {
+          "topic_id": "competency_framework",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 2056035,
+        "page_count": 40,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": "2014-02-26",
+        "publication_date_status": "MACHINE_OBSERVED",
+        "pdf_creation_date": "2014-03-12",
+        "server_last_modified": "Mon, 19 Feb 2018 10:38:15 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-DOC-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Competency%20Dictionary%20for%20the%20Civil%20Services.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/cscd/CSCD-DOC-001__Competency_Dictionary_for_the_Civil_Services.pdf",
+        "source_sha256": "ce962ddc412e106ef456b9d9f8b7c5f03bb6e9ba392e6143b52d44517c069500"
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "licence_restricts_reproduction"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-LINK-001",
+      "title": "Implementation Tool-kit (companion to the Competency Dictionary)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "competency_framework_toolkit",
+      "organisation": "Department of Personnel and Training (DoPT), Government of India",
+      "topics": [
+        {
+          "topic_id": "competency_framework",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "LINK_RECORDED_NOT_DOWNLOADED",
+        "bytes": null,
+        "page_count": null,
+        "text_available": null,
+        "scanned": null,
+        "reason_not_downloaded": "Outside the requested scope (dictionary only); same DoPT copyright restriction applies."
+      },
+      "languages_detected": {
+        "values": [],
+        "status": "UNKNOWN",
+        "method": "not downloaded"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": null,
+        "server_last_modified": null
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-LINK-001",
+        "source_url": "https://dopt.gov.in/sites/default/files/Implementation%20Tool-kit.pdf",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": null,
+        "access_method": "Link recorded only; not downloaded",
+        "local_file_path": null,
+        "source_sha256": null
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "licence_restricts_reproduction",
+        "title_unverified",
+        "link_only_not_collected"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "CSCD-LINK-002",
+      "title": "DoPT Training Division - FRAC (Framework of Roles, Activities and Competencies) page",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "competency_framework_reference",
+      "organisation": "Department of Personnel and Training (DoPT), Government of India",
+      "topics": [
+        {
+          "topic_id": "competency_framework",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "LINK_RECORDED_NOT_DOWNLOADED",
+        "bytes": null,
+        "page_count": null,
+        "text_available": null,
+        "scanned": null,
+        "reason_not_downloaded": "UNAVAILABLE from this environment."
+      },
+      "languages_detected": {
+        "values": [],
+        "status": "UNKNOWN",
+        "method": "not downloaded"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": null,
+        "server_last_modified": null
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "UNKNOWN",
+      "provenance": {
+        "source_id": "SRC-026",
+        "source_document_id": "CSCD-LINK-002",
+        "source_url": "https://dopttrg.nic.in/igotmk/FRAC.html",
+        "source_organisation": "Department of Personnel and Training (DoPT), Government of India",
+        "retrieval_date": null,
+        "access_method": "Link recorded only; not downloaded",
+        "local_file_path": null,
+        "source_sha256": null
+      },
+      "licence": {
+        "status": "MACHINE_OBSERVED",
+        "usage_notes": "DoPT Website Policies > Copyright Policy (https://dopt.gov.in/website-policies, read 2026-09-14): 'Contents of this website may not be reproduced partially or fully, without due permission from the Department of Personnel & Training. It's content, if referred to and/or forms a part of content of another website, the content-source must be appropriately acknowledged.' Local reference copy only: must not be committed, redistributed, or reproduced (including definitions) without DoPT permission.",
+        "attribution_text": "Source: Department of Personnel and Training (DoPT), Government of India - Civil Services Competency Dictionary",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "licence_restricts_reproduction",
+        "title_unverified",
+        "link_only_not_collected"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-001",
+      "title": "Note on Sample Design and Estimation Procedure: NSS 76th Round",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "methodology_note",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "survey_design",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        },
+        {
+          "topic_id": "sampling",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 1116575,
+        "page_count": 125,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2018-11-19",
+        "server_last_modified": "Sat, 23 Nov 2019 07:00:52 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": "NSS 76th Round",
+        "status": "MACHINE_OBSERVED"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-001",
+        "source_url": "https://mospi.gov.in/sites/default/files/NSS7612dws/Estimation%20Procedure_NSS%2076.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-001__Estimation_Procedure_NSS_76.pdf",
+        "source_sha256": "216a11226e2502bbeda032c5a320a3eab1757fb355f2f4642276a3ab1ad7ab53"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-002",
+      "title": "Instructions to Field Staff (HCES) Vol I",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "instruction_manual",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "survey_design",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 2147606,
+        "page_count": 234,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2022-07-05",
+        "server_last_modified": "Wed, 11 Oct 2023 12:43:10 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-002",
+        "source_url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Final_Vol_I-HCES.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-002__Final_Vol_I-HCES.pdf",
+        "source_sha256": "4a214a11993c6bb6eacc451fd262c529ef22a2f43fa433458c07feaac6613c02"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "series_base_year_unknown"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-004",
+      "title": "National Accounts Statistics: Sources and Methods (2012)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "methodology_manual",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "national_accounts",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 5245408,
+        "page_count": 353,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2012-05-09",
+        "server_last_modified": "Fri, 01 Jul 2016 05:40:48 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-004",
+        "source_url": "https://www.mospi.gov.in/sites/default/files/publication_reports/sources_method_2012%20(1).pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-004__sources_method_2012_1_.pdf",
+        "source_sha256": "ebbadd5c0e5cc9e23a6d825b2704d341bff5b2cf2727cabcce29633acfe885b3"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "series_base_year_unknown"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-006",
+      "title": "FAQ on GDP (26 Feb 2026)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "faq_definitions",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "national_accounts",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 136754,
+        "page_count": 11,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2026-02-26",
+        "server_last_modified": "Thu, 26 Feb 2026 14:47:37 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-006",
+        "source_url": "https://www.mospi.gov.in/uploads/announcements/announcements_1772117257791_84ae898f-7be2-4b7d-a135-565e1a809513_FAQ_GDP_26022026_1902.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-006__announcements_1772117257791_84ae898f-7be2-4b7d-a135-565e1a809513_FAQ_GDP_26022026_1902.pdf",
+        "source_sha256": "e0eba2b339affd7a756f9db3edef31872db1176e9f99915399b31fe8f9cdabed"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "series_base_year_unknown"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-008",
+      "title": "Frequently Asked Questions (FAQs) on CPI 2024 Series",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "faq_definitions",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "price_statistics",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 273029,
+        "page_count": 7,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2026-02-12",
+        "server_last_modified": "Thu, 12 Feb 2026 10:11:06 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": "CPI 2024 Series",
+        "status": "MACHINE_OBSERVED"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-008",
+        "source_url": "https://www.mospi.gov.in/uploads/documents/documents/1770891066052-Annexure_V.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-008__1770891066052-Annexure_V.pdf",
+        "source_sha256": "7720b6404da8508dbf0c99ed56eae066a88bf2b873c2113c121326ffb53d69c4"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-012",
+      "title": "Expert Group Report on Comprehensive Updation of CPI",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "committee_report",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "price_statistics",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 5022008,
+        "page_count": 258,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2026-01-29",
+        "server_last_modified": "Thu, 29 Jan 2026 10:38:06 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-012",
+        "source_url": "https://www.mospi.gov.in/uploads/Marquee/doc-0aee0026-bf32-4213-ae4f-c5308088444e.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-012__doc-0aee0026-bf32-4213-ae4f-c5308088444e.pdf",
+        "source_sha256": "7ed0adbd4a13447ef05c1087c3b2f0930b7fd0158ec58219daa60f36b2e069a1"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "series_base_year_unknown"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-013",
+      "title": "Periodic Labour Force Survey (PLFS) - changes in 2025",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "methodology_note",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "labour_statistics",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        },
+        {
+          "topic_id": "sampling",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 3539022,
+        "page_count": 51,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2025-05-14",
+        "server_last_modified": "Wed, 14 May 2025 11:30:45 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-013",
+        "source_url": "https://www.mospi.gov.in/sites/default/files/publication_reports/PLFS_changes_in_2025_Final.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-013__PLFS_changes_in_2025_Final.pdf",
+        "source_sha256": "58bfbabe3c5efa99df00ec6799f683a21c0d0ffd7a88011eb20aa3f1584c7c15"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "series_base_year_unknown"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-015",
+      "title": "NMDS 2.0 metadata - PLFS",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "metadata_sheet",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "labour_statistics",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        },
+        {
+          "topic_id": "data_quality",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 194720,
+        "page_count": 11,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2025-07-04",
+        "server_last_modified": "Thu, 21 Aug 2025 12:21:43 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-015",
+        "source_url": "https://mospi.gov.in/sites/default/files/NMDS_2.0_PLFS_final_update.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-015__NMDS_2.0_PLFS_final_update.pdf",
+        "source_sha256": "fd110c00e546574463298af19f9b6f41216eaf918a29cb2d446e1a153dccd1ac"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "series_base_year_unknown"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-016",
+      "title": "Report of the NSC Committee on Periodic Labour Force Survey",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "committee_report",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "labour_statistics",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        },
+        {
+          "topic_id": "survey_design",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 2443028,
+        "page_count": 82,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2010-01-12",
+        "server_last_modified": "Mon, 16 Jan 2017 14:25:50 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": null,
+        "status": "UNKNOWN"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-016",
+        "source_url": "https://mospi.gov.in/sites/default/files/committee_reports/NSC_REPORT_PLFS.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-016__NSC_REPORT_PLFS.pdf",
+        "source_sha256": "112b202f1d27dd5fe270cd81a228a8936143ef9762e2dc3052a65f4e5441fdda"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "series_base_year_unknown"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-026",
+      "title": "Sustainable Development Goals National Indicator Framework, 2026 (along with metadata)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "indicator_framework",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "sdg_indicators",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 3330706,
+        "page_count": 166,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2026-06-25",
+        "server_last_modified": "Mon, 29 Jun 2026 07:47:24 GMT"
+      },
+      "series_base_year": {
+        "applicable": true,
+        "value": "SDG NIF 2026",
+        "status": "MACHINE_OBSERVED"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-026",
+        "source_url": "https://www.mospi.gov.in/uploads/publications_reports/publications_reports1782719243840_1f31af3d-72ef-43f0-8038-c029553699f3_SDG_NIF_2026_(along_with_metadata).pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-026__publications_reports1782719243840_1f31af3d-72ef-43f0-8038-c029553699f3_SDG_NIF_2026__along_with_metadata_.pdf",
+        "source_sha256": "9d60c27e204b97e31e916833f63e6d4a50807b44c1eda2da36239d0d4d98149a"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-029",
+      "title": "National Metadata Structure NMDS 2.0",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "standard",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "data_quality",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        },
+        {
+          "topic_id": "metadata",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 772245,
+        "page_count": 31,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2024-12-05",
+        "server_last_modified": "Thu, 05 Dec 2024 07:16:20 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-029",
+        "source_url": "https://www.mospi.gov.in/sites/default/files/NMDS%202.0_05122024.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-029__NMDS_2.0_05122024.pdf",
+        "source_sha256": "28abdd261397af91c979ee0633a33a3b8150fc85abac9a9c4bf77399cf6be984"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "MOSPI-DOC-031",
+      "title": "Statistical Quality Assessment Framework (SQAF) Guidelines",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "framework",
+      "organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+      "topics": [
+        {
+          "topic_id": "data_quality",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 724287,
+        "page_count": 30,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2025-04-11",
+        "server_last_modified": "Mon, 21 Apr 2025 06:53:07 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-001",
+        "source_document_id": "MOSPI-DOC-031",
+        "source_url": "https://www.mospi.gov.in/sites/default/files/Statistical-Quality-Assessment-Framework-Guidelines%20.pdf",
+        "source_organisation": "Ministry of Statistics and Programme Implementation (MoSPI) / National Statistics Office",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/mospi/MOSPI-DOC-031__Statistical-Quality-Assessment-Framework-Guidelines_.pdf",
+        "source_sha256": "9a89e967afa32aabc9c6c7ebb4b23569df5c211e65fa1b0ff0a82d94ae454c05"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "NSSTA-DOC-001",
+      "title": "NSSTA - Advance Training Calendar for FY(2025-2026)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "training_calendar",
+      "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+      "topics": [
+        {
+          "topic_id": "training_and_capacity_building",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 317053,
+        "page_count": 9,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": null,
+        "server_last_modified": "Thu, 24 Apr 2025 06:22:35 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-001",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/Circular_NSSTA_Advance_Training_Calander_FY(25-26).pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-001__Circular_NSSTA_Advance_Training_Calander_FY_25-26_.pdf",
+        "source_sha256": "e13589f4442a1d947f6599623c7a5354251e67dfe3c2ea5bee925e16f3ed99e6"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "NSSTA-DOC-002",
+      "title": "Training Calendar of NSSTA for FY 2021-22",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "training_calendar",
+      "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+      "topics": [
+        {
+          "topic_id": "training_and_capacity_building",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 507791,
+        "page_count": 29,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2021-07-02",
+        "server_last_modified": "Mon, 17 Oct 2022 11:13:46 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 4,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-002",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf",
+        "source_sha256": "daf9b6fe4108b4aad2daca6b5f441814c83e3474373bd3b52e4ca22829b09ec1"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "NSSTA-DOC-003",
+      "title": "Training Calendar 2020-2021 (NSSTA)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "training_calendar",
+      "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+      "topics": [
+        {
+          "topic_id": "training_and_capacity_building",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 1197339,
+        "page_count": 26,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2020-06-18",
+        "server_last_modified": "Thu, 18 Jun 2020 08:48:30 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 4,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-003",
+        "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf",
+        "source_sha256": "c726c3b34739aeef6f2dc232b2cbd5202101f9f6c22c207779870e3ac053d715"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "NSSTA-DOC-004",
+      "title": "National Statistical Systems Training Academy (NSSTA) - About NSSTA",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "institutional_profile",
+      "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+      "topics": [
+        {
+          "topic_id": "training_and_capacity_building",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 351222,
+        "page_count": 2,
+        "text_available": false,
+        "scanned": true
+      },
+      "languages_detected": {
+        "values": [],
+        "status": "UNKNOWN",
+        "method": "too little text in PDF text layer to detect script"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2016-09-20",
+        "server_last_modified": "Wed, 09 Nov 2016 11:18:24 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-004",
+        "source_url": "https://mospi.gov.in/sites/default/files/content_image/(1)%20About%20NSSTA.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-004__1_About_NSSTA.pdf",
+        "source_sha256": "796ac360cdc906b57255f6ece36501e7197cf63c97e7cbb2bf7dd29a91e012ba"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "scanned_no_text_layer"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "NSSTA-DOC-005",
+      "title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "curriculum_reference",
+      "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+      "topics": [
+        {
+          "topic_id": "training_and_capacity_building",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 1246103,
+        "page_count": 56,
+        "text_available": true,
+        "scanned": false
+      },
+      "languages_detected": {
+        "values": [
+          "en"
+        ],
+        "status": "MACHINE_OBSERVED",
+        "method": "character-script share in PDF text layer (script >= 5% of letters); Devanagari counted as hi"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": "2018-01-17",
+        "server_last_modified": "Wed, 08 Aug 2018 12:30:18 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 8,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-005",
+        "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+        "source_sha256": "39cd901737fb6849367ec7096a81acc5b801b9e79bf882db1443605b31aef4d4"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "NSSTA-DOC-006",
+      "title": "NSSTA Office Memorandum dated 29.09.2025 with metadata sheet",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "office_memorandum",
+      "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+      "topics": [
+        {
+          "topic_id": "training_and_capacity_building",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "DOWNLOADED",
+        "bytes": 154663,
+        "page_count": 3,
+        "text_available": false,
+        "scanned": true
+      },
+      "languages_detected": {
+        "values": [],
+        "status": "UNKNOWN",
+        "method": "too little text in PDF text layer to detect script"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": null,
+        "server_last_modified": "Wed, 01 Oct 2025 10:02:28 GMT"
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-DOC-006",
+        "source_url": "https://mospi.gov.in/uploads/announcements/announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": "2026-09-14",
+        "access_method": "HTTPS GET of a direct public file URL (no authentication, no crawling)",
+        "local_file_path": "data/raw/nssta/NSSTA-DOC-006__announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf",
+        "source_sha256": "4a5bf39103cebebbb7f2ae2a6e39983f493a6d2e1714334e4ec0c994ea386c2d"
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "scanned_no_text_layer"
+      ],
+      "learner_visible": false
+    },
+    {
+      "id": "NSSTA-LINK-001",
+      "title": "Right to Information Act, 2005 - Compendium of Manuals (MoSPI proactive disclosure, 28.06.2024)",
+      "title_status": "UNVERIFIED_SECONDHAND",
+      "document_type": "rti_proactive_disclosure",
+      "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+      "topics": [
+        {
+          "topic_id": "training_governance",
+          "status": "ASSUMED",
+          "method": "assigned by auditor in collection manifest"
+        }
+      ],
+      "collection": {
+        "status": "LINK_RECORDED_NOT_DOWNLOADED",
+        "bytes": null,
+        "page_count": null,
+        "text_available": null,
+        "scanned": null,
+        "reason_not_downloaded": "ASSUMED: RTI Act s.4(1)(b) disclosures are required to include a directory of officers and employees and their remuneration, i.e. personal information, which this collection excludes. Search summary indicates it references TPAC minutes. A human should review it in a browser and record only the TPAC references."
+      },
+      "languages_detected": {
+        "values": [],
+        "status": "UNKNOWN",
+        "method": "not downloaded"
+      },
+      "dates": {
+        "publication_date": null,
+        "publication_date_status": "UNKNOWN",
+        "pdf_creation_date": null,
+        "server_last_modified": null
+      },
+      "series_base_year": {
+        "applicable": false,
+        "value": null,
+        "status": "NOT_APPLICABLE"
+      },
+      "tpac_reference_count": 0,
+      "data_status": "MACHINE_OBSERVED",
+      "provenance": {
+        "source_id": "SRC-025",
+        "source_document_id": "NSSTA-LINK-001",
+        "source_url": "https://www.mospi.gov.in/sites/default/files/rti_order/ProactiveDisclosure_28062024.pdf",
+        "source_organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+        "retrieval_date": null,
+        "access_method": "Link recorded only; not downloaded",
+        "local_file_path": null,
+        "source_sha256": null
+      },
+      "licence": {
+        "status": "UNVERIFIED_SECONDHAND",
+        "usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+        "attribution_text": "Source: National Statistical Systems Training Academy (NSSTA), Ministry of Statistics and Programme Implementation, Government of India",
+        "permits_learner_display": null
+      },
+      "review": {
+        "verified": false,
+        "verified_by": null,
+        "verified_on": null,
+        "checks": {
+          "title_confirmed": null,
+          "organisation_confirmed": null,
+          "publication_date_confirmed": null,
+          "topics_confirmed": null,
+          "series_base_year_confirmed": null,
+          "licence_confirmed": null,
+          "personal_data_absent_confirmed": null
+        },
+        "notes": null
+      },
+      "release_blockers": [
+        "human_review_pending",
+        "topic_tags_unreviewed",
+        "licence_not_verified",
+        "title_unverified",
+        "link_only_not_collected"
+      ],
+      "learner_visible": false
+    }
+  ]
+}

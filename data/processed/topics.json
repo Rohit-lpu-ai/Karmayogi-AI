@@ -1,0 +1,156 @@
+{
+  "schema_version": "0.2.0",
+  "dataset_id": "topics",
+  "title": "Topic taxonomy for linking programmes, documents and competencies",
+  "generated_at_utc": "2026-09-14T12:36:26+00:00",
+  "generator": "scripts/processing/build_canonical_datasets.py",
+  "inputs": [
+    {
+      "path": "scripts/processing/topic_taxonomy.json",
+      "sha256": "41f6e126c35a4b4af1c4cce42bbd1c833702796c1f03bdd3202ba7d98dbcc357"
+    }
+  ],
+  "record_count": 23,
+  "taxonomy_version": "0.1.2",
+  "note": "Project-defined taxonomy for linking programmes, documents and competencies. Keyword rules are transparent heuristics: every tag they produce is marked ASSUMED and must be reviewed. A programme matching no rule is left untagged rather than forced into a topic.",
+  "records": [
+    {
+      "id": "survey_design",
+      "label": "Survey design and fieldwork",
+      "data_status": "ASSUMED",
+      "rule_count": 5
+    },
+    {
+      "id": "sampling",
+      "label": "Sampling and estimation",
+      "data_status": "ASSUMED",
+      "rule_count": 2
+    },
+    {
+      "id": "national_accounts",
+      "label": "National accounts",
+      "data_status": "ASSUMED",
+      "rule_count": 5
+    },
+    {
+      "id": "price_statistics",
+      "label": "Price statistics",
+      "data_status": "ASSUMED",
+      "rule_count": 4
+    },
+    {
+      "id": "labour_statistics",
+      "label": "Labour and employment statistics",
+      "data_status": "ASSUMED",
+      "rule_count": 3
+    },
+    {
+      "id": "industrial_statistics",
+      "label": "Industrial statistics",
+      "data_status": "ASSUMED",
+      "rule_count": 3
+    },
+    {
+      "id": "agricultural_statistics",
+      "label": "Agricultural statistics",
+      "data_status": "ASSUMED",
+      "rule_count": 2
+    },
+    {
+      "id": "population_and_social_statistics",
+      "label": "Population and social statistics",
+      "data_status": "ASSUMED",
+      "rule_count": 8
+    },
+    {
+      "id": "environment_statistics",
+      "label": "Environment and energy statistics",
+      "data_status": "ASSUMED",
+      "rule_count": 3
+    },
+    {
+      "id": "data_quality",
+      "label": "Data quality",
+      "data_status": "ASSUMED",
+      "rule_count": 2
+    },
+    {
+      "id": "metadata",
+      "label": "Metadata standards",
+      "data_status": "ASSUMED",
+      "rule_count": 2
+    },
+    {
+      "id": "sdg_indicators",
+      "label": "SDG indicators",
+      "data_status": "ASSUMED",
+      "rule_count": 2
+    },
+    {
+      "id": "economic_and_financial_statistics",
+      "label": "Economic and financial statistics",
+      "data_status": "ASSUMED",
+      "rule_count": 1
+    },
+    {
+      "id": "official_statistics_general",
+      "label": "Official statistics (general)",
+      "data_status": "ASSUMED",
+      "rule_count": 7
+    },
+    {
+      "id": "data_analysis_and_computing",
+      "label": "Data analysis and computing",
+      "data_status": "ASSUMED",
+      "rule_count": 12
+    },
+    {
+      "id": "data_governance_and_ethics",
+      "label": "Data governance, ethics and security",
+      "data_status": "ASSUMED",
+      "rule_count": 4
+    },
+    {
+      "id": "monitoring_and_evaluation",
+      "label": "Monitoring and evaluation",
+      "data_status": "ASSUMED",
+      "rule_count": 2
+    },
+    {
+      "id": "leadership_and_management",
+      "label": "Leadership, management and soft skills",
+      "data_status": "ASSUMED",
+      "rule_count": 15
+    },
+    {
+      "id": "training_and_capacity_building",
+      "label": "Training and capacity building",
+      "data_status": "ASSUMED",
+      "rule_count": 3
+    },
+    {
+      "id": "training_governance",
+      "label": "Training governance (TPAC approvals)",
+      "data_status": "ASSUMED",
+      "rule_count": 2
+    },
+    {
+      "id": "field_attachment_and_practice",
+      "label": "Attachments, on-the-job training and project work",
+      "data_status": "ASSUMED",
+      "rule_count": 4
+    },
+    {
+      "id": "induction_and_administration",
+      "label": "Induction and administration",
+      "data_status": "ASSUMED",
+      "rule_count": 5
+    },
+    {
+      "id": "competency_framework",
+      "label": "Competency frameworks",
+      "data_status": "ASSUMED",
+      "rule_count": 1
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "doc_id": "NSSTA-DOC-001",
+    "url": "https://mospi.gov.in/sites/default/files/announcements/Circular_NSSTA_Advance_Training_Calander_FY(25-26).pdf",
+    "attempted_at_utc": "2026-09-14T06:58:02+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/nssta/NSSTA-DOC-001__Circular_NSSTA_Advance_Training_Calander_FY_25-26_.pdf",
+    "sidecar": "data/raw/nssta/NSSTA-DOC-001__Circular_NSSTA_Advance_Training_Calander_FY_25-26_.pdf.meta.json"
+  },
+  {
+    "doc_id": "NSSTA-DOC-002",
+    "url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+    "attempted_at_utc": "2026-09-14T06:58:05+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf",
+    "sidecar": "data/raw/nssta/NSSTA-DOC-002__Training_Calendar_of_NSSTA_for_FY_2021-22.pdf.meta.json"
+  },
+  {
+    "doc_id": "NSSTA-DOC-003",
+    "url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+    "attempted_at_utc": "2026-09-14T06:58:10+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf",
+    "sidecar": "data/raw/nssta/NSSTA-DOC-003__TrainingCalenderNSSTA2020-21.pdf.meta.json"
+  },
+  {
+    "doc_id": "NSSTA-DOC-004",
+    "url": "https://mospi.gov.in/sites/default/files/content_image/(1)%20About%20NSSTA.pdf",
+    "attempted_at_utc": "2026-09-14T06:58:12+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/nssta/NSSTA-DOC-004__1_About_NSSTA.pdf",
+    "sidecar": "data/raw/nssta/NSSTA-DOC-004__1_About_NSSTA.pdf.meta.json"
+  },
+  {
+    "doc_id": "NSSTA-DOC-005",
+    "url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+    "attempted_at_utc": "2026-09-14T06:58:16+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf",
+    "sidecar": "data/raw/nssta/NSSTA-DOC-005__refdoc_nsc_nssta_final_8aug18.pdf.meta.json"
+  },
+  {
+    "doc_id": "NSSTA-DOC-006",
+    "url": "https://mospi.gov.in/uploads/announcements/announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf",
+    "attempted_at_utc": "2026-09-14T06:58:19+00:00",
+    "status": "DOWNLOADED",
+    "local_path": "data/raw/nssta/NSSTA-DOC-006__announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf",
+    "sidecar": "data/raw/nssta/NSSTA-DOC-006__announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf.meta.json"
+  }
+]

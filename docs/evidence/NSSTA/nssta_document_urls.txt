@@ -1,0 +1,56 @@
+# NSSTA — downloadable document URLs
+# Audit: AUDIT-NSSTA-001 | Source: SRC-025 | Collection date: 2026-09-14
+#
+# All URLs below returned HTTP 200 with Content-Type: application/pdf when
+# checked with a HEAD request on 2026-09-14.
+# Status: MACHINE_OBSERVED (not VERIFIED — no human has confirmed these).
+#
+# NOT YET DOWNLOADED. Licence is UNKNOWN and robots.txt has not been read,
+# so Gate B4 is not satisfied and Gate C is not signed. Do not bulk-download
+# until those are resolved. See ../../../DATA_COLLECTION_CHECKLIST.md
+#
+# Format: one URL per line. Comments begin with #.
+
+# --- NSSTA-DOC-001 | Training calendar / circular | 317053 bytes | modified 2025-04-24
+# Indexed title: "NSSTA - Advance Training Calendar for FY(2025-2026)" (UNVERIFIED_SECONDHAND)
+# HIGHEST PRIORITY — most recent; expected to contain the current programme list.
+https://mospi.gov.in/sites/default/files/announcements/Circular_NSSTA_Advance_Training_Calander_FY(25-26).pdf
+
+# --- NSSTA-DOC-002 | Training calendar | 507791 bytes | modified 2022-10-17
+# Indexed title: "Training Calendar 2021-2022, Government of India" (UNVERIFIED_SECONDHAND)
+https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf
+
+# --- NSSTA-DOC-003 | Training calendar | 1197339 bytes | modified 2020-06-18
+# Indexed title: "Training Calendar 2020-2021, Government of India" (UNVERIFIED_SECONDHAND)
+https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf
+
+# --- NSSTA-DOC-004 | Institutional profile | 351222 bytes | modified 2016-11-09
+# Indexed title: "National Statistical Systems Training Academy (NSSTA)" (UNVERIFIED_SECONDHAND)
+# Dated 2016 — treat as historical.
+https://mospi.gov.in/sites/default/files/content_image/(1)%20About%20NSSTA.pdf
+
+# --- NSSTA-DOC-005 | Reference manual / curriculum | 1246103 bytes | modified 2018-08-08
+# Indexed title: "Reference Manual for Indian Statistical Service Probationary Training" (UNVERIFIED_SECONDHAND)
+# HIGH VALUE — closest thing found to a formal syllabus.
+https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf
+
+# --- NSSTA-DOC-006 | Policy document (DRAFT) | 365940 bytes | modified 2023-08-10
+# Indexed title: "Draft Revised National Policy on Official Statistics" (UNVERIFIED_SECONDHAND)
+# MoSPI-wide, not NSSTA-specific. MARKED DRAFT — never teach as settled policy.
+https://mospi.gov.in/sites/default/files/announcements/Draft_Revised_NPOS.pdf
+
+# ---------------------------------------------------------------------------
+# KNOWN BUT NOT RETRIEVABLE — do not add to any download list until re-checked
+#
+# UNAVAILABLE (no HTTP response) — NSSTA Office Memorandum dated 29.09.2025
+#   with metadata sheet. Worth a human retry from another network.
+# https://new.mospi.gov.in/uploads/announcements/announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf
+#
+# UNAVAILABLE (returns SPA shell as text/html, not a PDF) — legacy Liferay URL,
+#   superseded by NSSTA-DOC-002 above.
+# https://mospi.gov.in/documents/213904/0/Training+Calendar+of+NSSTA+for+FY+2021-22.pdf/f7c59f7c-ac0b-b0a0-44b7-67178532cee4
+#
+# ---------------------------------------------------------------------------
+# EXCLUDED BY POLICY — never collect from this host
+#
+# https://nssta.attendance.gov.in/   Attendance portal; personal data.

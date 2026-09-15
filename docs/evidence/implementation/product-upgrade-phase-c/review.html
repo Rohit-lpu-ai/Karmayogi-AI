@@ -1,0 +1,241 @@
+<title>Phase C Learner Loop Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ground: #f6f7f9; --surface: #ffffff; --ink: #101828; --muted: #475467; --line: #e3e8ef;
+    --accent: #26378f; --accent-soft: #eef1fb; --good: #1d6b40; --good-soft: #e5f3eb;
+    --warn: #7a4a02; --warn-soft: #fdf2dc; --ask: #56288c; --ask-soft: #f1e9fb; --frame: #dfe4ec;
+    --sans: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0e1320; --surface: #161c2c; --ink: #e7ebf3; --muted: #a3adc2; --line: #273049;
+      --accent: #9db0ff; --accent-soft: #1d2645; --good: #7fd3a2; --good-soft: #15291f;
+      --warn: #f2c677; --warn-soft: #2e2413; --ask: #cdb2f2; --ask-soft: #261c38; --frame: #0a0e18;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0e1320; --surface: #161c2c; --ink: #e7ebf3; --muted: #a3adc2; --line: #273049;
+    --accent: #9db0ff; --accent-soft: #1d2645; --good: #7fd3a2; --good-soft: #15291f;
+    --warn: #f2c677; --warn-soft: #2e2413; --ask: #cdb2f2; --ask-soft: #261c38; --frame: #0a0e18;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; }
+  a { color: var(--accent); }
+  a:focus-visible, .shot-frame:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  h1, h2, h3 { text-wrap: balance; line-height: 1.2; margin: 0; }
+  p { margin: 0; }
+  code, .mono { font-family: var(--mono); font-size: 0.86em; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding-inline: 24px; padding-block: 40px 72px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; }
+  @media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-inline: 16px; } .index { position: static !important; } }
+  .index { position: sticky; top: 24px; align-self: start; display: flex; flex-direction: column; gap: 16px; }
+  .index .label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .index ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .index a { display: flex; gap: 10px; align-items: baseline; padding: 7px 10px; border-radius: 6px; text-decoration: none; color: var(--ink); font-weight: 500; }
+  .index a:hover { background: var(--accent-soft); }
+  .index a span.mono { color: var(--muted); font-size: 12px; min-width: 22px; }
+  .note { font-size: 14px; color: var(--muted); max-width: 72ch; }
+  main { display: flex; flex-direction: column; gap: 56px; min-width: 0; }
+  header.top { display: flex; flex-direction: column; gap: 14px; max-width: 70ch; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  header.top h1 { font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.01em; }
+  header.top p { color: var(--muted); font-size: 17px; }
+  .loop { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 14px; }
+  .loop span { padding: 4px 10px; border-radius: 999px; background: var(--good-soft); color: var(--good); font-weight: 500; }
+  .loop span.later { background: transparent; color: var(--muted); border: 1px dashed var(--line); }
+  .loop i { color: var(--muted); font-style: normal; }
+  .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .check { background: var(--surface); padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+  .check b { font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .check span { color: var(--muted); font-size: 14px; }
+  section.part { display: flex; flex-direction: column; gap: 22px; scroll-margin-top: 24px; }
+  .part-head { display: flex; flex-direction: column; gap: 6px; border-top: 2px solid var(--ink); padding-top: 18px; }
+  .part-head .mono { color: var(--muted); font-size: 13px; }
+  .part-head h2 { font-size: 28px; font-weight: 600; }
+  .verdict { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .verdict .a { font-size: 19px; font-weight: 600; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .pill { font-size: 13px; font-weight: 600; padding: 2px 10px; border-radius: 999px; white-space: nowrap; }
+  .pill.good { background: var(--good-soft); color: var(--good); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px 32px; }
+  .verdict-grid h3 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+  .verdict-grid ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 5px; max-width: 60ch; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 16px; align-items: start; }
+  @media (max-width: 720px) { .pair { grid-template-columns: minmax(0, 1fr); } }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+  .shot-frame { background: var(--frame); border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 620px; }
+  .shot-frame img { display: block; width: 100%; max-width: 100%; height: auto; }
+  .decisions { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin: 0; padding: 0; list-style: none; }
+  .decisions li { background: var(--surface); padding: 16px 20px; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; }
+  .decisions .id { font-family: var(--mono); font-weight: 500; color: var(--ask); }
+  .decisions b { font-weight: 600; }
+  .decisions p { color: var(--muted); font-size: 15px; margin-top: 2px; }
+  .decisions .rec { color: var(--ink); font-size: 14px; margin-top: 6px; }
+  .next { margin: 0; padding: 0; list-style: none; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; counter-reset: s; }
+  .next li { background: var(--surface); padding: 16px 22px 16px 62px; position: relative; counter-increment: s; }
+  .next li::before { content: counter(s); position: absolute; left: 22px; top: 16px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--surface); font-weight: 600; font-size: 13px; display: grid; place-items: center; }
+  .next b { font-weight: 600; }
+  .next p { color: var(--muted); max-width: 72ch; margin-top: 2px; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <nav class="index" aria-label="Review sections">
+    <p class="label">Phase C review</p>
+    <ol>
+      <li><a href="#summary"><span class="mono">00</span> Summary</a></li>
+      <li><a href="#login"><span class="mono">C1</span> Login</a></li>
+      <li><a href="#dashboard"><span class="mono">C2</span> Dashboard</a></li>
+      <li><a href="#profile"><span class="mono">C3</span> Competencies</a></li>
+      <li><a href="#gaps"><span class="mono">C4</span> Gap analysis</a></li>
+      <li><a href="#catalogue"><span class="mono">C5</span> Catalogue</a></li>
+      <li><a href="#detail"><span class="mono">C6</span> Course detail</a></li>
+      <li><a href="#decisions"><span class="mono">?</span> Your decisions</a></li>
+      <li><a href="#phase-d"><span class="mono">→</span> Phase D</a></li>
+    </ol>
+    <p class="note">All people, roles, competencies, questions and courses shown are synthetic DEMO content.</p>
+  </nav>
+
+  <main>
+    <header class="top" id="summary">
+      <p class="eyebrow">Product upgrade · Phase C · 15 Sept 2026</p>
+      <h1>Can a judge now see what problem this solves?</h1>
+      <p>Mostly yes. From login to course detail the product tells one story: what your role needs, where your evidence places you, and what to learn next. The loop still stops before learning itself, which waits on your approval of the lessons proposal.</p>
+      <div class="loop" aria-label="Learner loop status">
+        <span>Job role</span><i>→</i><span>Requirements</span><i>→</i><span>Baseline</span><i>→</i><span>Estimate</span><i>→</i><span>Gap analysis</span><i>→</i><span>Recommendations</span><i>→</i><span class="later">Lessons</span><i>→</i><span class="later">Progress</span><i>→</i><span class="later">Reassessment</span>
+      </div>
+    </header>
+
+    <div class="checks" role="list">
+      <div class="check" role="listitem"><b>10 / 10</b><span>Browser journeys, desktop and 360 px</span></div>
+      <div class="check" role="listitem"><b>0</b><span>Serious or critical axe violations on every checked screen</span></div>
+      <div class="check" role="listitem"><b>46</b><span>Frontend tests (was 37)</span></div>
+      <div class="check" role="listitem"><b>196</b><span>Backend tests (was 180)</span></div>
+      <div class="check" role="listitem"><b>40</b><span>Scenario questions replacing arithmetic for new roles</span></div>
+    </div>
+    <p class="note">Also passed: type-check, build, <code>npm audit</code> (0 vulnerabilities), migration drift check, live API journey through the proxy. Not done: manual screen-reader review. The JS bundle is now 501 kB and triggers Vite's size warning.</p>
+
+    <section class="part" id="login" aria-labelledby="login-title">
+      <div class="part-head"><p class="mono">C1 · /login</p><h2 id="login-title">Login</h2></div>
+      <div class="verdict">
+        <p class="a">Reads as a product entry, not a form. <span class="pill good">Demo-ready</span></p>
+        <div class="verdict-grid">
+          <div><h3>What changed</h3><ul><li>Value proposition and the four-step loop beside the form.</li><li>Password toggle, error summary that takes focus, lockout and service-down messages.</li><li>No signup; administrator-created accounts explained.</li></ul></div>
+          <div><h3>Still weak</h3><ul><li>No product mark beyond a neutral icon (DEC-001 undecided).</li><li>The "local demo" hint must be removed before any real deployment.</li></ul></div>
+        </div>
+      </div>
+      <div class="pair">
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c1-login-desktop.png" alt="Login page on desktop with product value proposition left and sign-in card right" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c1-login-mobile-360.png" alt="Login page at 360 pixels with sign-in first" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="part" id="dashboard" aria-labelledby="dashboard-title">
+      <div class="part-head"><p class="mono">C2 · /</p><h2 id="dashboard-title">Dashboard</h2></div>
+      <div class="verdict">
+        <p class="a">Answers "where am I and what next" at a glance. <span class="pill good">Demo-ready</span></p>
+        <div class="verdict-grid">
+          <div><h3>What changed</h3><ul><li>One next action that follows state: take baseline, resume, or develop the top gap with a matching course.</li><li>Journey strip with later steps honestly dashed.</li><li>"N of M at required level" instead of a readiness score (ROLE-008 is P1).</li><li>Priority gaps, competency overview, recommendations with reasons, recent activity.</li></ul></div>
+          <div><h3>Still weak</h3><ul><li>No learning progress card until lessons exist.</li><li>Recent activity is thin with one baseline.</li></ul></div>
+        </div>
+      </div>
+      <div class="pair">
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c2-dashboard-1-after-baseline-desktop.png" alt="Dashboard after the baseline with priority, journey, counts, gaps, competencies, recommendations and activity" loading="lazy"></div><figcaption><span>after baseline</span><span>1440 px</span></figcaption></figure>
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c2-dashboard-1-after-baseline-mobile-360.png" alt="Dashboard after the baseline at 360 pixels" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+      </div>
+      <div class="pair">
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c2-dashboard-0-new-learner-desktop.png" alt="Dashboard for a learner who has not taken the baseline" loading="lazy"></div><figcaption><span>new learner</span><span>1440 px</span></figcaption></figure>
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c2-dashboard-0-new-learner-mobile-360.png" alt="Dashboard for a new learner at 360 pixels" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="part" id="profile" aria-labelledby="profile-title">
+      <div class="part-head"><p class="mono">C3 · /competencies</p><h2 id="profile-title">Competency profile</h2></div>
+      <div class="verdict">
+        <p class="a">Each competency now explains itself. <span class="pill good">Demo-ready</span></p>
+        <div class="verdict-grid">
+          <div><h3>What changed</h3><ul><li>Estimated vs required level, gap sentence, evidence strength and "2 of 5 questions correct".</li><li>What each level means, with "You" and "Required" marked.</li><li>Assessment history and a method disclosure.</li></ul></div>
+          <div><h3>Still weak</h3><ul><li>No "request a review" action (governance phase).</li><li>Evidence shows counts, not the individual questions.</li></ul></div>
+        </div>
+      </div>
+      <div class="pair">
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c3-competency-profile-desktop.png" alt="Competency profile with four competency cards and level meanings opened" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c3-competency-profile-mobile-360.png" alt="Competency profile at 360 pixels" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="part" id="gaps" aria-labelledby="gaps-title">
+      <div class="part-head"><p class="mono">C4 · /competencies/gaps</p><h2 id="gaps-title">Gap analysis</h2></div>
+      <div class="verdict">
+        <p class="a">The strongest screen for the product's purpose. <span class="pill good">Demo-ready</span></p>
+        <div class="verdict-grid">
+          <div><h3>What changed</h3><ul><li>Gaps in priority order with "where you are now" and "what your role requires", in words.</li><li>Why it matters, evidence, the matching courses and one next action per gap.</li><li>Chart and table views; strengths and "needs more evidence" sections; rule in a disclosure.</li></ul></div>
+          <div><h3>Still weak</h3><ul><li>"Why it matters" is per competency, not per role (no role-specific rationale in the schema).</li><li>The disclaimer suffix in each synthetic description repeats.</li></ul></div>
+        </div>
+      </div>
+      <div class="pair">
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c4-gap-analysis-desktop.png" alt="Gap analysis with summary, chart and three priority gap cards" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c4-gap-analysis-mobile-360.png" alt="Gap analysis at 360 pixels" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="part" id="catalogue" aria-labelledby="catalogue-title">
+      <div class="part-head"><p class="mono">C5 · /courses</p><h2 id="catalogue-title">Course catalogue</h2></div>
+      <div class="verdict">
+        <p class="a">A real catalogue with a clear signal about what fits you. <span class="pill good">Demo-ready</span></p>
+        <div class="verdict-grid">
+          <div><h3>What changed</h3><ul><li>Search and filters by competency, difficulty and length, kept in the URL.</li><li>Top picks (rank 1-3) vs "matches your gaps", with the gap each course closes.</li><li>Synthetic catalogue notice; unreviewed source listings stay hidden.</li></ul></div>
+          <div><h3>Still weak</h3><ul><li>The three arithmetic <code>demo-1</code> courses still appear (decision D-4).</li><li>No pagination (15 courses).</li></ul></div>
+        </div>
+      </div>
+      <div class="pair">
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c5-catalogue-desktop.png" alt="Course catalogue with filters and a grid of course cards" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c5-catalogue-mobile-360.png" alt="Course catalogue at 360 pixels" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="part" id="detail" aria-labelledby="detail-title">
+      <div class="part-head"><p class="mono">C6 · /courses/:id</p><h2 id="detail-title">Course detail</h2></div>
+      <div class="verdict">
+        <p class="a">Explains why this course is for you, then stops honestly. <span class="pill warn">Waits on lessons</span></p>
+        <div class="verdict-grid">
+          <div><h3>What changed</h3><ul><li>Why recommended, with your level against the requirement.</li><li>Objectives, competencies addressed with your status, related courses.</li></ul></div>
+          <div><h3>Still weak</h3><ul><li>No structure, start or progress: "Lessons are not available yet" until you approve the proposal.</li></ul></div>
+        </div>
+      </div>
+      <div class="pair">
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c6-course-detail-desktop.png" alt="Course detail with why recommended, objectives, structure notice and side panels" loading="lazy"></div><figcaption><span>desktop</span><span>1440 px</span></figcaption></figure>
+        <figure><div class="shot-frame" tabindex="0"><img src="shots/c6-course-detail-mobile-360.png" alt="Course detail at 360 pixels" loading="lazy"></div><figcaption><span>phone</span><span>360 px</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="part" id="decisions" aria-labelledby="decisions-title">
+      <div class="part-head"><p class="mono">DEC-056 · awaiting you</p><h2 id="decisions-title">Decisions I need from you</h2></div>
+      <ol class="decisions">
+        <li><span class="id">D-3</span><div><b>Approve the lessons, learning path and progress schema</b><p>Written proposal: <code>docs/evidence/implementation/phase-c-learning-experience-proposal.md</code>. No migration written yet.</p><p class="rec">Recommendation: approve. This unblocks course structure, "start/continue", the learning path and dashboard progress.</p></div></li>
+        <li><span class="id">D-2</span><div><b>Should anything after learning update the competency profile?</b><p>Learning evidence (CMP-018) and reassessment (ASM-012) are P1.</p><p class="rec">Recommendation: keep learning evidence out; approve reassessment as the one pull-forward if the demo must show "updated profile".</p></div></li>
+        <li><span class="id">D-4</span><div><b>Retire the arithmetic <code>demo-1</code> job role and courses from learner view?</b><p>Existing demo accounts keep working; the role picker and catalogue stop showing it.</p><p class="rec">Recommendation: yes.</p></div></li>
+        <li><span class="id">D-1</span><div><b>A single role-readiness score?</b><p>ROLE-008 is P1 with misuse risk.</p><p class="rec">Recommendation: no; keep "N of M at required level".</p></div></li>
+        <li><span class="id">D-5</span><div><b>Mention "Smart India Hackathon" in the UI (text only, no logos)?</b><p>Currently not mentioned.</p><p class="rec">Your call.</p></div></li>
+        <li><span class="id">D-6</span><div><b>Manual screen-reader review</b><p>NVDA is not installed; Narrator exists but I cannot operate or hear it.</p><p class="rec">Needs a person, ideally with NVDA, walking login → result → gap analysis.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="part" id="phase-d" aria-labelledby="phase-d-title">
+      <div class="part-head"><p class="mono">Recommendation</p><h2 id="phase-d-title">What I would build in Phase D</h2></div>
+      <ol class="next">
+        <li><b>Lessons and learning player (after D-3)</b><p>Modules, lessons with synthetic content in <code>demo-2</code> v2, mark complete, resume, course progress on detail and dashboard.</p></li>
+        <li><b>Learning path</b><p><code>/learning-path</code> generated from gaps with reasons, placeholders for gaps without content, "continue learning" on the dashboard.</p></li>
+        <li><b>Reassessment, if D-2 allows</b><p>A second attempt that updates estimates and shows baseline vs current per competency, closing the loop visibly.</p></li>
+        <li><b>Clean up and performance</b><p>Retire <code>demo-1</code> (D-4), route-level code splitting to get under the bundle warning, recommendation dismiss/accept feedback.</p></li>
+        <li><b>Commit and CI</b><p>Commit phases A-C, then run pytest, Vitest, type-check, build and Playwright on every push.</p></li>
+        <li><b>Then AI provider interfaces</b><p><code>LLMProvider</code>, <code>EmbeddingProvider</code>, retriever and citation types with local fakes; a Gemini adapter only once you decide DEC-005 and provide a key.</p></li>
+      </ol>
+    </section>
+  </main>
+</div>

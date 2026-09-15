@@ -1,0 +1,89 @@
+$ git status --short
+ M .env.example
+ M .gitignore
+ M README.md
+A  docs/AI_SYSTEM_SPEC.md
+AM docs/API_INTEGRATION_SPEC.md
+AM docs/DATA_MODEL.md
+AM docs/DECISIONS.md
+A  docs/FEATURE_CATALOG.md
+A  docs/MVP_SCOPE.md
+A  docs/PRD.md
+AM docs/SECURITY_RESPONSIBLE_AI.md
+AM docs/SYSTEM_ARCHITECTURE.md
+AM docs/TECH_STACK.md
+A  docs/UI_UX_SPEC.md
+A  docs/feature_registry.json
+A  scripts/docs/generate_feature_catalog.py
+A  scripts/docs/registry_a_c.py
+A  scripts/docs/registry_common.py
+A  scripts/docs/registry_d_h.py
+A  scripts/docs/registry_i_n.py
+A  scripts/docs/registry_o_t.py
+?? backend/
+?? deploy/
+?? docs/AGENT_CONTEXT.md
+?? docs/IMPLEMENTATION_ROADMAP.md
+?? docs/IMPLEMENTATION_STATUS.md
+
+$ git log --oneline -5
+35d10a9 feat(phase-1): complete data collection, canonical schemas, and iGOT integration scaffold
+76ed7ba Revise README to emphasize AI features
+21aaba5 chore: initialize AURA project
+
+$ find backend deploy -type f -not -path "*/.venv/*" -not -path "*__pycache__*" -not -path "*/.pytest_cache/*" | sort
+backend/alembic.ini
+backend/app/__init__.py
+backend/app/core/__init__.py
+backend/app/core/config.py
+backend/app/core/db.py
+backend/app/core/errors.py
+backend/app/core/logging.py
+backend/app/core/middleware.py
+backend/app/core/vocab.py
+backend/app/main.py
+backend/app/models.py
+backend/app/modules/__init__.py
+backend/app/modules/competency/__init__.py
+backend/app/modules/competency/models.py
+backend/app/modules/content/__init__.py
+backend/app/modules/content/models.py
+backend/app/modules/governance/__init__.py
+backend/app/modules/governance/models.py
+backend/app/modules/governance/service.py
+backend/app/modules/identity/__init__.py
+backend/app/modules/identity/models.py
+backend/app/modules/organization/__init__.py
+backend/app/modules/organization/models.py
+backend/app/modules/platform/__init__.py
+backend/app/modules/platform/api.py
+backend/app/modules/platform/models.py
+backend/app/modules/recommendation/__init__.py
+backend/app/modules/recommendation/models.py
+backend/app/seed/__init__.py
+backend/app/seed/__main__.py
+backend/app/seed/canonical.py
+backend/app/seed/demo_users.py
+backend/app/seed/importer.py
+backend/migrations/env.py
+backend/migrations/script.py.mako
+backend/migrations/versions/20260914_0001_extensions.py
+backend/migrations/versions/20260914_0002_reference_schema_organisation_identity_.py
+backend/pyproject.toml
+backend/README.md
+backend/requirements.lock
+backend/tests/__init__.py
+backend/tests/conftest.py
+backend/tests/db/__init__.py
+backend/tests/db/test_migrations.py
+backend/tests/db/test_reference_schema.py
+backend/tests/db/test_seed.py
+backend/tests/unit/__init__.py
+backend/tests/unit/test_config.py
+backend/tests/unit/test_http_foundation.py
+backend/tests/unit/test_logging.py
+deploy/docker-compose.yml
+deploy/postgres/init/01-create-test-database.sql
+
+$ ls frontend
+ls: cannot access 'frontend': No such file or directory

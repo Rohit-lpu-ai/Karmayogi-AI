@@ -1,0 +1,66 @@
+{
+  "source_id": "SRC-025",
+  "organisation": "National Statistical Systems Training Academy (NSSTA), MoSPI",
+  "raw_dir": "data/raw/nssta",
+  "interim_dir": "data/interim/nssta",
+  "allowed_hosts": ["mospi.gov.in", "www.mospi.gov.in"],
+  "max_bytes": 26214400,
+  "licence_status": "UNVERIFIED_SECONDHAND",
+  "licence_usage_notes": "No licence in HTTP headers. A search-engine summary quotes MoSPI publications: 'Reproduction is permitted provided an acknowledgment of the source is made. Material ... attributed to third parties are subject to third party copyright.' Not confirmed at source; MoSPI copyright policy page is JavaScript-rendered and unreadable by script. Per-document notice: see extracted metadata.",
+  "authorisation": "Controlled collection explicitly directed by the project owner on 2026-09-14 (MVP data collection instruction). Public file URLs only; Gate C not signed.",
+  "items": [
+    {
+      "doc_id": "NSSTA-DOC-001",
+      "url": "https://mospi.gov.in/sites/default/files/announcements/Circular_NSSTA_Advance_Training_Calander_FY(25-26).pdf",
+      "title": "NSSTA - Advance Training Calendar for FY(2025-2026)",
+      "category": "training_calendar",
+      "topic": "training_programmes_and_offerings"
+    },
+    {
+      "doc_id": "NSSTA-DOC-002",
+      "url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+      "title": "Training Calendar of NSSTA for FY 2021-22",
+      "category": "training_calendar",
+      "topic": "training_programmes_and_offerings"
+    },
+    {
+      "doc_id": "NSSTA-DOC-003",
+      "url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+      "title": "Training Calendar 2020-2021 (NSSTA)",
+      "category": "training_calendar",
+      "topic": "training_programmes_and_offerings"
+    },
+    {
+      "doc_id": "NSSTA-DOC-004",
+      "url": "https://mospi.gov.in/sites/default/files/content_image/(1)%20About%20NSSTA.pdf",
+      "title": "National Statistical Systems Training Academy (NSSTA) - About NSSTA",
+      "category": "institutional_profile",
+      "topic": "training_programmes_and_offerings"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "category": "curriculum_reference",
+      "topic": "training_programmes_and_offerings"
+    },
+    {
+      "doc_id": "NSSTA-DOC-006",
+      "url": "https://mospi.gov.in/uploads/announcements/announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf",
+      "title": "NSSTA Office Memorandum dated 29.09.2025 with metadata sheet",
+      "category": "office_memorandum",
+      "topic": "training_programmes_and_offerings"
+    }
+  ],
+  "links_recorded_not_downloaded": [
+    {
+      "doc_id": "NSSTA-LINK-001",
+      "url": "https://www.mospi.gov.in/sites/default/files/rti_order/ProactiveDisclosure_28062024.pdf",
+      "title": "Right to Information Act, 2005 - Compendium of Manuals (MoSPI proactive disclosure, 28.06.2024)",
+      "category": "rti_proactive_disclosure",
+      "topic": "tpac_related",
+      "observed": "HEAD 2026-09-14: HTTP 200, application/pdf, 1177149 bytes, Last-Modified 2024-06-29",
+      "reason_not_downloaded": "ASSUMED: RTI Act s.4(1)(b) disclosures are required to include a directory of officers and employees and their remuneration, i.e. personal information, which this collection excludes. Search summary indicates it references TPAC minutes. A human should review it in a browser and record only the TPAC references."
+    }
+  ]
+}

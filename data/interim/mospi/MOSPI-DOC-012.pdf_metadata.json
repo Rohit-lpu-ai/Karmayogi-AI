@@ -1,0 +1,65 @@
+{
+  "doc_id": "MOSPI-DOC-012",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-012__doc-0aee0026-bf32-4213-ae4f-c5308088444e.pdf",
+  "page_count": 258,
+  "pdf_info": {
+    "CreationDate": "D:20260129123454+05'30'",
+    "ModDate": "D:20260129123604+05'30'",
+    "Producer": "iLovePDF"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 474388,
+  "pages_without_text": [],
+  "first_page_lines": [
+    "P a g e  | 0",
+    "0 | P a g e",
+    "Expert Group Report",
+    "on Comprehensive",
+    "Updation of",
+    "Consumer Price Index"
+  ],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      36,
+      37,
+      41,
+      46,
+      47,
+      139,
+      144,
+      145,
+      146,
+      151,
+      152,
+      156,
+      160
+    ],
+    "base year": [
+      19,
+      46,
+      52,
+      73,
+      119,
+      120,
+      121,
+      124,
+      125,
+      134,
+      148,
+      162,
+      164,
+      168,
+      171,
+      177,
+      183,
+      187,
+      235,
+      249,
+      250
+    ]
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

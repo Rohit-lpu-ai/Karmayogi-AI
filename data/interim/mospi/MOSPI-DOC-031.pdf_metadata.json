@@ -1,0 +1,33 @@
+{
+  "doc_id": "MOSPI-DOC-031",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-031__Statistical-Quality-Assessment-Framework-Guidelines_.pdf",
+  "page_count": 30,
+  "pdf_info": {
+    "Author": "PIMD",
+    "Creator": "Microsoft® Word 2019",
+    "CreationDate": "D:20250411175939+05'30'",
+    "ModDate": "D:20250411175939+05'30'",
+    "Producer": "Microsoft® Word 2019"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 54036,
+  "pages_without_text": [],
+  "first_page_lines": [
+    "1 | P a g e",
+    "Statistical Quality Assessment Framework",
+    "(SQAF)",
+    "(based on UN NQAF 2019)",
+    "National Statistics Office",
+    "(NSO)"
+  ],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      20
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

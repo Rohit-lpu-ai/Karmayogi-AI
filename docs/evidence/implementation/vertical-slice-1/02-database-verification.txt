@@ -1,0 +1,107 @@
+$ docker ps --format "{{.Names}} {{.Image}} {{.Status}} {{.Ports}}"
+platform-local-db-1 pgvector/pgvector:pg17 Up 43 minutes (healthy) 127.0.0.1:5433->5432/tcp
+
+$ cd backend && .venv/Scripts/alembic current
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+0002 (head)
+
+$ cd backend && .venv/Scripts/alembic heads
+0002 (head)
+
+$ docker exec -i platform-local-db-1 psql -U platform -d platform (verification queries)
+ extname  | extversion 
+----------+------------
+ citext   | 1.6
+ pgcrypto | 1.3
+ plpgsql  | 1.0
+(3 rows)
+
+ public_tables 
+---------------
+            16
+(1 row)
+
+       tablename       
+-----------------------
+ alembic_version
+ audit_logs
+ competencies
+ competency_clusters
+ competency_frameworks
+ competency_levels
+ course_competencies
+ course_topics
+ courses
+ departments
+ job_roles
+ organizations
+ role_competencies
+ source_records
+ topics
+ user_access_roles
+ users
+(17 rows)
+
+                    tgname                    |        tgrelid        
+----------------------------------------------+-----------------------
+ trg_audit_logs_no_truncate                   | audit_logs
+ trg_audit_logs_no_update_delete              | audit_logs
+ trg_competencies_restricted_definition       | competencies
+ trg_competency_frameworks_restriction_change | competency_frameworks
+ trg_competency_levels_min_score_order        | competency_levels
+ trg_role_competencies_required_level         | role_competencies
+(6 rows)
+
+    code    |              name              | status 
+------------+--------------------------------+--------
+ local-demo | Local development organisation | active
+(1 row)
+
+           t           | count 
+-----------------------+-------
+ topics                |    23
+ competency_frameworks |     1
+ competency_clusters   |     4
+ competencies          |    25
+ competency_levels     |     5
+ source_records        |   100
+ courses               |    99
+ course_topics         |   111
+ course_competencies   |     0
+ job_roles             |     0
+ role_competencies     |     0
+ users                 |     8
+ user_access_roles     |     8
+ departments           |     1
+ audit_logs            |     4
+(15 rows)
+
+ competencies_with_description 
+-------------------------------
+                             0
+(1 row)
+
+    framework_type     | status | definitions_restricted | version_label 
+-----------------------+--------+------------------------+---------------
+ reference_behavioural | draft  | t                      | 2014
+(1 row)
+
+ review_status | count 
+---------------+-------
+ unreviewed    |    99
+(1 row)
+
+ synthetic | with_password | total 
+-----------+---------------+-------
+         8 |             0 |     8
+(1 row)
+
+   action    |      target_id       | outcome 
+-------------+----------------------+---------
+ seed.import | topics               | success
+ seed.import | competency_framework | success
+ seed.import | training_programmes  | success
+ seed.import |                      | success
+(4 rows)
+

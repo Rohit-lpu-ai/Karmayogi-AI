@@ -1,0 +1,41 @@
+$ npm run typecheck
+
+> platform-frontend@0.1.0 typecheck
+> tsc --noEmit
+
+exit=0
+$ npm test
+
+> platform-frontend@0.1.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.0 [39m[90mC:/Users/asus/Desktop/KaramYogiAI/frontend[39m
+
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m12 passed[39m[22m[90m (12)[39m
+[2m   Start at [22m 11:13:04
+[2m   Duration [22m 22.39s[2m (environment 87%, import 11%, tests 2%, transform 1%)[22m
+
+exit=0
+$ npm run build
+
+> platform-frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+[36mvite v8.3.0 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[0m 34 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[0m[32mindex.html                 [0m[1;2m  0.42 kB[0m[2m │ gzip:  0.28 kB[0m
+[2mdist/[0m[2massets/[0m[35mindex-CdatfmWv.css  [0m[1;2m  4.20 kB[0m[2m │ gzip:  1.51 kB[0m
+[2mdist/[0m[2massets/[0m[36mindex-CKF9-umD.js   [0m[1;2m202.89 kB[0m[2m │ gzip: 65.56 kB[0m
+
+[32m✓ built in 452ms[39m
+exit=0
+$ npm audit
+(node:10248) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+found 0 vulnerabilities

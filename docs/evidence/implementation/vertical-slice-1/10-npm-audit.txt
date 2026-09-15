@@ -1,0 +1,27 @@
+$ npm install react-router-dom@latest && npm install --save-dev vitest@latest vite@latest @vitejs/plugin-react@latest jsdom@latest
+  npm audit fix --force
+
+Run `npm audit` for details.
+  run `npm fund` for details
+
+found 0 vulnerabilities
+$ npm audit
+(node:20880) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+found 0 vulnerabilities
+$ npm ls --depth=0
+platform-frontend@0.1.0 C:\Users\asus\Desktop\KaramYogiAI\frontend
+├── @testing-library/dom@10.4.2
+├── @testing-library/react@16.3.3
+├── @testing-library/user-event@14.6.7
+├── @types/react-dom@18.3.7
+├── @types/react@18.3.31
+├── @vitejs/plugin-react@6.1.1
+├── jsdom@30.0.1
+├── react-dom@18.3.1
+├── react-router-dom@7.18.3
+├── react@18.3.1
+├── typescript@5.9.3
+├── vite@8.3.0
+└── vitest@5.0.0
+

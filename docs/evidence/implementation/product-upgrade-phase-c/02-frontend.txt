@@ -1,0 +1,85 @@
+$ npm run typecheck
+
+> platform-frontend@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p tsconfig.node.json
+
+exit=0
+$ npx vitest run --reporter=verbose
+
+ RUN  v5.0.0 C:/Users/asus/Desktop/KaramYogiAI/frontend
+
+ ✓ src/api/client.test.ts > api client > sends the CSRF token on state-changing requests only 8ms
+ ✓ src/api/client.test.ts > api client > turns problem responses into ApiError with code and correlation ID 2ms
+ ✓ src/api/client.test.ts > api client > exposes field errors from validation problems 1ms
+ ✓ src/api/client.test.ts > api client > reports network failures as NETWORK_ERROR 1ms
+ ✓ src/api/client.test.ts > api client > returns undefined for 204 responses 1ms
+ ✓ src/pages/pages.test.tsx > routing > sends signed-out users to the login page 240ms
+ ✓ src/pages/PhaseC.test.tsx > login > explains the product and administrator-created accounts, with no signup 281ms
+ ✓ src/pages/pages.test.tsx > routing > sends learners without a job role to onboarding 147ms
+ ✓ src/pages/PhaseC.test.tsx > login > validates before sending, focuses the error summary and toggles password visibility 265ms
+ ✓ src/pages/results/Result.test.tsx > result page > leads with the outcome in plain language and labels it as development guidance 454ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > shows a neutral frame, not the signed-out layout, while the session is checked 263ms
+ ✓ src/pages/results/Result.test.tsx > result page > shows each competency with estimated and required level, evidence and status 254ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > renders landmarks, skip link, product name, navigation and the job role 485ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > hides learning navigation for roles that cannot take assessments 55ms
+ ✓ src/pages/assessment/Assessment.test.tsx > assessment introduction > explains the assessment and starts an attempt on its own page 748ms
+ ✓ src/pages/results/Result.test.tsx > result page > gives next steps linking to gaps, recommended learning and answer review 168ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > explains the demo environment in one expandable note 120ms
+ ✓ src/pages/assessment/Assessment.test.tsx > assessment introduction > offers the result when the assessment is completed 234ms
+ ✓ src/pages/assessment/Assessment.test.tsx > assessment introduction > shows an empty state when no assessment exists for the role 52ms
+ ✓ src/pages/pages.test.tsx > routing > shows login errors from the API without revealing account details 711ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > does not show the demo notice for non-synthetic accounts 77ms
+ ✓ src/pages/OnboardingPage.test.tsx > onboarding > walks a new learner through welcome, notice, job role and assessment with focus on each step 1029ms
+ ✓ src/pages/OnboardingPage.test.tsx > onboarding > resumes at the job role step when the notice was already acknowledged 94ms
+ ✓ src/pages/results/Result.test.tsx > result page > reviews answers with the answer text and keeps the method in a closed disclosure 233ms
+ ✓ src/pages/results/Result.test.tsx > result page > keeps the result usable when recommendations fail 112ms
+ ✓ src/pages/results/Result.test.tsx > result page > explains when a result is not available 71ms
+ ✓ src/pages/PhaseC.test.tsx > login > shows a lockout message from the API 708ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > opens the mobile menu as a dialog and closes it after navigating 284ms
+ ✓ src/pages/OnboardingPage.test.tsx > onboarding > shows a retryable error when the notice cannot be saved 217ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > signs out from the account menu with the CSRF token 196ms
+ ✓ src/pages/OnboardingPage.test.tsx > onboarding > lets an onboarded learner change job role without repeating onboarding 220ms
+ ✓ src/pages/assessment/Assessment.test.tsx > taking an assessment > shows one question at a time with previous/next, the grid and saved answers 456ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > uses the signed-out layout without navigation on the login page 36ms
+ ✓ src/components/layout/AppShell.test.tsx > design system components > writes evidence strength as text 2ms
+ ✓ src/components/layout/AppShell.test.tsx > design system components > confirmation dialog confirms, cancels with Escape and returns focus to the trigger 191ms
+ ✓ src/pages/PhaseC.test.tsx > dashboard > leads with the priority next action, the learning journey and plain counts (no readiness score) 334ms
+ ✓ src/pages/assessment/Assessment.test.tsx > taking an assessment > keeps the choice and offers a retry when saving fails 236ms
+ ✓ src/pages/PhaseC.test.tsx > dashboard > asks a learner without a baseline to take it, and each card fails independently 253ms
+ ✓ src/pages/PhaseC.test.tsx > competency profile > shows each role competency with levels, evidence, meaning and an action 119ms
+ ✓ src/pages/assessment/Assessment.test.tsx > taking an assessment > confirms before submitting, lists unanswered questions and opens the result 408ms
+ ✓ src/pages/assessment/Assessment.test.tsx > taking an assessment > sends an already submitted attempt to its result 42ms
+ ✓ src/pages/PhaseC.test.tsx > gap analysis > prioritises gaps and explains level, why it matters and the recommended learning 196ms
+ ✓ src/pages/PhaseC.test.tsx > gap analysis > invites a learner without evidence to take the baseline 35ms
+ ✓ src/pages/PhaseC.test.tsx > course catalogue > lists courses with recommendation context, DEMO labels and filters that query the API 231ms
+ ✓ src/pages/PhaseC.test.tsx > course detail > explains why it is recommended, the gap it addresses, objectives and the honest lesson state 105ms
+ ✓ src/pages/PhaseC.test.tsx > course detail > shows a clear message for an unavailable course 104ms
+
+ Test Files  7 passed (7)
+      Tests  46 passed (46)
+   Start at  15:42:43
+   Duration  5.06s (tests 41%, environment 33%, import 16%, transform 9%)
+
+exit=0
+$ npm run build
+
+> platform-frontend@0.1.0 build
+> npm run typecheck && vite build
+
+
+> platform-frontend@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p tsconfig.node.json
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1990 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:   0.28 kB
+dist/assets/index-DdyuWIUf.css   49.43 kB │ gzip:   9.24 kB
+dist/assets/index-B3Win1C2.js   500.79 kB │ gzip: 149.39 kB
+
+✓ built in 371ms
+exit=0
+$ npm audit
+found 0 vulnerabilities

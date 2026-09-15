@@ -1,0 +1,25 @@
+{
+  "doc_id": "NSSTA-DOC-001",
+  "local_file_path": "data/raw/nssta/NSSTA-DOC-001__Circular_NSSTA_Advance_Training_Calander_FY_25-26_.pdf",
+  "page_count": 9,
+  "pdf_info": {
+    "Producer": "iLovePDF",
+    "ModDate": "D:20250424054835Z"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 25922,
+  "pages_without_text": [
+    1
+  ],
+  "first_page_lines": [],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      3
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

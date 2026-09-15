@@ -1,0 +1,22 @@
+{
+  "doc_id": "NSSTA-DOC-006",
+  "local_file_path": "data/raw/nssta/NSSTA-DOC-006__announcements_1759312948330_57ae44c3-a0a7-43a2-9390-c78234a6ca74_OM_dated_29.09.2025_with_meta_data_sheet.pdf",
+  "page_count": 3,
+  "pdf_info": {},
+  "text_extractable": false,
+  "extracted_chars_total": 0,
+  "pages_without_text": [
+    1,
+    2,
+    3
+  ],
+  "first_page_lines": [],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

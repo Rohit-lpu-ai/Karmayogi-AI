@@ -1,0 +1,129 @@
+{
+  "dataset": "NSSTA TPAC-related references found in collected documents",
+  "status": "MACHINE_OBSERVED",
+  "method": "Case-sensitive search for 'TPAC' in pypdf-extracted text; context trimmed to <=220 characters around each hit.",
+  "note": "No standalone TPAC minutes or TPAC-issued document was found online. TPAC appears as a referenced body inside the documents below. Scanned documents (NSSTA-DOC-004, NSSTA-DOC-006) have no text layer and could not be searched.",
+  "links_recorded_not_downloaded": [
+    "NSSTA-LINK-001 (MoSPI RTI proactive disclosure compendium) - see nssta_metadata.json"
+  ],
+  "references": [
+    {
+      "doc_id": "NSSTA-DOC-002",
+      "document_title": "Training Calendar of NSSTA for FY 2021-22",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+      "page": 5,
+      "context": "ments in the subjects, within the overall broad recommendations of the Training Programme Approval Committee (TPAC), under the chairmanship of Director General (Coordination and Administration (C&A)), National Statistica"
+    },
+    {
+      "doc_id": "NSSTA-DOC-002",
+      "document_title": "Training Calendar of NSSTA for FY 2021-22",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+      "page": 20,
+      "context": "ersons/faculty. I f any request(s) are received from DES/Line Ministries/Departments during the year 2021-22, TPAC authorized NSSTA to honour the requests subject to the availability of hostel accommodation and or resour"
+    },
+    {
+      "doc_id": "NSSTA-DOC-002",
+      "document_title": "Training Calendar of NSSTA for FY 2021-22",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+      "page": 20,
+      "context": "ems, the training programmes offered at NSSTA may be borne by MoSPI if requested so by the State Governments. TPAC approved organizing at least 3 Demand/Request Based training programme at NSSTA subject to the availabili"
+    },
+    {
+      "doc_id": "NSSTA-DOC-002",
+      "document_title": "Training Calendar of NSSTA for FY 2021-22",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/Training%20Calendar%20of%20NSSTA%20for%20FY%202021-22.pdf",
+      "page": 27,
+      "context": "two TOT programmes for officials of State DES and faculty of State Training Institutes have been approved by TPAC to be organized during the FY 2021- 22 based on the nominations received from the various State Directora"
+    },
+    {
+      "doc_id": "NSSTA-DOC-003",
+      "document_title": "Training Calendar 2020-2021 (NSSTA)",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+      "page": 5,
+      "context": "ments in the subjects, within the overall broad recommendations of the Training Programme Approval Committee (TPAC), under the chairmanship of Director General (Social Statistics), Central Statistics Office, MoSPI. 4. Th"
+    },
+    {
+      "doc_id": "NSSTA-DOC-003",
+      "document_title": "Training Calendar 2020-2021 (NSSTA)",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+      "page": 18,
+      "context": "rsons/faculty. I f any request(s) are received from DES/Line Ministries/ Departments during the year 2020-21, TPAC authorized NSSTA to honour the requests subject to the availability of hostel accommodation and or resour"
+    },
+    {
+      "doc_id": "NSSTA-DOC-003",
+      "document_title": "Training Calendar 2020-2021 (NSSTA)",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+      "page": 18,
+      "context": "ems, the training programmes offered at NSSTA may be borne by MoSPI if requested so by the State Governments. TPAC approved organizing at least 3 Demand/Request Based training programme at NSSTA subject to the availabili"
+    },
+    {
+      "doc_id": "NSSTA-DOC-003",
+      "document_title": "Training Calendar 2020-2021 (NSSTA)",
+      "source_url": "https://mospi.gov.in/sites/default/files/main_menu/training/TrainingCalenderNSSTA2020-21.pdf",
+      "page": 24,
+      "context": "two TOT programmes for officials of State DES and faculty of State Training Institutes have been approved by TPAC to be organized during the FY 2020-21 based on the nominations received from the various State Directorat"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 2,
+      "context": "ing 34 Annexure III Proposed format of ISS probationary Training 36 Annexure IV Annexure V Recommendations of TPAC for 2016-17 and 2015-16 Acronyms and Abbreviations 38 53"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 6,
+      "context": "roup is ISS probationary Officers. 7. After NSSTA came into existence, a Training Program Approval Committee (TPAC) was constituted with the following Terms of Reference (as per reconstitution OM dated 2 nd January, 2012"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 7,
+      "context": "5 8. TPAC functions under the chairmanship of DG, Social Statistics and its members include senior ISS officers and"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 7,
+      "context": "external members from the academia. Every year, just before the start of the financial year, a meeting of the TPAC is conducted in which a detailed agenda notes prepared by NSSTA regarding all the training programmes to"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 7,
+      "context": "r is discussed threadbare and approvals/recommendations are given. In case any urgent/special issue comes up, TPAC meetings may also be conducted mid-way. Based on the approvals/recommendations 2 training programmes are"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 7,
+      "context": "reign National Statistics Offices (NSOs) These modules are elaborated in details in the following chapters. 2 TPAC Recommendations for the year 2016-17 and 2015-16 are given in Annexure IV."
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 40,
+      "context": "38 Annexure-IV TPAC Recommendations for the year 2016-17 Training Programmes for ISS Probationers Semester- I Sl. Modules Dur"
+    },
+    {
+      "doc_id": "NSSTA-DOC-005",
+      "document_title": "Reference Manual for Indian Statistical Service Probationary Training",
+      "source_url": "https://mospi.gov.in/sites/default/files/announcements/refdoc_nsc_nssta_final_8aug18.pdf",
+      "page": 47,
+      "context": "b training Remaining As per the posting period of order two years (Last one week will be at NSSTA for wrap up TPAC Recommendations for the year 2015-16 Training Programmes for ISS Probationers Sl. No . Modules Duration ("
+    }
+  ],
+  "human_verification": {
+    "verified": false,
+    "verified_by": null,
+    "verified_on": null,
+    "notes": null
+  }
+}

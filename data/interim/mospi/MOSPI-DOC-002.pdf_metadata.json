@@ -1,0 +1,39 @@
+{
+  "doc_id": "MOSPI-DOC-002",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-002__Final_Vol_I-HCES.pdf",
+  "page_count": 234,
+  "pdf_info": {
+    "CreationDate": "D:20220705151558+05'30'",
+    "Creator": "Nitro Pro 13 (13.31.0.605)",
+    "Producer": "iLovePDF",
+    "ModDate": "D:20230921055857Z"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 472994,
+  "pages_without_text": [],
+  "first_page_lines": [
+    "सरकार\u0005 \u0007योग के",
+    "लए    /  For Official Use",
+    "\u000fे\u0010 कम\u0012चा\u0014रय\u0015 के",
+    "लए अनुदेश",
+    "Instructions to Field Staff",
+    "खंड  /Volume-I"
+  ],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      3,
+      7,
+      27,
+      28,
+      32,
+      37,
+      41,
+      43
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

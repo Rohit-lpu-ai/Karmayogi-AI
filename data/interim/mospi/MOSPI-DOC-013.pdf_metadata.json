@@ -1,0 +1,35 @@
+{
+  "doc_id": "MOSPI-DOC-013",
+  "local_file_path": "data/raw/mospi/MOSPI-DOC-013__PLFS_changes_in_2025_Final.pdf",
+  "page_count": 51,
+  "pdf_info": {
+    "ModDate": "D:20250514154054+05'30'",
+    "Creator": "Nitro Pro 13 (13.31.0.605)",
+    "CreationDate": "D:20250514154054+05'30'"
+  },
+  "text_extractable": true,
+  "extracted_chars_total": 83236,
+  "pages_without_text": [
+    1,
+    30,
+    51
+  ],
+  "first_page_lines": [],
+  "keyword_pages": {
+    "TPAC": [],
+    "sampling": [
+      4,
+      7,
+      8,
+      9,
+      14,
+      15,
+      16,
+      19
+    ],
+    "base year": []
+  },
+  "usage_notice_snippets": [],
+  "extraction_tool": "pypdf",
+  "verification_status": "MACHINE_OBSERVED"
+}

@@ -1,0 +1,32 @@
+[project]
+name = "platform-backend"
+version = "0.1.0"
+description = "Backend (FastAPI modular monolith) for the competency intelligence and personalised learning platform"
+requires-python = ">=3.11,<3.12"
+# Every dependency maps to a documented purpose (docs/TECH_STACK.md §18).
+# Exact versions are pinned in requirements.lock.
+dependencies = [
+    "fastapi",            # HTTP API framework (TECH_STACK §4)
+    "uvicorn",            # ASGI server (TECH_STACK §4)
+    "pydantic>=2.7",      # request/response validation, SEC-015/016
+    "pydantic-settings",  # typed configuration validated at startup (SYSTEM_ARCHITECTURE §19)
+    "sqlalchemy>=2.0",    # ORM (TECH_STACK §4)
+    "alembic",            # schema migrations, agent rule 19
+    "psycopg[binary]>=3.2",  # PostgreSQL driver
+    "argon2-cffi",        # Argon2id password hashing (SEC-001, vertical slice 1)
+    "jsonschema",         # seed gate reuses scripts/validators (DATA_MODEL.md §15)
+    "python-dotenv",      # reads TEST_DATABASE_URL / DEMO_USER_PASSWORD from .env in tests and smoke script
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",  # backend test runner (TECH_STACK §13)
+    "httpx",   # FastAPI TestClient transport and live smoke script
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "db: requires a PostgreSQL database (TEST_DATABASE_URL)",
+]
+addopts = "-ra"
