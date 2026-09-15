@@ -1,0 +1,61 @@
+$ npm run typecheck
+
+> platform-frontend@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p tsconfig.node.json
+
+exit=0
+$ npm test
+
+ RUN  v5.0.0 C:/Users/asus/Desktop/KaramYogiAI/frontend
+
+ ✓ src/api/client.test.ts > api client > sends the CSRF token on state-changing requests only 8ms
+ ✓ src/api/client.test.ts > api client > turns problem responses into ApiError with code and correlation ID 2ms
+ ✓ src/api/client.test.ts > api client > exposes field errors from validation problems 1ms
+ ✓ src/api/client.test.ts > api client > reports network failures as NETWORK_ERROR 1ms
+ ✓ src/api/client.test.ts > api client > returns undefined for 204 responses 1ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > shows a neutral frame, not the signed-out layout, while the session is checked 135ms
+ ✓ src/pages/pages.test.tsx > routing > sends signed-out users to the login page 121ms
+ ✓ src/pages/pages.test.tsx > routing > sends learners without a job role to onboarding 75ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > renders landmarks, skip link, product name, navigation and the job role 91ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > hides learning navigation for roles that cannot take assessments 33ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > explains the demo environment in one expandable note 81ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > does not show the demo notice for non-synthetic accounts 24ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > opens the mobile menu as a dialog and closes it after navigating 197ms
+ ✓ src/pages/pages.test.tsx > routing > shows login errors from the API without revealing account details 414ms
+ ✓ src/pages/pages.test.tsx > dashboard > shows gaps with development wording and DEMO-labelled recommendations with reasons 67ms
+ ✓ src/pages/pages.test.tsx > dashboard > keeps other cards usable when one card fails 61ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > signs out from the account menu with the CSRF token 174ms
+ ✓ src/components/layout/AppShell.test.tsx > app shell > uses the signed-out layout without navigation on the login page 20ms
+ ✓ src/components/layout/AppShell.test.tsx > design system components > writes evidence strength as text 2ms
+ ✓ src/components/layout/AppShell.test.tsx > design system components > confirmation dialog confirms, cancels with Escape and returns focus to the trigger 132ms
+ ✓ src/pages/pages.test.tsx > assessment > renders delivered questions without keys and saves answers with the CSRF token 151ms
+ ✓ src/pages/pages.test.tsx > assessment > asks for confirmation and warns about unanswered questions before submitting 205ms
+
+ Test Files  3 passed (3)
+      Tests  22 passed (22)
+   Start at  12:29:05
+   Duration  3.65s (environment 55%, tests 25%, import 14%, transform 5%, setup 1%)
+
+exit=0
+$ npm run build
+
+> platform-frontend@0.1.0 build
+> npm run typecheck && vite build
+
+
+> platform-frontend@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p tsconfig.node.json
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 1968 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:   0.28 kB
+dist/assets/index-9_B7tDnP.css   33.82 kB │ gzip:   7.60 kB
+dist/assets/index-BEDsfTtX.js   373.43 kB │ gzip: 119.49 kB
+
+✓ built in 459ms
+exit=0
+$ npm audit
+found 0 vulnerabilities

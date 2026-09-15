@@ -1,0 +1,162 @@
+/*
+ * Design foundation (DEC-050, UI_UX_SPEC.md §5).
+ * Tokens are CSS variables with the roles from the spec; Tailwind utilities read them through @theme.
+ * Light theme only: dark mode is P2 (MVP-F3).
+ *
+ * Contrast (WCAG ratios, computed): foreground 17.8:1 on card, 16.6:1 on background; muted-foreground 7.7:1 on card,
+ * 6.8:1 on muted; primary 10.4:1 with white text; ring 6.5:1 on card; input border 3.3:1 on card (UI component >= 3:1);
+ * status text on its soft background: success 5.7, warning 6.7, danger 6.4, info 7.4, demo 8.6, ai 6.4;
+ * level-3 3.4:1 and level-5 8.1:1 on card. Levels 1-2 are fills behind text or next to a labelled track, never alone.
+ */
+@import "tailwindcss";
+@import "./legacy.css";
+
+:root {
+  --background: #f6f7f9;
+  --foreground: #101828;
+  --card: #ffffff;
+  --card-foreground: #101828;
+  --muted: #eef1f5;
+  --muted-foreground: #475467;
+  --border: #e3e8ef;
+  --input: #838ea0;
+  --ring: #3654c7;
+
+  --primary: #26378f;
+  --primary-hover: #1f2d76;
+  --primary-foreground: #ffffff;
+  --primary-soft: #eef1fb;
+  --primary-soft-foreground: #1f2d76;
+
+  --success: #1d6b40;
+  --success-soft: #e5f3eb;
+  --warning: #7a4a02;
+  --warning-soft: #fdf2dc;
+  --danger: #a12626;
+  --danger-soft: #fbe9e9;
+  --info: #1d4c86;
+  --info-soft: #e6effa;
+  --demo: #56288c;
+  --demo-soft: #f1e9fb;
+  --ai: #0d5f6b;
+  --ai-soft: #e2f3f5;
+
+  /* Competency level scale: sequential, colour-blind safe, never the only encoding (always with text). */
+  --level-1: #dbe4f5;
+  --level-2: #b1c4ea;
+  --level-3: #6a8acb;
+  --level-4: #4670c2;
+  --level-5: #244c9c;
+
+  --radius: 0.625rem;
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.04);
+  --shadow-raised: 0 4px 12px rgb(16 24 40 / 0.08), 0 2px 4px rgb(16 24 40 / 0.04);
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", "Noto Sans", "Noto Sans Devanagari", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
+
+  --sidebar-width: 16rem;
+  --content-max: 80rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-soft-foreground: var(--primary-soft-foreground);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-demo: var(--demo);
+  --color-demo-soft: var(--demo-soft);
+  --color-ai: var(--ai);
+  --color-ai-soft: var(--ai-soft);
+  --color-level-1: var(--level-1);
+  --color-level-2: var(--level-2);
+  --color-level-3: var(--level-3);
+  --color-level-4: var(--level-4);
+  --color-level-5: var(--level-5);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --animate-fade-in: fade-in 150ms ease-out;
+  --animate-slide-in-left: slide-in-left 200ms ease-out;
+  --animate-delayed-appear: delayed-appear 300ms step-end;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+/* Loading skeletons appear only after 300 ms, so fast responses do not flicker (UI_UX_SPEC.md §8.5). */
+@keyframes delayed-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4 {
+    @apply text-foreground;
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+  /* Radix and our components draw their own ring; avoid a double outline. */
+  [data-focus-ring]:focus-visible {
+    outline: none;
+  }
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+  code {
+    @apply font-mono text-[0.85em];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

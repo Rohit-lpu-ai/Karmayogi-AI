@@ -119,7 +119,8 @@ def available_assessments(db: DbSession, user: User) -> list[dict]:
     out = []
     for assessment in assessments:
         attempts = db.scalars(select(AssessmentAttempt).where(AssessmentAttempt.assessment_id == assessment.id,
-                                                              AssessmentAttempt.user_id == user.id)
+                                                              AssessmentAttempt.user_id == user.id,
+                                                              AssessmentAttempt.status != "voided")
                               .order_by(AssessmentAttempt.started_at.desc())).all()
         latest = attempts[0] if attempts else None
         out.append({
@@ -147,7 +148,8 @@ def start_or_resume(db: DbSession, user: User, assessment_id: uuid.UUID) -> tupl
                            "This baseline assessment belongs to a different job role.")
 
     existing = db.scalars(select(AssessmentAttempt).where(AssessmentAttempt.assessment_id == assessment.id,
-                                                          AssessmentAttempt.user_id == user.id)).all()
+                                                          AssessmentAttempt.user_id == user.id,
+                                                          AssessmentAttempt.status != "voided")).all()
     open_attempt = next((a for a in existing if a.status == "in_progress"), None)
     if open_attempt is not None:
         return open_attempt, False
@@ -200,8 +202,15 @@ def _competency_ref(db: DbSession, competency_id: uuid.UUID) -> dict:
     return competency_service.competency_ref(competency, framework)
 
 
+def _refuse_voided(attempt: AssessmentAttempt) -> None:
+    if attempt.status == "voided":
+        raise ProblemError(409, "ATTEMPT_VOIDED", "Attempt withdrawn",
+                           "This attempt was withdrawn by a demo reset. Start the assessment again.")
+
+
 def attempt_view(db: DbSession, user: User, attempt_id: uuid.UUID) -> dict:
     attempt = _owned_attempt(db, user, attempt_id)
+    _refuse_voided(attempt)
     assessment = db.get(Assessment, attempt.assessment_id)
     answers = _answers(db, attempt)
     questions = []
@@ -236,6 +245,7 @@ def attempt_view(db: DbSession, user: User, attempt_id: uuid.UUID) -> dict:
 def save_answer(db: DbSession, user: User, attempt_id: uuid.UUID, question_version_id: uuid.UUID,
                 selected_option_id: uuid.UUID | None) -> dict:
     attempt = _owned_attempt(db, user, attempt_id, lock=True)
+    _refuse_voided(attempt)
     if attempt.status != "in_progress":
         raise ProblemError(409, "ATTEMPT_NOT_IN_PROGRESS", "Attempt closed", "This attempt has already been submitted.")
     delivered = db.scalar(select(AttemptQuestion).where(AttemptQuestion.attempt_id == attempt.id,
@@ -263,6 +273,7 @@ def save_answer(db: DbSession, user: User, attempt_id: uuid.UUID, question_versi
 
 def submit(db: DbSession, user: User, attempt_id: uuid.UUID, actor_roles: Sequence[str]) -> AssessmentAttempt:
     attempt = _owned_attempt(db, user, attempt_id, lock=True)
+    _refuse_voided(attempt)
     if attempt.status != "in_progress":
         raise ProblemError(409, "ATTEMPT_NOT_IN_PROGRESS", "Attempt already submitted",
                            "This attempt has already been submitted.")
@@ -294,7 +305,8 @@ def submit(db: DbSession, user: User, attempt_id: uuid.UUID, actor_roles: Sequen
         competencies.add(version.competency_id)
 
     has_baseline = db.scalar(select(AssessmentAttempt.id).where(AssessmentAttempt.user_id == user.id,
-                                                                AssessmentAttempt.is_baseline))
+                                                                AssessmentAttempt.is_baseline,
+                                                                AssessmentAttempt.status != "voided"))
     attempt.status = "scored"
     attempt.submitted_at = now
     attempt.scored_at = now
@@ -313,6 +325,7 @@ def submit(db: DbSession, user: User, attempt_id: uuid.UUID, actor_roles: Sequen
 
 def result_view(db: DbSession, user: User, attempt_id: uuid.UUID) -> dict:
     attempt = _owned_attempt(db, user, attempt_id)
+    _refuse_voided(attempt)
     if attempt.status != "scored":
         raise ProblemError(409, "ATTEMPT_NOT_SCORED", "Result not available", "Submit the attempt to see its result.")
     assessment = db.get(Assessment, attempt.assessment_id)

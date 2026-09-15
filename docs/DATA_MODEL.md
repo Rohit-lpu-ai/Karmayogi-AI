@@ -3,8 +3,8 @@
 | Field | Value |
 |---|---|
 | **Version** | 1.0.0-draft |
-| **Status** | Partially implemented: migrations `0001`-`0003` (§18). Other entities are planned |
-| **Last updated** | 2026-09-14 |
+| **Status** | Partially implemented: migrations `0001`-`0004` (§18). Other entities are planned |
+| **Last updated** | 2026-09-15 |
 | **Scope** | Application database (PostgreSQL + pgvector). The statistical-observation schema for official data series remains in [../DATA_DICTIONARY.md](../DATA_DICTIONARY.md); canonical seed datasets are defined in [../schemas/canonical_datasets.schema.json](../schemas/canonical_datasets.schema.json). |
 | **Related** | [SYSTEM_ARCHITECTURE.md](SYSTEM_ARCHITECTURE.md) · [API_INTEGRATION_SPEC.md](API_INTEGRATION_SPEC.md) · [AI_SYSTEM_SPEC.md](AI_SYSTEM_SPEC.md) · [SECURITY_RESPONSIBLE_AI.md](SECURITY_RESPONSIBLE_AI.md) · [DATA_PROVENANCE.md](DATA_PROVENANCE.md) · [DECISIONS.md](DECISIONS.md) |
 
@@ -718,7 +718,7 @@ Called "Role" in the product brief. Named `JobRole` to avoid confusion with acce
 |---|---|---|---|
 | `assessment_id` | `uuid` → Assessment | Yes | |
 | `user_id` | `uuid` → User | Yes | |
-| `status` | `text` | Yes | `in_progress`, `submitted`, `scored`, `scoring_failed`, `expired` |
+| `status` | `text` | Yes | `in_progress`, `submitted`, `scored`, `scoring_failed`, `expired`, `voided` (local/ci demo reset only, DEC-052) |
 | `seed` | `bigint` | Yes | Randomisation seed (ASM-014) |
 | `started_at` | `timestamptz` | Yes | |
 | `expires_at` | `timestamptz` | No | |
@@ -727,8 +727,10 @@ Called "Role" in the product brief. Named `JobRole` to avoid confusion with acce
 | `score_total` | `numeric(6,5)` | No | |
 | `is_baseline` | `boolean` | Yes | |
 | `rescored_at` | `timestamptz` | No | |
+| `voided_at` | `timestamptz` | No | Set together with `void_reason` exactly when `status = 'voided'` (migration `0004`) |
+| `void_reason` | `text` | No | |
 
-- **Indexes:** `(user_id, assessment_id)`; partial unique `(user_id) WHERE is_baseline` (one baseline per user in MVP; per role in P1: Decision required).
+- **Indexes:** `(user_id, assessment_id)`; partial unique `(user_id) WHERE is_baseline AND status <> 'voided'` (one baseline per user in MVP; per role in P1: Decision required).
 - **Constraints:** Only the owner may write answers. The submit transition happens once.
 - **Tenant scope:** TS.
 - **Audit:** Submit, rescore.
@@ -1355,6 +1357,21 @@ Called "Role" in the product brief. Named `JobRole` to avoid confusion with acce
 
 ## 10. Platform, jobs, reports and integrations
 
+### SeedPackApplication
+
+- **Purpose:** Records which versioned DEMO seed pack has been applied to an organisation, so newer synthetic content reaches existing local databases (DEC-052). Local/ci data only.
+- **Fields:** SC, TS, plus:
+
+| Field | Type | Req | Notes |
+|---|---|---|---|
+| `pack_code` | `text` | Yes | `^[a-z0-9][a-z0-9-]*$`, e.g. `demo-1` |
+| `pack_version` | `integer` | Yes | `>= 1`; raised when a pack gains content |
+| `applied_at` | `timestamptz` | Yes | |
+| `summary` | `jsonb` | Yes | `action` (`applied`, `adopted`, `upgraded`), `version`, `created` counts |
+
+- **Constraints:** Unique `(organization_id, pack_code)`.
+- **Audit:** `seed.demo_pack.apply`.
+
 ### BackgroundJob
 
 - **Purpose:** Source of truth for job state (AUT-012).
@@ -1610,6 +1627,7 @@ Recorded as tables are implemented (agent rule 19). Migrations live in `backend/
 | `0001` | Extensions `pgcrypto`, `citext`. `vector` is deferred to Phase 5 (DEC-038) |
 | `0002` | Organization, Department, User, UserAccessRole, JobRole, CompetencyFramework, CompetencyCluster, Competency, CompetencyLevel, RoleCompetency, Topic, SourceRecord, Course, CourseTopic, CourseCompetency, AuditLog |
 | `0003` | Session, NoticeAcknowledgement, Question, QuestionVersion, QuestionOption, Assessment, AssessmentQuestion, AssessmentAttempt, AttemptQuestion, Answer, CompetencyEvidence, UserCompetency; append-only triggers; `course_competencies.method` gains `demo_seed` |
+| `0004` | SeedPackApplication; `assessment_attempts.status` gains `voided` with `voided_at`/`void_reason` (CHECK: both set exactly when voided); the one-baseline index ignores voided attempts. Downgrade turns voided attempts into `expired` without the baseline flag (DEC-052) |
 
 **Implemented as specified**, with these clarifications:
 - Constraint names follow a fixed naming convention (`pk_`, `fk_`, `uq_`, `ix_`, `ck_<table>_<name>`) so autogenerate and downgrades are stable.

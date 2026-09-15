@@ -74,7 +74,9 @@ describe("dashboard", () => {
     expect(within(recs).getByText("DEMO - Percentages refresher (synthetic course)")).toBeTruthy();
     expect(within(recs).getAllByText("DEMO - synthetic").length).toBeGreaterThan(0);
     expect(within(recs).getByText(/estimated level 1, required level 3/)).toBeTruthy();
-    expect(within(recs).getByText(/iGOT: not connected/)).toBeTruthy();
+    expect(within(recs).getByText(/iGOT Karmayogi\) are not connected/)).toBeTruthy();
+    expect(document.body.textContent).not.toMatch(/Rule:|rec-v1|gap_rule/);
+    expect(within(recs).queryByText("Reviewed")).toBeNull();
     expect(screen.getByRole("note").textContent).toContain("DEMO environment");
     expect(document.body.textContent).not.toMatch(/weak|failed|poor/i);
   });

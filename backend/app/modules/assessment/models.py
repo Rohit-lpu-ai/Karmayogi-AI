@@ -44,7 +44,8 @@ DIFFICULTIES = ("foundational", "intermediate", "advanced")
 ASSESSMENT_PURPOSES = ("pre", "practice", "topic", "competency")  # 'post' is P1, 'certification' P2
 FEEDBACK_POLICIES = ("score_only", "correctness", "correctness_and_explanations")
 ASSESSMENT_STATUSES = ("draft", "published", "retired")
-ATTEMPT_STATUSES = ("in_progress", "submitted", "scored", "scoring_failed", "expired")
+# "voided": withdrawn by a local/ci demo reset (DEC-052); the row and its evidence are kept, never deleted.
+ATTEMPT_STATUSES = ("in_progress", "submitted", "scored", "scoring_failed", "expired", "voided")
 
 
 class Question(StandardColumnsMixin, TenantMixin, RowVersionMixin, Base):
@@ -171,13 +172,19 @@ class AssessmentAttempt(StandardColumnsMixin, TenantMixin, RowVersionMixin, Base
     score_total: Mapped[Decimal | None] = mapped_column(Numeric(6, 5))
     is_baseline: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=sql_text("false"))
     rescored_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    voided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    void_reason: Mapped[str | None] = mapped_column(Text)
 
     __table_args__ = (
         CheckConstraint(check_in("status", ATTEMPT_STATUSES), name="status"),
+        CheckConstraint("(status = 'voided') = (voided_at IS NOT NULL AND void_reason IS NOT NULL)", name="voided_complete"),
         CheckConstraint("score_total IS NULL OR (score_total >= 0 AND score_total <= 1)", name="score_total_range"),
         CheckConstraint("status <> 'scored' OR (scored_at IS NOT NULL AND score_total IS NOT NULL)", name="scored_complete"),
         Index("ix_assessment_attempts_user_assessment", "user_id", "assessment_id"),
-        Index("uq_assessment_attempts_one_baseline", "user_id", unique=True, postgresql_where=sql_text("is_baseline")),
+        Index(
+            "uq_assessment_attempts_one_baseline", "user_id", unique=True,
+            postgresql_where=sql_text("is_baseline AND status <> 'voided'"),
+        ),
         Index(
             "uq_assessment_attempts_one_open", "user_id", "assessment_id", unique=True,
             postgresql_where=sql_text("status = 'in_progress'"),

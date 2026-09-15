@@ -22,11 +22,11 @@ export function ResultPage() {
       <section className="card" aria-labelledby="overall-title">
         <h2 id="overall-title">{data.assessment.title}</h2>
         <p>
-          Weighted score: <strong>{formatScore(data.score_total)}</strong>
+          Overall score: <strong>{formatScore(data.score_total)}</strong>
           {data.is_baseline ? <> · <StatusBadge tone="info">Baseline</StatusBadge></> : null}
         </p>
         <table>
-          <caption>Result by competency (method {data.competencies[0]?.method_version ?? "score-v1"})</caption>
+          <caption>Result by competency</caption>
           <thead>
             <tr>
               <th scope="col">Competency</th>
@@ -51,6 +51,17 @@ export function ResultPage() {
             ))}
           </tbody>
         </table>
+        <details>
+          <summary>How was this calculated?</summary>
+          <p>
+            Each question is marked correct or not correct by fixed rules (no AI). Harder questions count more. Your score for
+            a competency is the share of those weighted marks you earned, and the level comes from provisional thresholds.
+          </p>
+          <p className="muted small">
+            Method {data.competencies[0]?.method_version ?? "score-v1"}; weights: foundational 1.0, intermediate 1.5, advanced
+            2.0. Evidence strength depends on how many questions measured the competency.
+          </p>
+        </details>
         <Link className="button" to="/">
           See gaps and recommended learning
         </Link>

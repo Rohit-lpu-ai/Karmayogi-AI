@@ -26,7 +26,7 @@ Architecture decision records in lightweight form.
 
 | ID | Title | Status | Blocks |
 |---|---|---|---|
-| DEC-001 | Product name | Decision required | Branding, UI copy |
+| DEC-001 | Product name | Decision required (interim working name: DEC-053) | Branding, UI copy |
 | DEC-002 | Modular monolith architecture | Proposed | Phase 2 |
 | DEC-003 | PostgreSQL with pgvector as the single data store | Proposed | Phase 2 |
 | DEC-004 | Background job system: Celery + Redis | Proposed | Phase 2 |
@@ -73,7 +73,12 @@ Architecture decision records in lightweight form.
 | DEC-045 | Synthetic DEMO content seed for vertical slice 1 | Proposed (local/ci only; owner confirmation needed beyond local) | Pilot use of the slice |
 | DEC-046 | Demo question origin and deferred AI/citation columns | Proposed | Phase 6 |
 | DEC-047 | Vertical slice 1 simplifications | Proposed | Phases 3, 4, 7 completion |
-| DEC-048 | Frontend stack for vertical slice 1 | Proposed | Phase 8 |
+| DEC-048 | Frontend stack for vertical slice 1 | Superseded in part by DEC-050 (styling) | Phase 8 |
+| DEC-049 | Synthetic in-app course content (modules, lessons, learning player) | Accepted by product owner 2026-09-15 (local/ci DEMO content only) | Course experience |
+| DEC-050 | UI foundation: Tailwind CSS + shadcn/ui, migrated screen by screen | Accepted by product owner 2026-09-15 | Design foundation |
+| DEC-051 | Descriptive course difficulty and learning objectives (display and filtering only) | Accepted by product owner 2026-09-15 | Course catalogue |
+| DEC-052 | Versioned DEMO seed packs and local demo reset by voiding | Accepted by product owner 2026-09-15 (local/ci only) | Richer demo content |
+| DEC-053 | Interim product name "Competency Learning Platform" | Accepted by product owner 2026-09-15 (until DEC-001) | — |
 
 ---
 
@@ -431,3 +436,43 @@ Architecture decision records in lightweight form.
 
 - **Status:** Proposed.
 - **Decision:** `frontend/` uses React 18, TypeScript 5, Vite 8, React Router 7, Vitest 5, Testing Library and jsdom. Tailwind CSS, shadcn/ui, TanStack Query, React Hook Form and i18next (TECH_STACK.md §3) are **not** adopted yet, to keep the slice small; styling uses plain CSS custom properties that mirror UI_UX_SPEC.md §5 tokens. Initial React Router 6 and Vitest 3 selections had moderate advisories in `npm audit` and were replaced by the fixed majors (audit: 0 vulnerabilities). Revisit the full stack at Phase 8 start.
+
+### DEC-049 Synthetic in-app course content (modules, lessons, learning player)
+
+- **Status:** Accepted by the product owner on 2026-09-15. Local and ci DEMO content only.
+- **Context:** No document specified in-app course content. Courses are catalogue entries (MVP-17, S-09), learning material is uploaded documents (MVP-09), and progress is self-reported items (MVP-24). The product upgrade brief asks for a course detail page, modules, lessons and a learning player so the journey does not stop at recommendations. This is new scope (conflict C-3 in `docs/evidence/implementation/product-upgrade-baseline.md`).
+- **Decision:** Build course structure (modules, lessons), a learning player and lesson completion using synthetic DEMO content delivered by a versioned demo pack (DEC-052).
+- **Constraints:**
+  - every synthetic course, module and lesson is labelled DEMO/synthetic in the API (`is_demo`) and the UI; nothing is presented as approved, official or iGOT content;
+  - content is kept separate from structure so lesson bodies can later be replaced by references to reviewed `LearningMaterial` records, approved government or iGOT content, or cited retrieval results without changing progress records;
+  - progress follows the specified `ProgressRecord`/`LearningActivity` entities (MVP-24) rather than ad-hoc tables;
+  - no streaks, gamification, certificates, reassessment, time-spent metrics or other P1/P2 features (MVP_SCOPE.md §5).
+- **Consequences:** The schema migration is proposed in writing before implementation. MVP_SCOPE.md is not changed; this record is the approval.
+
+### DEC-050 UI foundation: Tailwind CSS + shadcn/ui
+
+- **Status:** Accepted by the product owner on 2026-09-15. Supersedes the styling part of DEC-048.
+- **Decision:** Adopt Tailwind CSS (v4, Vite plugin) and shadcn/ui-style components copied into `frontend/src/components/ui/` on Radix primitives, as proposed in TECH_STACK.md §3 and UI_UX_SPEC.md §5 and §7. Design tokens are CSS variables with the roles in UI_UX_SPEC.md §5.
+- **Migration rule:** one screen at a time; existing page tests stay green at every step; no full rewrite. Screens not yet migrated keep the legacy stylesheet.
+- **Dependencies:** each package is listed with its purpose in TECH_STACK.md §3 (admission rules §18).
+
+### DEC-051 Descriptive course difficulty and learning objectives
+
+- **Status:** Accepted by the product owner on 2026-09-15.
+- **Decision:** Courses gain a descriptive `difficulty` and `learning_objectives` for display and catalogue filtering.
+- **Constraint:** `rec-v1` ranking does not read either field. Using difficulty in ranking ("difficulty logic", P1) requires a separate, documented and approved decision and a new rule version. A test asserts that ranking is unchanged by difficulty.
+
+### DEC-052 Versioned DEMO seed packs and local demo reset
+
+- **Status:** Accepted by the product owner on 2026-09-15. Local and ci only.
+- **Context:** The DEC-045 seed is idempotent as a unit, so richer synthetic content could not reach existing databases (finding F-03). Each account can take the baseline once and there was no reset (F-02).
+- **Decision (packs):** `backend/app/seed/demo_packs.py` registers ordered packs with a code and version. Table `seed_pack_applications` (migration `0004`) stores the applied version per organisation. `python -m app.seed ... --demo-content` applies missing or outdated packs; pack `apply` functions must be additive. A database that ran the pre-registry seed is adopted (`action: adopted`) without re-creating anything. Every application is audited (`seed.demo_pack.apply`).
+- **Decision (reset):** `python -m app.seed.demo_reset --org-code ... (--email ... | --all-synthetic) [--clear-job-role]`, or `reset-demo.bat`. For synthetic users only: attempts become `voided` with `voided_at`/`void_reason`; evidence rows of those attempts are voided through their existing void-once columns; derived estimates (`user_competencies`) are removed; optionally the job role is cleared. Nothing is deleted from the attempt history or the evidence ledger. Notice acknowledgements stay (append-only). One audit record per user (`seed.demo_reset`).
+- **Effects on the API:** voided attempts are ignored when listing, starting and baseline-flagging; reading, answering or submitting a voided attempt returns 409 `ATTEMPT_VOIDED`. The one-baseline index ignores voided attempts, so a reset learner receives a new baseline. The voided attempt keeps its original `is_baseline` value as history.
+- **Not a product feature:** reassessment remains P1. The reset is refused outside local/ci and for non-synthetic accounts.
+
+### DEC-053 Interim product name
+
+- **Status:** Accepted by the product owner on 2026-09-15, until DEC-001 is decided.
+- **Decision:** The UI uses the neutral working name "Competency Learning Platform", defined once in `frontend/src/config/product.ts` so it can be replaced in one place.
+- **Constraints:** no official government, Mission Karmayogi, Karmayogi Bharat, MoSPI or NSSTA names as product branding, no emblems or logos, no claims of official endorsement (UI_UX_SPEC.md §1).

@@ -1,0 +1,18 @@
+$ dev-port.ps1 -Port 8001 -Kind backend   (this project's API)
+exit=10
+$ dev-port.ps1 -Port 5173 -Kind frontend  (this project's Vite)
+exit=10
+$ dev-port.ps1 -Port 5173 -Kind backend   (wrong kind: Vite is not the API)
+
+Port 5173 is held by a process that is NOT a working backend for this project
+(it may be another app, or a crashed/stale server that no longer answers):
+exit=20
+$ dev-port.ps1 -Port 8000 -Kind backend   (stale uvicorn from global Python, Bound, not serving)
+
+Port 8000 is held by a process that is NOT a working backend for this project
+(it may be another app, or a crashed/stale server that no longer answers):
+  PID 11160  python3.11.exe  [Bound]
+  Command: "C:\Users\asus\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe"  "C:\Users\asus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\uvicorn.exe" app.main:app --reload
+exit=20
+$ dev-port.ps1 -Port 8099 -Kind backend   (free port)
+exit=0

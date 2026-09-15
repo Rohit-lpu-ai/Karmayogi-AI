@@ -63,6 +63,25 @@
 | **i18next / react-i18next** (proposed) | Externalised strings for ACC-003; Hindi in P1 | FormatJS (react-intl), Lingui | Runtime loading of catalogues | High | Low |
 | **OpenAPI TypeScript client generation** (tool TBD, e.g. `openapi-typescript`) | Keeps frontend types in sync with FastAPI's OpenAPI | Hand-written types | Generation step in CI | High | Low |
 
+**Admitted for the product upgrade (2026-09-15, DEC-050, DEC-053).** Licences checked in `node_modules/*/package.json`; versions pinned in `frontend/package-lock.json`; `npm audit`: 0 vulnerabilities.
+
+| Package | Version | Licence | Purpose (feature) |
+|---|---|---|---|
+| `tailwindcss`, `@tailwindcss/vite` | 4.3.3 | MIT | Design tokens and utility styling (MVP-F3, UI_UX_SPEC.md §5) |
+| `@radix-ui/react-dialog` | 1.1.23 | MIT | Accessible dialogs and the mobile navigation drawer: focus trap, Esc, focus return (MVP-F4, §6) |
+| `@radix-ui/react-dropdown-menu` | 2.1.24 | MIT | Account menu with keyboard support |
+| `@radix-ui/react-tabs` | 1.1.21 | MIT | Tabs pattern (S-16 progress tabs and later screens) |
+| `@radix-ui/react-progress` | 1.1.16 | MIT | Progress bars with `aria-valuetext` |
+| `@radix-ui/react-collapsible` | 1.1.20 | MIT | Progressive disclosure ("How was this calculated?") |
+| `@radix-ui/react-slot` | 1.3.3 | MIT | `asChild` composition (router links styled as buttons) |
+| `class-variance-authority` | 0.7.1 | Apache-2.0 | Component variants (shadcn/ui convention) |
+| `clsx`, `tailwind-merge` | 2.1.1, 3.7.0 | MIT | Class name composition |
+| `lucide-react` | 1.46.0 | ISC | Icons (decorative, `aria-hidden`; text always present) |
+| `sonner` | 2.0.8 | MIT | Toasts with polite announcements (UI_UX_SPEC.md §8.8) |
+| `@types/node` (dev) | 24.13.4 | MIT | Types for `vite.config.ts` only (separate `tsconfig.node.json`) |
+
+shadcn/ui is not a package: its component patterns are copied into `frontend/src/components/ui/` and owned by the project. Not adopted yet: TanStack Query, React Hook Form + Zod, Recharts, i18next, OpenAPI client generation, Playwright, axe-core. Each is added with its screen or test phase and recorded here.
+
 ## 4. Backend
 
 | Technology | Why selected | Alternatives | Trade-offs | MVP suitability | Migration risk |

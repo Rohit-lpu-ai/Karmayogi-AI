@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import type { Gaps, Profile, Recommendations } from "../api/types";
 import { useApi } from "../api/useApi";
 import { useAuth } from "../auth/AuthContext";
-import { DemoBadge, EmptyState, ErrorState, LoadingState, StatusBadge } from "../components/States";
+import { DemoBadge, EmptyState, ErrorState, LoadingState } from "../components/States";
 import { bandLabel, formatScore, gapStatusLabel } from "./format";
 
 export function DashboardPage() {
@@ -82,7 +82,6 @@ function GapsCard() {
               ))}
             </tbody>
           </table>
-          <p className="muted small">Rule: {gaps.data.gap_rule}.</p>
         </>
       ) : null}
     </section>
@@ -110,7 +109,7 @@ function RecommendationsCard() {
               </h3>
               <p className="muted small">
                 {item.course.provider_organisation}
-                {item.course.duration_days ? ` · ${item.course.duration_days} day(s)` : ""} · <StatusBadge tone="neutral">Reviewed</StatusBadge>
+                {item.course.duration_days ? ` · ${item.course.duration_days} day(s)` : ""}
               </p>
               <p className="why">Recommended because:</p>
               <ul>
@@ -120,7 +119,7 @@ function RecommendationsCard() {
                       {reason.competency_name}: estimated level {reason.estimated}, required level {reason.required}
                     </li>
                   ) : (
-                    <li key={index}>Approved {reason.relevance} match for that competency</li>
+                    <li key={index}>{reason.relevance === "primary" ? "Focuses on" : "Also covers"} that competency</li>
                   ),
                 )}
               </ul>
@@ -131,7 +130,16 @@ function RecommendationsCard() {
       {recs.data && recs.data.gaps_without_approved_content.length > 0 ? (
         <p className="muted small">No approved content yet for: {recs.data.gaps_without_approved_content.join(", ")}.</p>
       ) : null}
-      {recs.data ? <p className="muted small">iGOT: not connected. {recs.data.igot.reason}.</p> : null}
+      {recs.data ? (
+        <details>
+          <summary>How are recommendations chosen?</summary>
+          <p>
+            Courses are suggested for competencies where your estimated level is below the level your role requires. Only
+            courses linked to that competency are considered, and larger gaps come first. No AI is used.
+          </p>
+          <p className="muted small">External course catalogues (such as iGOT Karmayogi) are not connected to this platform.</p>
+        </details>
+      ) : null}
     </section>
   );
 }
@@ -140,7 +148,11 @@ function ProfileCard() {
   const profile = useApi<Profile>("/api/v1/me/competency-profile");
   return (
     <section className="card" aria-labelledby="profile-title">
-      <h2 id="profile-title">How your estimates were calculated</h2>
+      <h2 id="profile-title">How was this calculated?</h2>
+      <p className="muted small">
+        Estimates come from your baseline assessment using fixed scoring rules (no AI). They are provisional development
+        guidance, not an appraisal.
+      </p>
       {profile.loading ? <LoadingState label="Loading estimates" /> : null}
       {profile.error ? <ErrorState error={profile.error} onRetry={profile.reload} /> : null}
       {profile.data && profile.data.items.length === 0 ? <EmptyState title="No estimates yet." /> : null}
@@ -149,15 +161,19 @@ function ProfileCard() {
           <summary>
             {item.competency.name}: {formatScore(item.score)}, level {item.level_number ?? "not available"}
           </summary>
-          <p>{item.explanation.formula}.</p>
-          <p className="muted small">
-            Method {item.method_version} · thresholds {item.explanation.thresholds_status} · {item.explanation.band_rule}
-          </p>
           <ul>
             {item.explanation.limitations.map((line) => (
               <li key={line}>{line}</li>
             ))}
           </ul>
+          <details className="methodology">
+            <summary>Scoring method details</summary>
+            <p className="muted small">{item.explanation.formula}.</p>
+            <p className="muted small">
+              Method {item.method_version} · thresholds {item.explanation.thresholds_status} · evidence rule:{" "}
+              {item.explanation.band_rule}
+            </p>
+          </details>
         </details>
       ))}
     </section>

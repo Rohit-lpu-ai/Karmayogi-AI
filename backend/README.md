@@ -21,7 +21,7 @@ backend/
 │   │   ├── content/       SourceRecord
 │   │   ├── recommendation/ Course, CourseTopic, CourseCompetency
 │   │   └── governance/    AuditLog, record_audit()
-│   └── seed/              canonical dataset import (python -m app.seed)
+│   └── seed/              canonical dataset import (python -m app.seed), demo packs, demo reset
 ├── migrations/            Alembic (the only way to change the schema)
 └── tests/                 unit/ (no database) and db/ (PostgreSQL)
 ```
@@ -43,7 +43,19 @@ python -m venv .venv
 .venv/Scripts/python scripts/smoke_vertical_slice.py   # optional live journey (uses training-manager01 by default)
 ```
 
-The demo users are synthetic (`*@example.invalid`) and get the password `DEMO_USER_PASSWORD` from `.env`. `--demo-content` creates the labelled DEMO framework, job role, assessment and courses (local/ci only, DEC-045). The frontend is in `../frontend` (see its README).
+The demo users are synthetic (`*@example.invalid`) and get the password `DEMO_USER_PASSWORD` from `.env`. `--demo-content` applies the versioned DEMO content packs (local/ci only, DEC-045, DEC-052). The frontend is in `../frontend` (see its README).
+
+On Windows, `start-dev.bat` in the repository root does all of this (database, migrations, backend, frontend) and `stop-dev.bat` stops the servers. It checks ports 8000 and 5173 first: a working server of this project is reused, anything else holding the port (including a crashed `uvicorn --reload`) is named and you are asked before it is stopped. Use another backend port with `set BACKEND_PORT=8010` before running it; the Vite proxy follows through `API_PROXY_TARGET`.
+
+## Demo packs and reset (local/ci only)
+
+| Task | Command (from `backend/`) |
+|---|---|
+| Apply missing or newer DEMO packs | `.venv/Scripts/python -m app.seed --org-code local-demo --org-name "Local development organisation" --demo-users --demo-content` |
+| Reset one synthetic account so it can take the baseline again | `.venv/Scripts/python -m app.seed.demo_reset --org-code local-demo --email learner01@example.invalid` |
+| Reset every synthetic account (and replay onboarding) | `.venv/Scripts/python -m app.seed.demo_reset --org-code local-demo --all-synthetic --clear-job-role` (or `reset-demo.bat`) |
+
+Packs are listed in `app/seed/demo_packs.py`; `seed_pack_applications` records the version applied per organisation. A pack's `apply` must be additive, and raising its `version` makes the next seed run apply it again. The reset never deletes history: attempts become `voided`, their evidence rows are voided, current estimates are removed and the action is audited. It refuses non-synthetic accounts and any environment other than `local`/`ci` (DEC-052).
 
 ## Tests
 

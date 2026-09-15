@@ -48,6 +48,21 @@ This document was **missing** when implementation started, although PRD, MVP_SCO
 | 13 | P1 roadmap | PRD-FR-101 to 115 | **Not authorised** |
 | 14 | P2 roadmap | PRD-FR-201 to 206 | **Not authorised** |
 
+### Product upgrade track (approved 2026-09-15)
+
+The product owner approved a product and UX upgrade of the vertical slice ([evidence/implementation/product-upgrade-baseline.md](evidence/implementation/product-upgrade-baseline.md)) with decisions DEC-049 to DEC-053. It advances Phases 7 and 8 and adds approved new scope (synthetic in-app course content, DEC-049).
+
+| Step | Content | Status |
+|---|---|---|
+| A1 Critical fixes | Launcher port detection and proxy target; versioned demo packs; local demo reset; developer details hidden from learners; stale documents updated | Done (uncommitted) |
+| A2 Design foundation and app shell | Tailwind + shadcn/ui tokens and components; app shell; dev component gallery | Done (uncommitted) |
+| B | Navigation structure, onboarding stepper, assessment and result redesign | Next |
+| C | Dashboard, competency profile, gap analysis (`/me/dashboard`, `/me/attempts`) | Planned |
+| D | Richer synthetic demo pack `demo-2`; course catalogue and detail (difficulty and objectives, DEC-051) | Planned |
+| E | Lessons, learning player, progress (DEC-049; migration proposed first) | Planned |
+| F | AI/RAG provider interfaces with local fakes; official data integration plan (documentation) | Planned |
+| G | Playwright + axe journeys, responsive and keyboard checks | Planned |
+
 ## 3. Mapping to the execution brief
 
 The implementation brief of 2026-09-14 lists ten execution phases. They map onto this roadmap as follows. Work follows the brief's order, and progress is reported against both numbers.

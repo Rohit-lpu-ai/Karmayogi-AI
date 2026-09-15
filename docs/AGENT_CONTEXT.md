@@ -107,7 +107,7 @@ Detail and evidence: [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md).
 | iGOT client interface | Implemented (`clients/igot_client.py`) |
 | iGOT client | Mocked (`clients/mock_igot_client.py`) |
 | Backend application | Phase 2 complete (local); vertical slice 1 implemented |
-| Frontend application | Partially implemented (vertical slice 1: login, onboarding, assessment, result, dashboard) |
+| Frontend application | Partially implemented (vertical slice 1 screens inside the new Tailwind/shadcn app shell; screens migrate one at a time, DEC-050) |
 | Authentication, RBAC, audit | Partially implemented (sessions, CSRF, lockout, role guard for slice endpoints) |
 | Competency engine, assessments | Partially implemented (deterministic `score-v1`, gaps; DEMO content only) |
 | Content pipeline, RAG, AI providers | Missing |
@@ -123,3 +123,5 @@ Detail and evidence: [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md).
 | Apply migrations | `cd backend && alembic upgrade head` |
 | Seed with demo content (local) | `cd backend && .venv/Scripts/python -m app.seed --org-code local-demo --org-name "Local development organisation" --demo-users --demo-content` |
 | Frontend tests and build | `cd frontend && npm test && npm run build` |
+| Start everything locally (Windows) | `start-dev.bat` (stop: `stop-dev.bat`) |
+| Reset synthetic accounts (local) | `cd backend && .venv/Scripts/python -m app.seed.demo_reset --org-code local-demo --all-synthetic` |

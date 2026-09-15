@@ -109,6 +109,7 @@ Implemented in `backend/app/core/errors.py` and `backend/app/core/middleware.py`
 | 409 | `ASSESSMENT_HAS_NO_QUESTIONS` | Published assessment has no approved questions |
 | 409 | `ATTEMPT_NOT_IN_PROGRESS` | Answer or submit on a submitted attempt |
 | 409 | `ATTEMPT_NOT_SCORED` | Result requested before submission |
+| 409 | `ATTEMPT_VOIDED` | The attempt was withdrawn by a local/ci demo reset (DEC-052); start the assessment again |
 | 422 | `INVALID_OPTION` | Selected option does not belong to the question |
 
 Every response, including errors, carries `X-Correlation-ID` and the security headers `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'` and `Cache-Control: no-store`.

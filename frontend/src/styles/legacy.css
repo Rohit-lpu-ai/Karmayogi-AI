@@ -1,0 +1,59 @@
+/*
+ * Legacy vertical-slice styles (DEC-048), kept only for screens not yet migrated to the design system (DEC-050).
+ * Scoped under .legacy and placed in the components layer, so Tailwind utilities still win and nothing leaks
+ * into migrated screens. Delete a block when the last screen using it is migrated.
+ */
+@layer components {
+  .legacy {
+    h1 { font-size: 1.875rem; font-weight: 700; margin: 0 0 0.5rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 0 0 0.25rem; }
+    p { margin: 0.5rem 0; }
+    ul, ol { padding-left: 1.25rem; margin: 0.5rem 0; }
+    ul { list-style: disc; }
+    ol { list-style: decimal; }
+
+    > * + *, .stack > * + * { margin-top: 1rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); align-items: start; }
+    .row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow-card); }
+    .card.narrow { max-width: 420px; margin: 2rem auto; }
+    .muted { color: var(--muted-foreground); }
+    .small { font-size: 0.875rem; }
+    .notice { background: var(--info-soft); color: var(--info); padding: 0.5rem 0.75rem; border-radius: calc(var(--radius) - 2px); }
+
+    label { display: block; font-weight: 500; margin: 0.75rem 0 0.25rem; }
+    input[type="email"], input[type="password"] { width: 100%; padding: 0.6rem; border: 1px solid var(--input); border-radius: calc(var(--radius) - 2px); font: inherit; background: var(--card); }
+    label.radio, label.checkbox { display: flex; gap: 0.5rem; align-items: flex-start; font-weight: 400; min-height: 44px; padding: 0.4rem 0; cursor: pointer; }
+    input[type="radio"], input[type="checkbox"] { margin-top: 0.3rem; accent-color: var(--primary); }
+    fieldset { border: 0; padding: 0; margin: 0; }
+    legend { font-weight: 500; }
+
+    .button { display: inline-flex; align-items: center; margin-top: 0.75rem; padding: 0.6rem 1rem; border-radius: calc(var(--radius) - 2px); border: 1px solid var(--primary); background: var(--primary); color: var(--primary-foreground); font: inherit; font-weight: 500; text-decoration: none; cursor: pointer; min-height: 44px; }
+    .button:hover { background: var(--primary-hover); }
+    .button:disabled { opacity: 0.55; cursor: not-allowed; }
+    .button-secondary { background: var(--card); color: var(--primary); margin-top: 0; }
+    .button-secondary:hover { background: var(--primary-soft); }
+    a:not(.button) { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; }
+    caption { text-align: left; font-weight: 500; padding-bottom: 0.25rem; }
+    th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+
+    .questions { list-style: none; padding: 0; }
+    .questions > li + li { margin-top: 1rem; }
+    .question-number { display: block; font-size: 0.875rem; color: var(--muted-foreground); }
+    .recommendations > li + li { margin-top: 1rem; }
+    .why { margin: 0.25rem 0 0; font-weight: 500; }
+    details { border-top: 1px solid var(--border); padding: 0.5rem 0; }
+    details.methodology { border-top: 0; padding: 0; }
+    summary { cursor: pointer; font-weight: 500; color: var(--primary); }
+    .save-status { min-height: 1.5rem; margin: 0; color: var(--muted-foreground); }
+
+    @media (max-width: 640px) {
+      /* Tables scroll inside their own box instead of widening the page (UI_UX_SPEC.md §4). */
+      table { display: block; overflow-x: auto; }
+      th, td { padding: 0.4rem 0.25rem; font-size: 0.9rem; min-width: 6rem; }
+    }
+  }
+}

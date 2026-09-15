@@ -6,6 +6,9 @@ Usage (from ``backend/``, after ``alembic upgrade head``):
 
 Runs the canonical dataset validator first and refuses an INVALID verdict.
 Idempotent: running it again creates nothing. All writes share one transaction.
+
+``--demo-content`` applies every registered, versioned DEMO pack that is missing or outdated
+(``app/seed/demo_packs.py``, DEC-052). Reset synthetic accounts with ``python -m app.seed.demo_reset``.
 """
 
 from __future__ import annotations
@@ -18,7 +21,7 @@ from app.core.config import get_settings
 from app.core.db import get_sessionmaker
 from app.core.logging import configure_logging
 from app.seed.canonical import SeedRefused, load_canonical_bundle
-from app.seed.demo_content import seed_demo_content
+from app.seed.demo_packs import apply_demo_packs
 from app.seed.demo_users import seed_demo_users
 from app.seed.importer import get_or_create_organization, import_canonical_datasets
 
@@ -29,7 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--org-name", required=True)
     parser.add_argument("--demo-users", action="store_true", help="Create synthetic demo accounts (local/ci/staging only)")
     parser.add_argument("--demo-content", action="store_true",
-                        help="Create the DEMO framework, job role, assessment and courses (local/ci only; needs --demo-users)")
+                        help="Apply the versioned DEMO content packs (local/ci only; needs --demo-users)")
     args = parser.parse_args(argv)
 
     settings = get_settings()
@@ -46,7 +49,7 @@ def main(argv: list[str] | None = None) -> int:
             password = settings.demo_user_password.get_secret_value() if settings.demo_user_password else None
             summary["demo_users_created"] = dict(seed_demo_users(session, org, settings.app_env, password))
         if args.demo_content:
-            summary["demo_content_created"] = dict(seed_demo_content(session, org, settings.app_env))
+            summary["demo_packs"] = apply_demo_packs(session, org, settings.app_env)
         session.commit()
     except SeedRefused as exc:
         session.rollback()

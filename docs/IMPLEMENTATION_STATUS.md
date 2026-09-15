@@ -2,9 +2,9 @@
 
 | Field | Value |
 |---|---|
-| **Version** | 1.2.0 (after vertical slice 1) |
+| **Version** | 1.3.0 (after product upgrade phase A: critical fixes, design foundation, app shell) |
 | **Last verified** | 2026-09-15 |
-| **Verified on** | Branch `Diw`, HEAD `35d10a9`. **Everything after that commit is uncommitted**: the documentation package (staged/modified), `backend/`, `deploy/`, `frontend/` (untracked) |
+| **Verified on** | Branch `Diw`, HEAD `0b2f86d` (vertical slice 1 committed). Product upgrade phase A changes are **uncommitted** in the working tree |
 | **Related** | [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [AGENT_CONTEXT.md](AGENT_CONTEXT.md) · [FEATURE_CATALOG.md](FEATURE_CATALOG.md) · [DECISIONS.md](DECISIONS.md) |
 
 ## Status vocabulary
@@ -70,6 +70,23 @@ Full command output: [evidence/implementation/vertical-slice-1/](evidence/implem
 | Log hygiene | grep of the API log | 0 occurrences of the demo password, session cookie or email addresses | `13` |
 | Browser walkthrough | — | **Not performed** (no browser automation available in this session) | — |
 
+## 1c. Verification after product upgrade phase A (2026-09-15)
+
+Baseline audit: [evidence/implementation/product-upgrade-baseline.md](evidence/implementation/product-upgrade-baseline.md). Phase A evidence and screenshots: [evidence/implementation/product-upgrade-phase-a/](evidence/implementation/product-upgrade-phase-a/).
+
+| Check | Command | Result | Evidence |
+|---|---|---|---|
+| Backend tests | `cd backend && .venv/Scripts/python -m pytest -q` | **180 passed** (167 before + 13 for demo packs and reset), 0 failed | `03` |
+| Migration `0004` | `alembic upgrade head`, `alembic check`, `alembic downgrade 0003`, `alembic upgrade head` | Applied, reversible, no drift. Note: the downgrade step, run on the dev database, turned one voided demo attempt into `expired` as designed | `04` |
+| Phase 1 tests | `python -m unittest discover -s tests -t .` | 35 passed | `05` |
+| Frontend | `npm run typecheck`, `npm test`, `npm run build`, `npm audit` | 0 type errors; **22 passed** (12 before + 10 shell/component tests); build JS 373 kB (119 kB gzip, was 203/66 kB: Radix, sonner, lucide), CSS 34 kB; 0 vulnerabilities | `06` |
+| Launcher port detection | `deploy/local/dev-port.ps1` on this project's API, this project's Vite, the wrong kind, a stale `uvicorn --reload` in `Bound` state, and a free port | exit 10, 10, 20, 20, 0 as designed | `01` |
+| Journey through the Vite proxy with `API_PROXY_TARGET` | `SMOKE_BASE_URL=http://localhost:5173 scripts/smoke_vertical_slice.py department-admin01@example.invalid` (backend on 8001) | Full journey passes; the account had been reset, so the reset allowing a new baseline is shown live | `02` |
+| Proxy with backend down | `API_PROXY_TARGET=http://127.0.0.1:8999` + request to `/api/v1/auth/session` | 503 `application/problem+json`, code `BACKEND_UNAVAILABLE` | this table |
+| Demo packs on the dev database | `python -m app.seed ... --demo-users --demo-content` | `demo-1` adopted, nothing re-created | this table |
+| Screenshots | headless Microsoft Edge via DevTools protocol (the Claude-in-Chrome extension was not connected) | 9 screenshots: login desktop/360 px, dashboard desktop/360 px, demo notice, account menu, mobile menu, assessment, design system | `screenshots/` |
+| Automated accessibility (axe), Playwright journeys, screen-reader test | - | **Not performed** (tooling not adopted yet) | - |
+
 ## 2. Component status
 
 ### 2.1 Platform foundation
@@ -87,6 +104,8 @@ Full command output: [evidence/implementation/vertical-slice-1/](evidence/implem
 | Dependency manifest | Partially implemented | `backend/pyproject.toml`, `backend/requirements.lock`; `scripts/` still has no manifest |
 | Local database with pgvector | Implemented (local) | `deploy/docker-compose.yml` (`pgvector/pgvector:pg17`, port 5433, separate `platform_test` database); host PostgreSQL 18 untouched (DEC-037) |
 | Background job infrastructure | Missing | No queue; estimates recomputed synchronously on submit (DEC-047) |
+| Local launcher | Implemented (Windows, local) | `start-dev.bat`, `stop-dev.bat`, `reset-demo.bat`, `deploy/local/dev-port.ps1` (port ownership detection); verified manually (`evidence/implementation/product-upgrade-phase-a/01`) |
+| Versioned DEMO packs and local demo reset | Implemented (local/ci only) | `backend/app/seed/demo_packs.py`, `demo_reset.py`, migration `0004`; `tests/db/test_demo_packs_and_reset.py` (DEC-052) |
 | Object storage interface | Missing | — |
 | CI pipeline | Missing | No `.github/workflows/` |
 
@@ -134,8 +153,8 @@ Full command output: [evidence/implementation/vertical-slice-1/](evidence/implem
 
 | Component | Status | Evidence |
 |---|---|---|
-| React application | Partially implemented | `frontend/` (React 18, TypeScript, Vite 8, React Router 7): login, get started (notice + job role), assessment, result, dashboard; 12 Vitest tests; production build. Not verified in a real browser |
-| Design system, screens | Partially implemented | Plain CSS tokens (DEC-048); loading/empty/error states with correlation IDs; DEMO badges and banner. No Tailwind/shadcn, no i18n catalogue, no axe checks |
+| React application | Partially implemented | `frontend/` (React 18, TypeScript, Vite 8, React Router 7): login, get started (notice + job role), assessment, result, dashboard; Vitest tests in `src/pages/pages.test.tsx`, `src/api/client.test.ts`, `src/components/layout/AppShell.test.tsx`; production build; rendered in headless Edge (screenshots, phase A) |
+| Design system, screens | Partially implemented | Tailwind CSS 4 + shadcn/ui-style components on Radix (DEC-050): tokens with computed contrast ratios (`src/styles/globals.css`), base components (`src/components/ui/`), `AppShell` with sidebar, top bar, mobile drawer and account menu, `PageHeader`, `Breadcrumbs`, `StatCard`, `EvidenceBadge`, `DemoDataNotice`, `ConfirmationDialog`, toasts; dev-only gallery `/dev/design-system`. Learner screens still use scoped legacy styles inside the new shell. No i18n catalogue, no axe checks |
 
 ### 2.5 Data tooling (Phase 1)
 
