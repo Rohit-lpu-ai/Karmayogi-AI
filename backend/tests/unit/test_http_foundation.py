@@ -116,3 +116,14 @@ def test_openapi_hidden_outside_local(unreachable_engine):
     with TestClient(app) as client:
         assert client.get("/api/v1/openapi.json").status_code == 404
         assert client.get("/docs").status_code == 404
+
+
+def test_app_import_registers_every_model_table():
+    """The running app (not only the test suite) must know every table, or flushes fail on cross-module foreign keys."""
+    import subprocess
+    import sys
+
+    code = "import app.main; from app.core.db import Base; print(sorted(Base.metadata.tables))"
+    out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, check=True).stdout
+    for table in ("topics", "question_versions", "lessons", "review_tasks", "source_records"):
+        assert f"'{table}'" in out

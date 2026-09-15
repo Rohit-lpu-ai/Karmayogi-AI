@@ -2,9 +2,9 @@
 
 | Field | Value |
 |---|---|
-| **Version** | 1.3.0 (after product upgrade phase A: critical fixes, design foundation, app shell) |
+| **Version** | 1.5.0 (after product upgrade phase C: login, dashboard, competencies, gaps, catalogue, course detail, demo-2) |
 | **Last verified** | 2026-09-15 |
-| **Verified on** | Branch `Diw`, HEAD `0b2f86d` (vertical slice 1 committed). Product upgrade phase A changes are **uncommitted** in the working tree |
+| **Verified on** | Branch `Diw`, HEAD `0b2f86d` (vertical slice 1 committed). Product upgrade phases A, B and C are **uncommitted** in the working tree |
 | **Related** | [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [AGENT_CONTEXT.md](AGENT_CONTEXT.md) · [FEATURE_CATALOG.md](FEATURE_CATALOG.md) · [DECISIONS.md](DECISIONS.md) |
 
 ## Status vocabulary
@@ -87,6 +87,94 @@ Baseline audit: [evidence/implementation/product-upgrade-baseline.md](evidence/i
 | Screenshots | headless Microsoft Edge via DevTools protocol (the Claude-in-Chrome extension was not connected) | 9 screenshots: login desktop/360 px, dashboard desktop/360 px, demo notice, account menu, mobile menu, assessment, design system | `screenshots/` |
 | Automated accessibility (axe), Playwright journeys, screen-reader test | - | **Not performed** (tooling not adopted yet) | - |
 
+## 1d. Verification after product upgrade phase B (2026-09-15)
+
+Evidence and 19 screenshots: [evidence/implementation/product-upgrade-phase-b/](evidence/implementation/product-upgrade-phase-b/). No backend contract changed.
+
+| Check | Command | Result | Evidence |
+|---|---|---|---|
+| Browser journeys with axe | `cd frontend && CAPTURE_SCREENSHOTS=1 npx playwright test` (Edge, 1440 px and 360 px; stack: backend on 8001, Vite with `API_PROXY_TARGET`) | **6 passed**: onboarding with keyboard and focus checks; assessment with keyboard answers, reload resume, question grid, confirmation, submit; result with disclosures and next-step link. 0 serious/critical axe violations on 9 checked states; no horizontal page scroll | `01` |
+| Frontend | `npm run typecheck`, `npx vitest run`, `npm run build`, `npm audit` | 0 type errors; **37 passed** (6 files); JS 438 kB (136 kB gzip); 0 vulnerabilities | `02` |
+| Backend tests | `.venv/Scripts/python -m pytest -q` | **180 passed** (unchanged; no backend code change except the test helper script) | `03` |
+| Live journey through the Vite proxy | `SMOKE_BASE_URL=http://localhost:5173 scripts/smoke_vertical_slice.py department-admin01@example.invalid` (account reset afterwards) | Passes | `04` |
+| Manual screen-reader test (NVDA/JAWS) | - | **Not performed** | - |
+
+Defects found and fixed during phase B: answering a question without `?q=` moved the learner to the next unanswered question (starting position now pinned in the URL); option letters followed original keys in shuffled order (now positional); `<dl>` markup failed axe `definition-list`/`dlitem` on the onboarding assessment step; avatar initials used punctuation.
+
+## 1e. Verification after product upgrade phase C (2026-09-15)
+
+Plan and decisions: [evidence/implementation/phase-c-plan.md](evidence/implementation/phase-c-plan.md). Lessons proposal (awaiting approval): [evidence/implementation/phase-c-learning-experience-proposal.md](evidence/implementation/phase-c-learning-experience-proposal.md). Evidence and screenshots: [evidence/implementation/product-upgrade-phase-c/](evidence/implementation/product-upgrade-phase-c/).
+
+| Check | Command | Result | Evidence |
+|---|---|---|---|
+| Browser journeys with axe | `cd frontend && npx playwright test` (Edge; 1440 px and 360 px) | **10 passed**: login; learner loop (dashboard before and after baseline, competency profile, gap analysis with table view, catalogue with keyboard filter and search, course detail); onboarding; assessment; result. 0 serious/critical axe violations on every checked state; no horizontal page scroll | `01` |
+| Frontend | `npm run typecheck`, `npx vitest run`, `npm run build`, `npm audit` | 0 type errors; **46 passed** (7 files); JS 501 kB (150 kB gzip, above Vite's 500 kB warning); 0 vulnerabilities | `02` |
+| Backend tests | `.venv/Scripts/python -m pytest -q` | **196 passed** (16 new: demo-2 content and journey, difficulty never changes ranking, catalogue filters/visibility/authorisation, course detail, attempt history) | `03` |
+| Migrations | `alembic current`, `alembic check`; `0005` upgrade/downgrade cycle run during development | `0005 (head)`, no drift | `04` |
+| Live API journey through the Vite proxy | `smoke_vertical_slice.py department-admin01@example.invalid` (account reset afterwards) | Passes | `05` |
+| Demo packs on the dev database | `python -m app.seed ... --demo-content` | `demo-2` applied: 1 framework, 4 levels, 8 competencies, 40 questions, 3 roles, 12 role mappings, 3 assessments, 12 courses, 23 course mappings | this table |
+| Manual screen-reader review | - | **Not performed** (DEC-056 D-6) | - |
+
+## 1f. Phase 4A - accounts and administration (2026-09-15)
+
+Plan: [evidence/implementation/phase-4-plan.md](evidence/implementation/phase-4-plan.md). Screenshots: [evidence/implementation/phase-4a/screenshots/](evidence/implementation/phase-4a/screenshots/). Decisions DEC-057, DEC-058.
+
+Built: learner / administration sign-in modes; learner registration (local/ci only); set-password via one-time link; profile with password change; administration area with its own navigation and route guard; admin overview, users (search, filters, add, manage status and roles, password links) and roles and permissions matrix; capability policy enforced on the server; migration 0006.
+
+| Check | Result |
+|---|---|
+| Backend `pytest -q` | **234 passed** (38 new in `tests/db/test_accounts_admin_api.py`: registration on/off, duplicates, validation, no password in logs, password change and one-time tokens, admin authorisation matrix, department scoping, organisation isolation, audit of role changes) |
+| Migrations | `0006 (head)`; upgrade/downgrade/upgrade cycle run; `alembic check` no drift |
+| Frontend | typecheck clean; **62 passed** Vitest (15 new in `Phase4A.test.tsx`); build 557 kB JS (Vite size warning) |
+| Browser journeys (Edge, 1440 px and 360 px, axe) | **16 passed**: 3 new Phase 4A journeys plus the 5 earlier journeys, 0 serious/critical axe violations, no horizontal scroll, no unexpected failed responses |
+| Manual screen-reader review | Not performed (DEC-056 D-6) |
+
+Known limitations: no email delivery (links are handed over manually); registration outside local/ci awaits D4-1; journeys leave `e2e-*@example.invalid` accounts in the local database (registered accounts are non-synthetic by design, so `demo_reset` does not remove them).
+
+## 1g. Phase 4B - learning core (2026-09-15)
+
+Decision DEC-059. Screenshots: [evidence/implementation/phase-4b/screenshots/](evidence/implementation/phase-4b/screenshots/).
+
+Built: modules and lessons (synthetic pack `demo-3`: 12 courses, 24 modules, 48 lessons), course learning hub (`/courses/:id/learn`), lesson player (`/courses/:id/lessons/:lessonId`) with contents drawer on mobile, self-reported completion, resume, course completion, learning path (`/learning-path`, rule `path-v1`), assessment history (`/me/attempts`), progress on catalogue cards and filter, course detail structure and Start/Continue, dashboard Continue learning; demo reset clears learning progress; route-level code splitting.
+
+| Check | Result |
+|---|---|
+| Backend `pytest -q` | **255 passed** (21 new: 8 `path-v1` unit tests, 13 learning API tests incl. isolation, no estimate change, append-only activity, concurrent open/complete) |
+| Migrations | `0007 (head)`; upgrade/downgrade/upgrade cycle; `alembic check` no drift |
+| Frontend | typecheck clean; **70 passed** Vitest (8 new); build: main JS 447 kB, admin and learning pages in separate chunks |
+| Browser journeys (Edge, 1440 px and 360 px, axe) | **18 passed** including the new learning journey (baseline -> path -> course -> every lesson -> completion -> catalogue filter -> dashboard -> history) |
+| Bug found and fixed | Opening and completing a lesson at the same moment raised a unique-constraint error (500); progress rows now use insert-if-absent with a row lock |
+
+## 1h. Phase 4C - content and administration (2026-09-15)
+
+Decision DEC-060. Screenshots: [evidence/implementation/phase-4c/screenshots/](evidence/implementation/phase-4c/screenshots/).
+
+Built: question bank, authoring with versions and source metadata, review queue with the self-approval block, course administration (details, modules, lessons with Markdown preview, competency links, guard checklist, submit, publish, unpublish), competency structure view, assessment coverage and quality checks, audit trail with filters and paging; 22 source documents imported as reference-only source records; migration 0008.
+
+| Check | Result |
+|---|---|
+| Backend `pytest -q` | **276 passed** (21 new: 20 content administration API tests - authorisation per capability, CSRF, question workflow incl. self-approval denial and audit, validation, retire guard, course guards and visibility, request-changes reason, views, audit paging - plus a model-registry regression test) |
+| Migrations | `0008 (head)`; upgrade/downgrade/upgrade cycle; `alembic check` no drift |
+| Frontend | typecheck clean; **75 passed** Vitest (5 new) |
+| Browser journeys (Edge, 1440 px and 360 px, axe) | **24 passed**, including question authoring -> review by another person, course preparation -> review -> publish -> visible to a learner -> unpublished again, and governance screens |
+| Bugs found and fixed | Missing model registry in the running app (500 on first question save); sign-out handing the next user the previous user's page; toasts covering form actions (moved to the top right) |
+
+Known limitations: assessments cannot yet be assembled or versioned in the UI; review is single-reviewer (D4-5); journeys leave unpublished "Units and footnotes clinic ..." test courses and approved test questions in the local database.
+
+## 1i. Phase 4D - insight, AI boundary and final verification (2026-09-15)
+
+Decisions DEC-061, DEC-062. AI analysis: [evidence/implementation/phase-4-ai-boundary.md](evidence/implementation/phase-4-ai-boundary.md). Report: [evidence/implementation/phase-4-report.md](evidence/implementation/phase-4-report.md). Screenshots (final run of every journey): [evidence/implementation/phase-4d/screenshots/](evidence/implementation/phase-4d/screenshots/).
+
+| Check | Result |
+|---|---|
+| Backend `pytest -q` | **289 passed** (13 new: 8 insight API incl. suppression, scoping, no personal data; 5 AI-boundary unit tests) |
+| Migrations | `0008 (head)`, `alembic check` no drift (no 4D migration) |
+| Frontend | typecheck clean; **77 passed** Vitest (11 files); build: main JS 453 kB (130 kB gzip), admin, learning and insight pages in separate chunks; `npm audit` 0 vulnerabilities |
+| Browser journeys (Edge, 1440 px and 360 px, axe) | **26 passed** (13 journeys x 2 viewports), 0 serious/critical axe violations, no horizontal page scroll, no unexpected failed responses or console errors |
+| Live API journey through the Vite proxy | `smoke_vertical_slice.py department-admin01@example.invalid` passes (account reset before and after) |
+| Server log scan | 0 occurrences of the demo password, cookies, set-password tokens or password hashes in 3,442 log lines |
+| Manual screen-reader review | **Not performed** (DEC-056 D-6) |
+
 ## 2. Component status
 
 ### 2.1 Platform foundation
@@ -154,6 +242,8 @@ Baseline audit: [evidence/implementation/product-upgrade-baseline.md](evidence/i
 | Component | Status | Evidence |
 |---|---|---|
 | React application | Partially implemented | `frontend/` (React 18, TypeScript, Vite 8, React Router 7): login, get started (notice + job role), assessment, result, dashboard; Vitest tests in `src/pages/pages.test.tsx`, `src/api/client.test.ts`, `src/components/layout/AppShell.test.tsx`; production build; rendered in headless Edge (screenshots, phase A) |
+| Login, dashboard, competency profile, gap analysis, course catalogue, course detail | Implemented (DEMO content) | `frontend/src/pages/LoginPage.tsx`, `DashboardPage.tsx`, `competencies/`, `courses/`; `GET /me/attempts`, `GET /courses`, `GET /courses/{id}` in `backend/app/modules/{assessment,recommendation}`; Vitest `PhaseC.test.tsx`; pytest `test_catalogue_api.py`, `test_demo_pack_2.py`; Playwright `e2e/learner-loop.spec.ts`. Lessons, learning path and progress: **not implemented** (awaiting DEC-056 D-3) |
+| Learner onboarding, assessment and result screens | Implemented (frontend, DEMO content) | `src/pages/OnboardingPage.tsx`, `src/pages/assessment/`, `src/pages/results/`; Vitest `OnboardingPage.test.tsx`, `Assessment.test.tsx`, `Result.test.tsx`; Playwright `e2e/*.spec.ts`. Time per assessment is a rough guide derived from the question count (no duration field in the API) |
 | Design system, screens | Partially implemented | Tailwind CSS 4 + shadcn/ui-style components on Radix (DEC-050): tokens with computed contrast ratios (`src/styles/globals.css`), base components (`src/components/ui/`), `AppShell` with sidebar, top bar, mobile drawer and account menu, `PageHeader`, `Breadcrumbs`, `StatCard`, `EvidenceBadge`, `DemoDataNotice`, `ConfirmationDialog`, toasts; dev-only gallery `/dev/design-system`. Learner screens still use scoped legacy styles inside the new shell. No i18n catalogue, no axe checks |
 
 ### 2.5 Data tooling (Phase 1)

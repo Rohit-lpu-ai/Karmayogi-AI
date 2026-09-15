@@ -138,6 +138,30 @@ class AttemptResult(BaseModel):
     notice: str
 
 
+class HistoryAssessmentRef(BaseModel):
+    id: uuid.UUID
+    title: str
+    purpose: str
+    is_demo: bool
+
+
+class AttemptHistoryItem(BaseModel):
+    id: uuid.UUID
+    status: str
+    started_at: datetime
+    submitted_at: datetime | None
+    scored_at: datetime | None
+    score_total: Decimal | None
+    is_baseline: bool
+    assessment: HistoryAssessmentRef
+
+
+@router.get("/me/attempts", operation_id="assessment_list_my_attempts", response_model=list[AttemptHistoryItem],
+            responses=_ERRORS)
+def my_attempts(current: CurrentUser = Depends(learner), db: DbSession = Depends(get_db)) -> list[AttemptHistoryItem]:
+    return [AttemptHistoryItem(**a) for a in service.attempt_history(db, current.user)]
+
+
 @router.get("/assessments", operation_id="assessment_list_assessments", response_model=list[AssessmentSummary],
             responses=_ERRORS)
 def list_assessments(current: CurrentUser = Depends(learner), db: DbSession = Depends(get_db)) -> list[AssessmentSummary]:

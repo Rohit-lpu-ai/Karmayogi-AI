@@ -45,7 +45,8 @@ def recommendations(db: DbSession, user: User) -> dict:
             "course": {
                 "id": course.id, "title": course.title, "course_type": course.course_type,
                 "provider_organisation": course.provider_organisation, "duration_days": course.duration_days,
-                "description": course.description, "is_demo": is_demo,
+                "description": course.description, "difficulty": course.difficulty,
+                "learning_objectives": list(course.learning_objectives or []), "is_demo": is_demo,
             },
             "score": rec.score,
             "reasons": list(rec.reasons),

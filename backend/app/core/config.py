@@ -54,6 +54,11 @@ class Settings(BaseSettings):
     # Only used by the seed command for synthetic demo users (local/ci/staging).
     demo_user_password: SecretStr | None = None
 
+    # Learner self-registration (Phase 4, assumption A-1 / D4-1). MVP-01 excludes self-registration, so it is
+    # allowed only in local and ci; unset means "on in local/ci, off elsewhere".
+    learner_self_registration_enabled: bool | None = None
+    password_token_ttl_hours: int = Field(default=24, ge=1, le=168)
+
     @field_validator("session_secret")
     @classmethod
     def _strong_session_secret(cls, value: SecretStr) -> SecretStr:
@@ -66,6 +71,18 @@ class Settings(BaseSettings):
         if not self.session_cookie_secure and self.app_env not in (AppEnv.local, AppEnv.ci):
             raise ValueError("SESSION_COOKIE_SECURE=false is only allowed in local and ci")
         return self
+
+    @model_validator(mode="after")
+    def _self_registration_only_in_development(self) -> "Settings":
+        if self.learner_self_registration_enabled and self.app_env not in (AppEnv.local, AppEnv.ci):
+            raise ValueError("LEARNER_SELF_REGISTRATION_ENABLED=true is only allowed in local and ci (D4-1)")
+        return self
+
+    @property
+    def self_registration_enabled(self) -> bool:
+        if self.learner_self_registration_enabled is None:
+            return self.app_env in (AppEnv.local, AppEnv.ci)
+        return self.learner_self_registration_enabled
 
     @field_validator("log_level")
     @classmethod

@@ -1,0 +1,46 @@
+GET   /healthz                                                     -> 200  health
+GET   /readyz                                                      -> 200  ready
+GET   /api/v1/me                                                   -> 401  unauthenticated /me
+      problem: {'type': 'urn:platform:problem:unauthenticated', 'title': 'Authentication required', 'status': 401, 'code': 'UNAUTHENTICATED', 'instance': '/api/v1/me', 'correlation_id': 'eeaacb89165e415a91ec5876b6745467', 'detail': 'Sign in to continue.'}
+POST  /api/v1/auth/login                                           -> 200  login
+GET   /api/v1/me                                                   -> 200  me
+PUT   /api/v1/me/job-role                                          -> 403  csrf missing
+      problem: {'type': 'urn:platform:problem:csrf-failed', 'title': 'Request blocked', 'status': 403, 'code': 'CSRF_FAILED', 'instance': '/api/v1/me/job-role', 'correlation_id': 'a1e2d49df38b42a8924521589d61648a', 'detail': 'Missing or invalid CSRF token. Reload and try again.'}
+POST  /api/v1/me/notice-acknowledgements                           -> 200  acknowledge notice
+GET   /api/v1/job-roles                                            -> 200  job roles
+GET   /api/v1/job-roles/2f6975be-6017-4e60-8530-c6b475939f2c/competencies -> 200  role requirements
+      requirements: [('DEMO-SP-DESC', 3), ('DEMO-SP-QUALITY', 2), ('DEMO-SP-RATES', 3), ('DEMO-SP-TABLES', 3)]
+PUT   /api/v1/me/job-role                                          -> 200  select job role
+GET   /api/v1/assessments                                          -> 200  assessments
+POST  /api/v1/assessments/426c4c00-8f58-4ae3-a882-bb3de53af738/attempts -> 201  start attempt
+      saved 20 answers
+POST  /api/v1/attempts/79eb9de3-d7c3-41f4-9aa2-a9b4409f16fe/submit -> 200  submit
+      score_total: 0.16071 baseline: True
+GET   /api/v1/attempts/79eb9de3-d7c3-41f4-9aa2-a9b4409f16fe/result -> 200  result
+      DEMO-SP-DESC: score 0.00000 level 1 band medium
+      DEMO-SP-QUALITY: score 0.14286 level 1 band medium
+      DEMO-SP-RATES: score 0.35714 level 1 band medium
+      DEMO-SP-TABLES: score 0.14286 level 1 band medium
+GET   /api/v1/me/competency-gaps                                   -> 200  gaps
+      DEMO-SP-DESC: status gap gap 2 (required 3)
+      DEMO-SP-RATES: status gap gap 2 (required 3)
+      DEMO-SP-TABLES: status gap gap 2 (required 3)
+      DEMO-SP-QUALITY: status gap gap 1 (required 2)
+GET   /api/v1/me/recommendations                                   -> 200  recommendations
+      #1 DEMO - Reading statistical tables critically (synthetic course) score 0.66667 demo=True
+      #2 DEMO - Rates, ratios and percentage change in practice (synthetic course) score 0.66667 demo=True
+      #3 DEMO - Summarising data with confidence (synthetic course) score 0.66667 demo=True
+      #4 DEMO - Avoiding common statistical pitfalls (synthetic course) score 0.33333 demo=True
+      #5 DEMO - Communicating statistics clearly (synthetic course) score 0.33333 demo=True
+      #6 DEMO - Data validation and quality checks (synthetic course) score 0.33333 demo=True
+      #7 DEMO - Index numbers from first principles (synthetic course) score 0.33333 demo=True
+      #8 DEMO - Understanding variability and distributions (synthetic course) score 0.33333 demo=True
+      #9 DEMO - Working with administrative data (synthetic course) score 0.16667 demo=True
+      #10 DEMO - Planning and running a sample survey (synthetic course) score 0.16667 demo=True
+      gaps without approved content: []
+POST  /api/v1/attempts/79eb9de3-d7c3-41f4-9aa2-a9b4409f16fe/submit -> 409  submit again
+      problem: {'type': 'urn:platform:problem:attempt-not-in-progress', 'title': 'Attempt already submitted', 'status': 409, 'code': 'ATTEMPT_NOT_IN_PROGRESS', 'instance': '/api/v1/attempts/79eb9de3-d7c3-41f4-9aa2-a9b4409f16fe/submit', 'correlation_id': '8d60da2684a942449de38c60e6f821e5', 'detail': 'This attempt has already been submitted.'}
+POST  /api/v1/auth/logout                                          -> 204  logout
+GET   /api/v1/me                                                   -> 401  me after logout
+      problem: {'type': 'urn:platform:problem:unauthenticated', 'title': 'Authentication required', 'status': 401, 'code': 'UNAUTHENTICATED', 'instance': '/api/v1/me', 'correlation_id': '07d43db5616f4db1a5c4945a4be49ada', 'detail': 'Sign in to continue.'}
+exit=0

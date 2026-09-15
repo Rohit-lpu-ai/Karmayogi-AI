@@ -16,6 +16,7 @@ from app.core.db import Base, RowVersionMixin, StandardColumnsMixin, TenantMixin
 from app.core.vocab import ACCESS_ROLES
 
 USER_STATUSES = ("invited", "active", "locked", "inactive")
+REGISTRATION_ID_PATTERN = "^[A-Za-z0-9][A-Za-z0-9/-]{2,39}$"
 LOCALES = ("en", "hi")  # "hi" is P1; the API accepts only "en" in MVP (MVP-03).
 
 
@@ -35,9 +36,15 @@ class User(StandardColumnsMixin, TenantMixin, RowVersionMixin, Base):
     last_login_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     onboarding_completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     is_synthetic: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=text("false"))
+    # Phase 4 (migration 0006): learner/staff identifier, unique per organisation when present (D4-2).
+    registration_id: Mapped[str | None] = mapped_column(CITEXT)  # PD
+    must_change_password: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=text("false"))
 
     __table_args__ = (
         CheckConstraint(check_in("status", USER_STATUSES), name="status"),
+        CheckConstraint(f"registration_id IS NULL OR registration_id ~ '{REGISTRATION_ID_PATTERN}'", name="registration_id_format"),
+        Index("uq_users_org_registration_id", "organization_id", "registration_id", unique=True,
+              postgresql_where=text("registration_id IS NOT NULL")),
         CheckConstraint(check_in("locale", LOCALES), name="locale"),
         CheckConstraint("failed_login_count >= 0", name="failed_login_count_non_negative"),
         Index("uq_users_org_email", "organization_id", "email", unique=True),
@@ -110,4 +117,25 @@ class NoticeAcknowledgement(TenantMixin, Base):
     __table_args__ = (
         CheckConstraint(check_in("notice_type", NOTICE_TYPES), name="notice_type"),
         UniqueConstraint("user_id", "notice_type", "notice_version"),
+    )
+
+
+class PasswordResetToken(TenantMixin, Base):
+    """One-time set-password token issued by an administrator (SECURITY_RESPONSIBLE_AI.md §3). Only the hash is stored."""
+
+    __tablename__ = "password_reset_tokens"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, server_default=text("gen_random_uuid()"))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    user_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False, index=True)
+    token_hash: Mapped[str] = mapped_column(Text, nullable=False, unique=True)
+    issued_by: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"))
+    purpose: Mapped[str] = mapped_column(Text, nullable=False)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+    __table_args__ = (
+        CheckConstraint("token_hash ~ '^[0-9a-f]{64}$'", name="token_hash_is_sha256"),
+        CheckConstraint(check_in("purpose", ("account_setup", "password_reset")), name="purpose"),
+        CheckConstraint("used_at IS NULL OR used_at >= created_at", name="used_after_created"),
     )

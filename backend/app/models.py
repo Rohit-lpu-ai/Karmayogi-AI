@@ -12,3 +12,4 @@ from app.modules.organization import models as organization_models  # noqa: F401
 from app.modules.platform import models as platform_models  # noqa: F401
 from app.modules.recommendation import models as recommendation_models  # noqa: F401
 from app.modules.assessment import models as assessment_models  # noqa: F401
+from app.modules.learning import models as learning_models  # noqa: F401

@@ -31,6 +31,11 @@ def demo_email(role: str) -> str:
     return f"{role.replace('_', '-')}01@{DEMO_EMAIL_DOMAIN}"
 
 
+def demo_registration_id(role: str) -> str:
+    """Synthetic registration ID (Phase 4A). The DEMO- prefix keeps it visibly non-official."""
+    return f"DEMO-{role.replace('_', '-').upper()}-01"
+
+
 def seed_demo_users(session: Session, org: Organization, app_env: AppEnv, password: str | None = None) -> Counter:
     if app_env not in SYNTHETIC_ALLOWED_ENVS:
         raise SeedRefused(f"Synthetic demo users are not allowed in {app_env.value}")
@@ -49,11 +54,15 @@ def seed_demo_users(session: Session, org: Organization, app_env: AppEnv, passwo
         email = demo_email(role)
         user = session.scalar(select(User).where(User.organization_id == org.id, User.email == email))
         if user is not None:
+            if user.is_synthetic and user.registration_id is None:
+                user.registration_id = demo_registration_id(role)  # backfill accounts seeded before migration 0006
+                created["registration_ids_backfilled"] += 1
             continue
         user = User(
             organization_id=org.id,
             email=email,
             display_name=f"Demo {role.replace('_', ' ').title()} 01",
+            registration_id=demo_registration_id(role),
             department_id=department.id,
             status="invited",
             is_synthetic=True,

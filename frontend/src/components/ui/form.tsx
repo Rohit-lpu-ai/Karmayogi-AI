@@ -1,4 +1,4 @@
-import { forwardRef, type InputHTMLAttributes, type LabelHTMLAttributes, type ReactNode } from "react";
+import { forwardRef, type InputHTMLAttributes, type LabelHTMLAttributes, type ReactNode, type TextareaHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(({ className, ...props }, ref) => (
@@ -51,3 +51,18 @@ export function Field({
     </div>
   );
 }
+
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaHTMLAttributes<HTMLTextAreaElement>>(({ className, ...props }, ref) => (
+  <textarea
+    ref={ref}
+    data-focus-ring=""
+    className={cn(
+      "flex min-h-24 w-full rounded-md border border-input bg-card px-3 py-2 text-base leading-relaxed text-foreground placeholder:text-muted-foreground",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring",
+      "disabled:cursor-not-allowed disabled:opacity-60 aria-[invalid=true]:border-danger",
+      className,
+    )}
+    {...props}
+  />
+));
+Textarea.displayName = "Textarea";

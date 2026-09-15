@@ -111,6 +111,21 @@ def import_topics(session: Session, org: Organization, bundle: CanonicalBundle, 
     return existing
 
 
+def import_document_sources(session: Session, org: Organization, bundle: CanonicalBundle, report: ImportReport) -> None:
+    """Phase 4C: every collected source document becomes a reference-only source record (plan K-6).
+
+    Only provenance is stored - no document text. ``review_verified`` stays false until a person verifies the record,
+    and nothing here makes content learner-visible.
+    """
+    dataset = bundle.datasets["documents"]
+    for record in dataset["records"]:
+        _, created = _source_record(session, org, "documents", record["id"], bundle.file_sha256["documents"], record)
+        if created:
+            report.created["source_records:documents"] += 1
+        else:
+            report.skipped["source_records:documents"] += 1
+
+
 def import_cscd_framework(session: Session, org: Organization, bundle: CanonicalBundle, report: ImportReport) -> None:
     dataset = bundle.datasets["competency_framework"]
     meta = dataset["framework"]
@@ -289,11 +304,13 @@ def import_canonical_datasets(session: Session, org: Organization, bundle: Canon
     report = ImportReport()
 
     topics = import_topics(session, org, bundle, report)
+    import_document_sources(session, org, bundle, report)
     import_cscd_framework(session, org, bundle, report)
     import_programme_listings(session, org, bundle, topics, report)
 
     per_dataset = {
         "topics": ("topics",),
+        "documents": ("source_records:documents",),
         "competency_framework": (
             "source_records:competency_framework", "competency_frameworks", "competency_clusters",
             "competencies", "competency_levels",

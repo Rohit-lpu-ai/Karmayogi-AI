@@ -37,6 +37,7 @@ from app.modules.assessment.models import AssessmentAttempt
 from app.modules.competency.models import CompetencyEvidence, UserCompetency
 from app.modules.governance.service import record_audit
 from app.modules.identity.models import User
+from app.modules.learning.models import LearningPath, LearningPathItem, ProgressRecord
 from app.modules.organization.models import Organization
 from app.seed.canonical import SeedRefused
 
@@ -62,7 +63,8 @@ def reset_demo_users(session: Session, org: Organization, app_env: AppEnv, *, em
         if real:
             raise SeedRefused(f"Refusing to reset non-synthetic accounts: {', '.join(real)}")
     else:
-        users = list(session.scalars(query.where(User.is_synthetic)))
+        # The insight cohort (pack demo-4) is not a demo account set and would empty the aggregate views.
+        users = [u for u in session.scalars(query.where(User.is_synthetic)) if not u.email.lower().startswith("cohort-")]
 
     now = datetime.now(timezone.utc)
     totals: Counter = Counter()
@@ -82,6 +84,15 @@ def reset_demo_users(session: Session, org: Organization, app_env: AppEnv, *, em
                 counts["evidence_voided"] += 1
         counts["estimates_removed"] = session.execute(
             delete(UserCompetency).where(UserCompetency.user_id == user.id)).rowcount or 0
+        # Learning progress and paths restart too; the append-only activity log keeps its history.
+        path_ids = list(session.scalars(select(LearningPath.id).where(LearningPath.user_id == user.id)))
+        if path_ids:
+            session.execute(delete(LearningPathItem).where(LearningPathItem.learning_path_id.in_(path_ids)))
+            counts["learning_paths_removed"] = session.execute(
+                delete(LearningPath).where(LearningPath.id.in_(path_ids))).rowcount or 0
+        progress_removed = session.execute(delete(ProgressRecord).where(ProgressRecord.user_id == user.id)).rowcount or 0
+        if progress_removed:
+            counts["progress_records_removed"] = progress_removed
         if clear_job_role and user.job_role_id is not None:
             user.job_role_id = None
             counts["job_role_cleared"] = 1

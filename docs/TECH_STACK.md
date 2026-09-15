@@ -79,8 +79,10 @@
 | `lucide-react` | 1.46.0 | ISC | Icons (decorative, `aria-hidden`; text always present) |
 | `sonner` | 2.0.8 | MIT | Toasts with polite announcements (UI_UX_SPEC.md §8.8) |
 | `@types/node` (dev) | 24.13.4 | MIT | Types for `vite.config.ts` only (separate `tsconfig.node.json`) |
+| `@playwright/test` (dev) | 1.63.0 | Apache-2.0 | Browser journeys J-01 to J-03 on desktop and 360 px, keyboard and focus checks (Phase 8 exit criteria). Runs the installed Microsoft Edge (`channel: "msedge"`); no browser download |
+| `@axe-core/playwright`, `axe-core` (dev) | 4.13.0 | MPL-2.0 | Automated accessibility checks inside the journeys, failing on serious or critical WCAG 2.1 A/AA violations (MVP-F4, invariant M-14). MPL-2.0 is a weak, file-level copyleft licence; used unmodified as a development tool and never bundled into the application |
 
-shadcn/ui is not a package: its component patterns are copied into `frontend/src/components/ui/` and owned by the project. Not adopted yet: TanStack Query, React Hook Form + Zod, Recharts, i18next, OpenAPI client generation, Playwright, axe-core. Each is added with its screen or test phase and recorded here.
+shadcn/ui is not a package: its component patterns are copied into `frontend/src/components/ui/` and owned by the project. Not adopted yet: TanStack Query, React Hook Form + Zod, Recharts, i18next, OpenAPI client generation. Each is added with its screen or test phase and recorded here.
 
 ## 4. Backend
 
@@ -250,3 +252,9 @@ A new dependency may be added only when **all** of these hold:
 4. It is pinned in a lock file.
 5. It is recorded in this document (or in [DECISIONS.md](DECISIONS.md) if it changes architecture).
 6. For AI or external services, it sits behind the relevant interface and passes contract tests.
+
+## Phase 4 notes (2026-09-15)
+
+- **No new runtime dependencies.** Lesson Markdown is rendered by a small in-house renderer (`frontend/src/components/product/Markdown.tsx`, React elements only, no HTML) instead of `react-markdown` (DEC-059 replaces plan D4-7).
+- Route-level code splitting with `React.lazy` keeps the main bundle below Vite's 500 kB warning (453 kB).
+- AI capabilities are local interfaces with rule-based implementations (`backend/app/modules/ai`); no provider SDK is installed (DEC-062).

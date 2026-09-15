@@ -87,6 +87,16 @@ def login(db: DbSession, settings: Settings, email: str, password: str, organiza
         db.commit()
         raise invalid_credentials()
 
+    result = start_session(db, settings, user)
+    record_audit(db, organization_id=user.organization_id, action="auth.login.success", target_type="user",
+                 target_id=str(user.id), actor_user_id=user.id, actor_roles=access_roles(db, user))
+    db.commit()
+    return result
+
+
+def start_session(db: DbSession, settings: Settings, user: User) -> LoginResult:
+    """New server-side session for an authenticated user (login and registration). The caller commits."""
+    now = utcnow()
     token = new_session_token()
     session = Session(
         id=session_id_for(token),
@@ -101,9 +111,6 @@ def login(db: DbSession, settings: Settings, email: str, password: str, organiza
     user.locked_until = None
     user.last_login_at = now
     db.add(session)
-    record_audit(db, organization_id=user.organization_id, action="auth.login.success", target_type="user",
-                 target_id=str(user.id), actor_user_id=user.id, actor_roles=access_roles(db, user))
-    db.commit()
     return LoginResult(user=user, session=session, token=token)
 
 

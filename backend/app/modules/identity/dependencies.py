@@ -70,3 +70,17 @@ def require_any_role(roles: frozenset[str], *, csrf: bool = False) -> Callable[.
         return current
 
     return dependency
+
+
+def require_capability(capability: str, *, csrf: bool = False) -> Callable[..., CurrentUser]:
+    """Server-side capability check from the policy matrix (identity/policy.py)."""
+    from app.modules.identity.policy import has_capability
+
+    base = require_csrf if csrf else get_current_user
+
+    def dependency(current: CurrentUser = Depends(base)) -> CurrentUser:
+        if not has_capability(current.roles, capability):
+            raise ProblemError(403, "FORBIDDEN", "Forbidden", "Your access role does not permit this action.")
+        return current
+
+    return dependency

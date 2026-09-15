@@ -7,7 +7,8 @@ import { Toaster as Sonner, toast } from "sonner";
 export function Toaster() {
   return (
     <Sonner
-      position="bottom-right"
+      position="top-right"
+      offset="5rem" // below the sticky header, away from page actions at the bottom of forms
       closeButton
       toastOptions={{
         classNames: {

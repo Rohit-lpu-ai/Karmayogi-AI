@@ -10,7 +10,12 @@ npm run dev        # http://localhost:5173 - proxies /api to 127.0.0.1:8000 (ove
 npm test           # Vitest + Testing Library (API mocked)
 npm run typecheck  # app (tsconfig.json) and vite.config.ts (tsconfig.node.json)
 npm run build
+npm run e2e        # Playwright journeys + axe against the running stack (start-dev.bat first)
+CAPTURE_SCREENSHOTS=1 npm run e2e   # also writes review screenshots to docs/evidence/implementation/product-upgrade-phase-b/screenshots
 ```
+
+Browser journeys (`e2e/`) create a fresh synthetic learner per test with `backend/scripts/e2e_learner.py` (local/ci only),
+sign in through the login form, and run on a 1440 px desktop and a 360 px viewport with the installed Microsoft Edge.
 
 On Windows, `start-dev.bat` in the repository root starts the database, backend and this dev server together.
 If the backend is not running, API calls return a 503 `BACKEND_UNAVAILABLE` problem that the UI shows as a message.
@@ -34,7 +39,10 @@ If the backend is not running, API calls return a 503 `BACKEND_UNAVAILABLE` prob
 | Screen | Status |
 |---|---|
 | App shell, signed-out layout | Migrated |
-| Login, get started, dashboard, assessment, result | Legacy styles inside the new shell (wrapped in `.legacy`); migrated one at a time |
+| Onboarding (`/get-started`): welcome, your data, job role, assessment; change job role | Migrated (phase B) |
+| Assessment introduction (`/assessment`) and attempt (`/assessment/attempts/:id?q=N`) | Migrated (phase B) |
+| Result (`/attempts/:id/result`) | Migrated (phase B) |
+| Login (`/login`), dashboard (`/`), competency profile (`/competencies`), gap analysis (`/competencies/gaps`), catalogue (`/courses`), course detail (`/courses/:id`) | Migrated (phase C); the legacy stylesheet is removed |
 
 Rules: one primary action per view; status always in words (colour supports text); no official government branding;
 every synthetic item carries a DEMO label; developer details (rule versions, formulas) only inside disclosures.

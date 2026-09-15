@@ -79,6 +79,9 @@ Architecture decision records in lightweight form.
 | DEC-051 | Descriptive course difficulty and learning objectives (display and filtering only) | Accepted by product owner 2026-09-15 | Course catalogue |
 | DEC-052 | Versioned DEMO seed packs and local demo reset by voiding | Accepted by product owner 2026-09-15 (local/ci only) | Richer demo content |
 | DEC-053 | Interim product name "Competency Learning Platform" | Accepted by product owner 2026-09-15 (until DEC-001) | — |
+| DEC-054 | DEMO pack `demo-2`: synthetic statistical-practice content | Proposed (local/ci only; under DEC-045/DEC-052) | Phase C demo quality |
+| DEC-055 | Learner-facing display names and recommendation emphasis | Proposed | — |
+| DEC-056 | Phase C scope conflicts awaiting the product owner (readiness score, learning evidence, lessons schema, demo-1 retirement, SIH mention) | Decision required | C7 and later |
 
 ---
 
@@ -476,3 +479,78 @@ Architecture decision records in lightweight form.
 - **Status:** Accepted by the product owner on 2026-09-15, until DEC-001 is decided.
 - **Decision:** The UI uses the neutral working name "Competency Learning Platform", defined once in `frontend/src/config/product.ts` so it can be replaced in one place.
 - **Constraints:** no official government, Mission Karmayogi, Karmayogi Bharat, MoSPI or NSSTA names as product branding, no emblems or logos, no claims of official endorsement (UI_UX_SPEC.md §1).
+
+### DEC-054 DEMO pack `demo-2`
+
+- **Status:** Proposed. Local and ci only, under DEC-045 (synthetic labelled content) and DEC-052 (versioned packs).
+- **Decision:** `backend/app/seed/demo_pack_2.py` adds a `draft` framework `DEMO-STAT-PRACTICE` (4 provisional levels with plain-language descriptions), 8 competencies with descriptions, 3 job roles (4 competencies each), 40 scenario-style single-answer questions with invented figures (5 per competency, so evidence reaches "medium"), 3 published baseline assessments of 20 items, and 12 internal courses with difficulty, objectives and approved mappings. Codes start with `DEMO-`, names with `DEMO`, explanations end with a DEMO note. Seed "approvals" are not human review.
+- **Not done:** the `demo-1` arithmetic role, assessment and courses remain active (see DEC-056 D-4).
+
+### DEC-055 Learner-facing display names and recommendation emphasis
+
+- **Status:** Proposed.
+- **Decision:** Screens show names without the seed's `DEMO - ` prefix and `(synthetic …)` suffix (`cleanName`) only where a DEMO badge or the persistent DEMO notice labels the same content; stored names are unchanged. In the catalogue, courses with `rec-v1` rank 1-3 show "Top pick for you" and lower-ranked recommendations "Matches your gaps". Ranking itself is unchanged.
+- **Reason:** Screenshot review showed repeated prefixes made every list hard to read, and with four gaps `rec-v1` recommends most of the catalogue, so a single "Recommended" badge carried no signal.
+
+### DEC-056 Phase C conflicts awaiting the product owner
+
+- **Status:** Decision required. Details in `docs/evidence/implementation/phase-c-plan.md` §2 and §4.
+- **D-1** Single role-readiness score (ROLE-008 is P1) - not built; the dashboard shows "N of M at required level".
+- **D-2** Learning activity or reassessment updating estimates (CMP-018, ASM-012 are P1) - not built; the journey marks those steps "later release".
+- **D-3** Learning experience schema (DEC-049 requires a written proposal) - proposal written in `docs/evidence/implementation/phase-c-learning-experience-proposal.md`; no migration written.
+- **D-4** Retire the `demo-1` arithmetic job role from the role picker.
+- **D-5** Mention "Smart India Hackathon" in the UI (text only).
+- **D-6** Manual screen-reader review needs a person (NVDA not installed; Narrator present but not operable from the agent).
+
+### DEC-057 Accounts: learner self-registration, one-time password links, capability policy (Phase 4A)
+
+- **Status:** Proposed. Implements Phase 4 plan assumptions A-1, K-8 and D4-2; D4-1 (registration outside local/ci) still needs the product owner.
+- **Decision:**
+  - Learners may register (`POST /api/v1/auth/register`) only when `LEARNER_SELF_REGISTRATION_ENABLED` resolves true: unset means on in `local`/`ci` and off elsewhere, and `true` is refused at startup outside `local`/`ci`. Registration creates an `active`, non-synthetic account with the `learner` role only; request bodies reject unknown fields, so roles cannot be mass-assigned. This supersedes MVP-01 "no self-registration" for local/ci only.
+  - Administrators, trainers and auditors are always provisioned by an administrator. New accounts start `invited` with a one-time `account_setup` token; administrators never choose passwords. Reset issues a `password_reset` token. Tokens are 256-bit random, stored as SHA-256 only, expire after `PASSWORD_TOKEN_TTL_HOURS` (default 24), are single-use, and issuing a new one closes older ones. No email is sent: the link is shown once to the issuing administrator, and the token travels in the URL fragment so it never reaches server or proxy logs.
+  - Setting a password with a token revokes all sessions; changing a password revokes the person's other sessions. Deactivation and access-role changes revoke all of the person's sessions.
+  - `users.registration_id` (citext, optional, `^[A-Za-z0-9][A-Za-z0-9/-]{2,39}$`, unique per organisation) is personal data and redacted from logs.
+  - Authorisation for administration is a capability matrix in `backend/app/modules/identity/policy.py` derived from SECURITY_RESPONSIBLE_AI.md section 4, checked by `require_capability` on every admin route. `department_admin` is limited to its department and to learner-only accounts; only `platform_admin` may grant or manage `platform_admin`; administrators cannot change their own roles or status. `GET /me` returns `admin_capabilities` for navigation only.
+- **Alternatives rejected:** administrator-set temporary passwords (the administrator would know the secret); query-string tokens (logged by proxies).
+
+### DEC-058 One environment-level synthetic-data banner
+
+- **Status:** Proposed (Phase 4 plan K-2).
+- **Decision:** The DEMO banner is shown when `GET /api/v1/environment` reports `synthetic_data` (app env local, ci or staging), for every visitor, instead of depending on whether the signed-in account is synthetic. Per-card DEMO badges are removed progressively (the top-bar job-role badge first); page-level notices stay where content is synthetic (catalogue, assessment). `is_demo` remains in every API payload.
+
+### DEC-059 Learning experience, path rule `path-v1` and lesson rendering (Phase 4B)
+
+- **Status:** Proposed. Implements the approved lessons proposal (DEC-049 follow-up) with the Phase 4 amendments; K-5 of the Phase 4 plan.
+- **Decision:**
+  - Migration 0007 adds `course_modules`, `lessons`, `course_prerequisites`, `progress_records` (with `course_id`, `started_at`, `resume_lesson_id`), append-only `learning_activities`, `learning_paths` and `learning_path_items`, plus `courses.content_origin` and `courses.completion_criteria`. The course lifecycle column set planned for 0007 moves to 4C with course administration, so learner visibility stays `review_status='approved' AND status='active'` for now.
+  - Lesson completion is self-reported ("Mark as complete"), recorded with `status_source='self_reported'`, never downgraded by reopening, and never changes competency estimates or opens a reassessment (K-4 unchanged).
+  - `path-v1` is a pure, documented rule separate from `rec-v1`: gaps largest first; within a gap the courses `rec-v1` matched, foundational to advanced, ties by `rec-v1` rank; advisory prerequisites placed just before the course; each course once; placeholders for gaps without content; completed courses from a superseded path kept at the end. The active path is regenerated when its input fingerprint changes or on request; completion facts live in `progress_records`, so nothing is lost.
+  - Progress rows are created with `INSERT ... ON CONFLICT DO NOTHING` followed by a row lock, because opening and completing a lesson can race (found by the browser journey).
+  - Lesson bodies use a small Markdown subset rendered to React elements by `frontend/src/components/product/Markdown.tsx` (no HTML parsing, no links or images). This replaces planned decision D4-7: no `react-markdown` dependency is added.
+  - Pack `demo-3` adds synthetic lessons (2 modules, 4 lessons for each `demo-2` course, invented figures), completion criteria and four advisory prerequisites.
+- **Not done:** A-6 (retiring the `demo-1` arithmetic role and courses) awaits the product owner (DEC-056 D-4); demo-1 courses have no lessons and show "No lessons yet".
+
+### DEC-060 Content workflow: review policy, source metadata and publishing guards (Phase 4C)
+
+- **Status:** Proposed. Implements Phase 4 plan K-6, K-7 and assumption A-5; the review policy needs product-owner confirmation (D4-5).
+- **Decision:**
+  - Review policy `single-reviewer-v1`: one recorded human decision (`approve`, `request_changes`, `reject`; a reason is required unless approving) closes a review task. The person who submitted the item, or wrote the question version under review, cannot decide it; attempts are refused and audited with outcome `denied`. Deciders need `questions.review` or `courses.review`. `approvals` are append-only. Nothing is approved automatically, and seed "approvals" remain labelled synthetic (DEC-045).
+  - Questions authored in the platform follow `draft -> in_review -> approved | rejected`, with "request changes" returning them to `draft`. Every edit is a new immutable version; approval pins `approved_version_id`. A question cannot be sent for review without source metadata (`question_source_references`): a synthetic declaration (with a note), an imported source record, or an author-provided external reference, which is always shown as "author-provided, not verified" and never as a citation. Questions for licence-restricted frameworks cannot be authored. Approved questions used by a published assessment cannot be retired.
+  - Courses: states derived from existing columns (`draft`, `in_review`, `approved`, `published`), so learner visibility stays `review_status='approved' AND status='active'`. Submitting needs a description, an active lesson and a competency link; publishing needs approval, an active lesson and an approved competency link (approved by the reviewer together with the course). Editing an approved course sends it back to draft; a published course must be unpublished (with a recorded reason) before editing. Imported programme listings are read-only here.
+  - The 22 collected source documents are imported as reference-only `source_records` (provenance only, `review_verified=false`); no document text is stored.
+  - Assessments: a read-only coverage and quality view (approved items, at least 5 items per required competency, source metadata). Assembling and versioning assessments from the UI is deferred.
+- **Found during verification:** the running app did not import the full model registry, so the first question insert failed on a foreign key to `topics`; `app.main` now imports `app.models` (regression test added). Signing out could send the next person who signed in on the same browser to the previous user's page; sign-out now leaves protected pages before clearing the session.
+
+### DEC-061 Aggregated insight with minimum group size, and a synthetic cohort (Phase 4D)
+
+- **Status:** Proposed. P1 pull-forward under plan assumption A-3 (D4-3 needs the product owner).
+- **Decision:**
+  - `GET /api/v1/admin/insight/summary`, `/skill-gaps`, `/training-needs` (capability `insight.view`) return aggregates only. Any figure describing fewer than 5 learners is withheld (`suppressed`), including cells where fewer than 5 learners were assessed; training needs list only competencies where at least 5 learners share a gap. No names, emails, registration IDs or learner rows are returned. `department_admin` sees their own departments. Gaps use the same `score-v1` rule learners see (evidence at least medium).
+  - Screens state that figures are development insight, not a performance measure, and not for appraisal or selection. There is no single readiness score.
+  - Pack `demo-4` creates 38 synthetic learners in three synthetic departments (one deliberately below the group size) who go through the real pipeline (notice, job role, scored baseline, some lesson completion) with seeded answer patterns, so every figure is derived from recorded evidence. Cohort accounts have no passwords and are excluded from `demo_reset --all-synthetic`. `apply_demo_packs(..., CONTENT_PACKS)` lets tests skip the cohort.
+- **Not done:** before/after comparison (reassessment remains P1, K-4).
+
+### DEC-062 AI capability boundary stays local
+
+- **Status:** Accepted for Phase 4 (brief: no external AI, no keys).
+- **Decision:** Six interfaces (`CompetencyInterpreter`, `RecommendationExplainer`, `LearningContentRetriever`, `QuestionGenerator`, `QuestionValidator`, `LearningTutor`) with deterministic local implementations that report their `method`. Only the structural question validator is shown in the UI, labelled "fixed rules, not AI". The provider analysis is in `docs/evidence/implementation/phase-4-ai-boundary.md`; connecting any provider needs a new decision.

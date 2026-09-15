@@ -52,8 +52,8 @@ def test_import_counts(db_session, organization, bundle):
     assert counts["competency_levels"] == 5
     assert counts["courses"] == 99
     assert counts["course_topics"] == expected_tags
-    assert counts["source_records"] == 100  # 99 programmes + the CSCD framework
-    assert counts["audit_logs"] == 3
+    assert counts["source_records"] == 122  # 99 programmes + the CSCD framework + 22 reference-only documents (4C)
+    assert counts["audit_logs"] == 4
     assert any("CSCD-2014-4.8" in w for w in report.warnings)
 
 
@@ -108,7 +108,8 @@ def test_audit_event_records_dataset_fingerprint(db_session, organization, bundl
     events = db_session.scalars(select(AuditLog).where(AuditLog.organization_id == organization.id,
                                                        AuditLog.action == "seed.import")).all()
     by_target = {e.target_id: e for e in events}
-    assert set(by_target) == {"topics", "competency_framework", "training_programmes"}
+    assert set(by_target) == {"topics", "documents", "competency_framework", "training_programmes"}
+    assert by_target["documents"].after["created"] == {"source_records:documents": 22}
     assert by_target["training_programmes"].after["dataset_sha256"] == bundle.file_sha256["training_programmes"]
     assert by_target["training_programmes"].after["created"]["courses"] == 99
 

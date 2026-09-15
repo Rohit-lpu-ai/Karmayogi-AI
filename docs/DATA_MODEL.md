@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | **Version** | 1.0.0-draft |
-| **Status** | Partially implemented: migrations `0001`-`0004` (§18). Other entities are planned |
+| **Status** | Partially implemented: migrations `0001`-`0005` (§18). Other entities are planned |
 | **Last updated** | 2026-09-15 |
 | **Scope** | Application database (PostgreSQL + pgvector). The statistical-observation schema for official data series remains in [../DATA_DICTIONARY.md](../DATA_DICTIONARY.md); canonical seed datasets are defined in [../schemas/canonical_datasets.schema.json](../schemas/canonical_datasets.schema.json). |
 | **Related** | [SYSTEM_ARCHITECTURE.md](SYSTEM_ARCHITECTURE.md) · [API_INTEGRATION_SPEC.md](API_INTEGRATION_SPEC.md) · [AI_SYSTEM_SPEC.md](AI_SYSTEM_SPEC.md) · [SECURITY_RESPONSIBLE_AI.md](SECURITY_RESPONSIBLE_AI.md) · [DATA_PROVENANCE.md](DATA_PROVENANCE.md) · [DECISIONS.md](DECISIONS.md) |
@@ -288,6 +288,8 @@ erDiagram
 | `last_login_at` | `timestamptz` | No | |
 | `onboarding_completed_at` | `timestamptz` | No | |
 | `is_synthetic` | `boolean` | Yes | Default false. True for demo and seed users; cannot exist in `pilot` or `production` (startup check). |
+| `registration_id` | `citext` | No | **PD**. Migration 0006. Learner or staff identifier; format `^[A-Za-z0-9][A-Za-z0-9/-]{2,39}$`; unique per organisation when present (partial unique index `uq_users_org_registration_id`); redacted from logs |
+| `must_change_password` | `boolean` | Yes | Migration 0006. Default false |
 
 - **Relationships:** Many UserAccessRole, Session, AssessmentAttempt, UserCompetency, ProgressRecord, and so on.
 - **Indexes:** Unique `(organization_id, email)`; `(organization_id, department_id)`; `(organization_id, job_role_id)`.
@@ -336,6 +338,14 @@ erDiagram
 - **Tenant scope:** TS.
 - **Audit:** Login and logout events in AuditLog, not per session row.
 - **Retention:** Purge 30 days after expiry (proposed; Decision required under DEC-027).
+
+### PasswordResetToken
+
+- **Purpose:** Administrator-issued one-time link to set a password (DEC-057). Migration 0006, table `password_reset_tokens`.
+- **Fields:** `id`, `created_at`, TS, `user_id` -> User, `token_hash` (`text`, unique, SHA-256 hex, check), `issued_by` -> User, `purpose` (`account_setup`, `password_reset`), `expires_at`, `used_at` (check `used_at >= created_at`).
+- **Constraints:** Raw token never stored. Single use: `used_at` is set on use, and issuing a new token closes open ones.
+- **Audit:** `auth.password.reset_issued` on issue; `auth.password.change` on use.
+- **Retention:** Account data class.
 
 ### NoticeAcknowledgement
 
@@ -1009,6 +1019,8 @@ Called "Role" in the product brief. Named `JobRole` to avoid confusion with acce
 | `data_status` | `text` | Yes | |
 | `review_status` | `text` | Yes | `unreviewed`, `approved`, `rejected` |
 | `status` | `text` | Yes | `active`, `inactive` |
+| `difficulty` | `text` | No | `foundational`, `intermediate`, `advanced`; descriptive only, never read by ranking (DEC-051, migration `0005`) |
+| `learning_objectives` | `text[]` | Yes | Default `{}` (DEC-051) |
 
 - **Indexes:** `(organization_id, course_type, status)`; unique `(organization_id, source_record_id)`.
 - **Constraints:**
@@ -1138,6 +1150,14 @@ Called "Role" in the product brief. Named `JobRole` to avoid confusion with acce
 - **Audit:** Not required.
 - **Retention:** Activity class.
 
+### CourseModule, Lesson, CoursePrerequisite (Phase 4B, migration 0007)
+
+- **CourseModule** (`course_modules`, SC, TS): `course_id`, `position` (unique per course, > 0), `title`, `summary`, `status` (`active`, `inactive`).
+- **Lesson** (`lessons`, SC, TS): `module_id`, `course_id` (denormalised for queries), `position` (unique per module), `title`, `lesson_type` (`reading`, `worked_example`, `practice_check`), `estimated_minutes` (1-240), `content_kind` (`inline_markdown`, `learning_material`), `body_markdown` (required for `inline_markdown`), `learning_material_id` (no FK until Phase 5), `status`.
+- **CoursePrerequisite** (`course_prerequisites`, SC, TS): `course_id`, `prerequisite_course_id`; unique pair; not self. Advisory ordering only.
+- **Course** gains `content_origin` (`synthetic`, `official_source`, `provider`; NSSTA listings backfilled to `official_source`) and `completion_criteria`.
+- **Implementation notes for the entities below:** `ProgressRecord` also stores `course_id`, `started_at` and `resume_lesson_id` (courses only), with a CHECK that completed rows have `completed_at`; `LearningActivity.activity_type` in this release is `course_started`, `lesson_opened`, `lesson_completed`, `course_completed`, `path_generated` (append-only trigger); `LearningPath` stores `job_role_id`; `LearningPathItem.item_type` is `course` or `no_content_placeholder`.
+
 ### ProgressRecord
 
 - **Purpose:** Current progress state per learner and target.
@@ -1260,6 +1280,8 @@ Called "Role" in the product brief. Named `JobRole` to avoid confusion with acce
 - **Tenant scope:** TS.
 - **Audit:** The row itself is the record; access via the auditor role is audited.
 - **Retention:** AI log class. Text fields purged earlier than metadata (Decision required).
+
+> **Phase 4C implementation (migration 0008):** `review_tasks` stores `task_type` (`question_version_review`, `course_review`), `target_type`, `target_id`, `target_version_id`, `title_snapshot`, `status` (`open`, `decided`, `cancelled`), `submitted_by`, `submitted_at`, `eligible_capability`, `required_decisions` (1), `policy_snapshot`, `submission_note`, `decided_at`; partial unique open task per target. `approvals` stores `review_task_id`, `sequence`, `decision` (`approve`, `reject`, `request_changes`), `reason_text` (required unless approve), `decided_by`, `target_version_id`; append-only trigger. `question_source_references` (append-only): `question_version_id`, `source_kind` (`synthetic` with `note`, `source_record` with `source_record_id`, `external_reference` with `title` and `publisher`), `url` (http/https), `locator`. `questions.status` gains `draft`. `courses` gains `published_at`, `published_by`.
 
 ### ReviewTask
 
@@ -1627,6 +1649,7 @@ Recorded as tables are implemented (agent rule 19). Migrations live in `backend/
 | `0001` | Extensions `pgcrypto`, `citext`. `vector` is deferred to Phase 5 (DEC-038) |
 | `0002` | Organization, Department, User, UserAccessRole, JobRole, CompetencyFramework, CompetencyCluster, Competency, CompetencyLevel, RoleCompetency, Topic, SourceRecord, Course, CourseTopic, CourseCompetency, AuditLog |
 | `0003` | Session, NoticeAcknowledgement, Question, QuestionVersion, QuestionOption, Assessment, AssessmentQuestion, AssessmentAttempt, AttemptQuestion, Answer, CompetencyEvidence, UserCompetency; append-only triggers; `course_competencies.method` gains `demo_seed` |
+| `0005` | `courses.difficulty` (CHECK) and `courses.learning_objectives` (DEC-051) |
 | `0004` | SeedPackApplication; `assessment_attempts.status` gains `voided` with `voided_at`/`void_reason` (CHECK: both set exactly when voided); the one-baseline index ignores voided attempts. Downgrade turns voided attempts into `expired` without the baseline flag (DEC-052) |
 
 **Implemented as specified**, with these clarifications:

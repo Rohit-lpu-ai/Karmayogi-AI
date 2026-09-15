@@ -27,6 +27,7 @@ class CompetencyRef(BaseModel):
     name: str
     framework_code: str
     framework_status: str
+    description: str | None = None
     is_demo: bool
 
 
@@ -41,6 +42,7 @@ class JobRoleItem(BaseModel):
 class LevelItem(BaseModel):
     level_number: int
     label: str
+    description: str | None = None
     min_score: Decimal | None
     threshold_status: str
 
@@ -121,8 +123,8 @@ def job_role_competencies(
                 competency=CompetencyRef(**service.competency_ref(r.competency, r.framework)),
                 required_level=r.mapping.required_level_number,
                 mapping_version=r.mapping.mapping_version,
-                levels=[LevelItem(level_number=lvl.level_number, label=lvl.label, min_score=lvl.min_score,
-                                  threshold_status=lvl.threshold_status) for lvl in r.levels],
+                levels=[LevelItem(level_number=lvl.level_number, label=lvl.label, description=lvl.description,
+                                  min_score=lvl.min_score, threshold_status=lvl.threshold_status) for lvl in r.levels],
             )
             for r in requirements
         ],

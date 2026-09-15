@@ -419,6 +419,93 @@ All require a session except login. State-changing routes require `X-CSRF-Token`
 
 ---
 
+### 2.13 Implemented in product upgrade phase C (2026-09-15)
+
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/api/v1/me/attempts` | Own attempts newest first; voided demo attempts excluded. Learning roles |
+| GET | `/api/v1/courses` | Learner-visible catalogue (`review_status='approved'`, `status='active'`). Query: `q` (title, description, objectives), `competency_id`, `difficulty`, `max_days` (1-365), `sort` (`recommended`, `title`, `duration_asc`, `duration_desc`). Returns `items`, `total`, `filters` (competency facets with course counts, difficulties, sorts) and `has_learning_context`. Each item carries `competencies`, `recommendation` (rank and reasons from `rec-v1`, learning roles only) and `addresses_your_gaps`. No pagination yet (catalogue below 50 items) |
+| GET | `/api/v1/courses/{id}` | Detail with the same fields plus `your_status` per competency, `related_courses` and `learning_content` (`available: false` until the C7 proposal is approved). 404 for unapproved, inactive or other-organisation courses |
+
+**Additive response fields (non-breaking):** competency references gain `description` (null for restricted frameworks); level items gain `description`; recommendation course references gain `difficulty` and `learning_objectives` (DEC-051).
+
+### 2.14 Implemented in Phase 4A - accounts and administration (2026-09-15)
+
+| Method | Path | Auth | Notes |
+|---|---|---|---|
+| GET | `/api/v1/environment` | Public | `{synthetic_data, self_registration_enabled}`; no configuration values |
+| GET | `/api/v1/auth/registration-options` | Public | Query `organization_code` (optional when one organisation exists). `{enabled, organization_name, departments, job_roles}` |
+| POST | `/api/v1/auth/register` | Public | 201 + session cookie + `SessionResponse`. 403 `REGISTRATION_DISABLED`, 409 `EMAIL_IN_USE` / `REGISTRATION_ID_IN_USE`, 422 validation. Learner role only (DEC-057) |
+| POST | `/api/v1/auth/password/change` | Session + CSRF | `{current_password, new_password}`; 204; 422 `CURRENT_PASSWORD_INCORRECT`; other sessions revoked |
+| POST | `/api/v1/auth/password/set` | Public (token) | `{token, new_password}`; 204; 400 `TOKEN_INVALID` for unknown, used or expired tokens; all sessions revoked; invited accounts become active |
+| PATCH | `/api/v1/me` | Session + CSRF | `display_name`, `designation`, `department_id` only |
+| GET | `/api/v1/departments` | Session | Active departments of the caller's organisation |
+| GET | `/api/v1/admin/users` | `users.view` | Query `q`, `status`, `role`, `department_id`, `page`, `page_size` (max 100). `{items, total, page, page_size}`; department administrators see their department only |
+| POST | `/api/v1/admin/users` | `users.manage` + CSRF | Creates an `invited` account with roles; returns `{user, setup: {purpose, token, expires_at}}` once |
+| GET | `/api/v1/admin/users/{id}` | `users.view` | 404 outside organisation or department scope |
+| PATCH | `/api/v1/admin/users/{id}` | `users.manage` + CSRF | Requires `row_version` (409 `STALE_VERSION`). `status` (`active`/`inactive`), details, `roles` (needs `roles.assign`); rules in DEC-057 |
+| POST | `/api/v1/admin/users/{id}/password-link` | `users.manage` + CSRF | 201 `{purpose, token, expires_at}`; not for your own account or inactive accounts |
+| GET | `/api/v1/admin/roles` | `users.view` | Every access role with label, description, capabilities, user count |
+| GET | `/api/v1/admin/departments` | `users.view` | With user counts |
+| POST / PATCH | `/api/v1/admin/departments`, `/{id}` | `departments.manage` + CSRF | Name unique per organisation (409 `DEPARTMENT_EXISTS`) |
+
+**Additive `MeResponse` fields:** `registration_id`, `department`, `must_change_password`, `admin_capabilities`, `last_login_at`. Responses never include password or token hashes.
+
+### 2.15 Implemented in Phase 4B - learning experience (2026-09-15)
+
+All routes need a learning role (`SELF_LEARNING_ROLES`); writes need CSRF. Courses and lessons outside the caller's organisation, unapproved or inactive return 404.
+
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/api/v1/courses/{id}/outline` | `{course, modules[{lessons[{status}]}], progress, prerequisites}` |
+| POST | `/api/v1/courses/{id}/start` | Idempotent; creates course progress `in_progress` with a resume lesson; 409 `NO_LESSONS` |
+| GET | `/api/v1/lessons/{id}` | Body (Markdown subset), module, position of total, previous/next, caller status, `content_notice` for synthetic content |
+| PUT | `/api/v1/me/lessons/{id}/progress` | `{status: in_progress | completed}`; returns lesson status, course progress and next lesson. Never downgrades a completed lesson; completing the last lesson completes the course |
+| GET | `/api/v1/me/progress` | Courses in progress and completed, totals, note that completion does not change estimates |
+| GET | `/api/v1/me/learning-path` | Active `path-v1` path, generated on first view or when inputs change. `state`: `ready`, `assessment_needed`, `no_gaps`; 409 `JOB_ROLE_REQUIRED` |
+| POST | `/api/v1/me/learning-path/regenerate` | New active path; the previous one is `superseded`; completion carried over |
+
+**Additive catalogue fields:** `GET /courses` items gain `content_origin`, `lessons {lesson_count, module_count, total_minutes}` and `your_progress` (learning roles), and accept `progress=not_started|in_progress|completed`. `GET /courses/{id}` gains `prerequisites`, `completion_criteria`, and `learning_content.available` now reflects real lessons.
+
+### 2.16 Implemented in Phase 4C - content administration (2026-09-15)
+
+All routes are under `/api/v1/admin`, organisation-scoped, capability-checked on the server, CSRF on writes. 404 for other organisations' items.
+
+| Method | Path | Capability | Notes |
+|---|---|---|---|
+| GET | `/questions` | `questions.author` | Query `status`, `competency_id`, `origin`, `q`, `page`, `page_size`; `status_counts` |
+| GET | `/questions/options` | `questions.author` | Competencies (with `restricted`), source records, difficulties |
+| POST | `/questions` | `questions.author` | Creates a `draft` with version 1: `competency_id`, `difficulty`, `stem`, `explanation`, `options[{text,is_correct}]` (3-5, exactly one correct), `sources[]` |
+| GET | `/questions/{id}` | `questions.author` or `questions.review` | Current version with options and correct answer, sources with status labels, versions, review history, `actions` |
+| PUT | `/questions/{id}` | `questions.author` | New version; `row_version` required; only `draft`/`rejected` (409 `NOT_EDITABLE`) |
+| POST | `/questions/{id}/submit` \| `/withdraw` \| `/retire` | `questions.author` | 422 `SOURCE_REQUIRED`; 409 `USED_IN_PUBLISHED_ASSESSMENT` |
+| GET | `/reviews?status=open\|decided\|cancelled\|all` | `questions.review` or `courses.review` | Tasks the caller may review, with `can_decide`, `blocked_reason`, `row_version` |
+| POST | `/reviews/{id}/decision` | task capability | `{decision, reason, row_version}`; 403 `SELF_REVIEW_BLOCKED`; 409 `TASK_CLOSED`/`STALE_VERSION`; 422 reason required |
+| GET | `/courses?state=&origin=&q=` | `courses.manage` | All courses including drafts and imported listings; `state_counts` |
+| GET | `/courses/options` | `courses.manage` | Competencies for linking |
+| POST | `/courses` | `courses.manage` | Draft internal course (`content_origin` `synthetic` or `provider`) |
+| GET | `/courses/{id}` | `courses.manage` or `courses.review` | Details, modules and lessons (with bodies), competency links, guard checklist, review history, `actions` |
+| PATCH | `/courses/{id}` | `courses.manage` | `row_version`; 409 `IN_REVIEW`, `PUBLISHED`, `READ_ONLY_LISTING` |
+| POST | `/courses/{id}/modules`, `/courses/{id}/modules/{mid}/lessons` | `courses.manage` | Add module; add lesson (Markdown body) |
+| PATCH | `/courses/{id}/lessons/{lid}` | `courses.manage` | Title, type, minutes, body, `status` (hide) |
+| PUT | `/courses/{id}/competencies` | `courses.manage` | `{competency_id, relevance}`; `relevance: null` removes; links start `suggested` |
+| POST | `/courses/{id}/submit` \| `/withdraw` \| `/publish` \| `/unpublish` | `courses.manage` | 422 `SUBMIT_GUARDS_FAILED`/`PUBLISH_GUARDS_FAILED`; 409 `NOT_APPROVED`; unpublish needs `{reason}` |
+| GET | `/competencies` | `frameworks.view` | Frameworks (descriptions withheld when restricted), approved-question counts, job-role requirements |
+| GET | `/assessments` | `assessments.manage` | Coverage per competency and quality checks |
+| GET | `/audit` | `audit.view` | Query `action` (prefix), `target_type`, `outcome`, `since`, `before_id`, `limit` (max 200); `next_before_id` cursor |
+
+### 2.17 Implemented in Phase 4D - aggregated insight (2026-09-15)
+
+Capability `insight.view` (org_admin, competency_admin, training_manager, department_admin scoped to their departments). A count object is `{value, suppressed}`; `value` is null when suppressed. Minimum group size 5.
+
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/api/v1/admin/insight/summary` | Learners, baseline completed, with confirmed gaps, started learning, completed a course; `scope` |
+| GET | `/api/v1/admin/insight/skill-gaps?job_role_id=` | `competencies[]`, `rows[{department, learners, cells{competency_id: {required_for, assessed, with_gap, share, average_gap, suppressed}}}]`, `totals`, `job_roles` |
+| GET | `/api/v1/admin/insight/training-needs` | Competencies with at least 5 learners sharing a gap, ranked: `learners_with_gap`, `average_gap`, `departments_affected`, `published_courses`, started/completed linked course counts, `content_gap`; `withheld_competencies` |
+
+Question detail (`GET /api/v1/admin/questions/{id}`) additionally returns `quality_checks {method, findings[{code, severity, message}]}` from the local structural validator.
+
 ## 3. Reserved endpoint groups - P1/P2
 
 **Not implemented in MVP.** No routes may be registered for these groups ([MVP_SCOPE.md](MVP_SCOPE.md) §5). Paths are indicative and are finalised at phase start.

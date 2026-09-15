@@ -9,7 +9,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Index, Integer, Text, UniqueConstraint, text
+from sqlalchemy import ARRAY, CheckConstraint, DateTime, ForeignKey, Index, Integer, Text, UniqueConstraint, text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -20,6 +20,10 @@ from app.core.vocab import ACTIVE_INACTIVE, DATA_STATUSES
 COURSE_TYPES = ("internal", "nssta_programme_listing")
 COURSE_REVIEW_STATUSES = ("unreviewed", "approved", "rejected")
 MAPPING_STATUSES = ("suggested", "approved", "rejected")
+# DEC-051: descriptive only - shown and filtered, never read by recommendation ranking.
+COURSE_DIFFICULTIES = ("foundational", "intermediate", "advanced")
+# Phase 4B: where a course's content comes from. Synthetic content is never presented as official.
+CONTENT_ORIGINS = ("synthetic", "official_source", "provider")
 
 
 class Course(StandardColumnsMixin, TenantMixin, RowVersionMixin, Base):
@@ -44,10 +48,19 @@ class Course(StandardColumnsMixin, TenantMixin, RowVersionMixin, Base):
     data_status: Mapped[str] = mapped_column(Text, nullable=False)
     review_status: Mapped[str] = mapped_column(Text, nullable=False, server_default=text("'unreviewed'"))
     status: Mapped[str] = mapped_column(Text, nullable=False, server_default=text("'active'"))
+    difficulty: Mapped[str | None] = mapped_column(Text)  # DEC-051
+    learning_objectives: Mapped[list[str]] = mapped_column(ARRAY(Text), nullable=False, server_default=text("'{}'"))  # DEC-051
+    content_origin: Mapped[str] = mapped_column(Text, nullable=False, server_default=text("'synthetic'"))
+    # Phase 4C: publishing is approval (review_status) plus activation (status); recorded when a course goes live.
+    published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    published_by: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"))
+    completion_criteria: Mapped[str | None] = mapped_column(Text)
 
     __table_args__ = (
         CheckConstraint(check_in("course_type", COURSE_TYPES), name="course_type"),
+        CheckConstraint(f"difficulty IS NULL OR {check_in('difficulty', COURSE_DIFFICULTIES)}", name="difficulty"),
         CheckConstraint(check_in("data_status", DATA_STATUSES), name="data_status"),
+        CheckConstraint(check_in("content_origin", CONTENT_ORIGINS), name="content_origin"),
         CheckConstraint("data_status <> 'MOCK'", name="not_mock"),
         CheckConstraint(check_in("review_status", COURSE_REVIEW_STATUSES), name="review_status"),
         CheckConstraint(check_in("status", ACTIVE_INACTIVE), name="status"),

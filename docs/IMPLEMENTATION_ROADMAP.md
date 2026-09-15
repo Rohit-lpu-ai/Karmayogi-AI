@@ -56,10 +56,10 @@ The product owner approved a product and UX upgrade of the vertical slice ([evid
 |---|---|---|
 | A1 Critical fixes | Launcher port detection and proxy target; versioned demo packs; local demo reset; developer details hidden from learners; stale documents updated | Done (uncommitted) |
 | A2 Design foundation and app shell | Tailwind + shadcn/ui tokens and components; app shell; dev component gallery | Done (uncommitted) |
-| B | Navigation structure, onboarding stepper, assessment and result redesign | Next |
-| C | Dashboard, competency profile, gap analysis (`/me/dashboard`, `/me/attempts`) | Planned |
-| D | Richer synthetic demo pack `demo-2`; course catalogue and detail (difficulty and objectives, DEC-051) | Planned |
-| E | Lessons, learning player, progress (DEC-049; migration proposed first) | Planned |
+| B | Onboarding stepper, assessment and result redesign, Playwright + axe journeys | Done (uncommitted) |
+| C | Login, dashboard, competency profile, gap analysis, catalogue and course detail, `demo-2` content (`/me/attempts`, `/courses`) | Done (uncommitted); lessons proposal awaiting approval |
+| D | Lessons, learning player, learning path and progress (after the C7 proposal is approved) | Next |
+| E | Reassessment decision, recommendation feedback, correction requests | Planned |
 | F | AI/RAG provider interfaces with local fakes; official data integration plan (documentation) | Planned |
 | G | Playwright + axe journeys, responsive and keyboard checks | Planned |
 

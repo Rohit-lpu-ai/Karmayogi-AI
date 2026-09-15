@@ -36,8 +36,9 @@ from app.core.db import Base, RowVersionMixin, StandardColumnsMixin, TenantMixin
 
 # 'demo_seed' marks synthetic items created by the local demo seed (DEC-046); never reviewed content.
 QUESTION_ORIGINS = ("ai_generated", "human_authored", "demo_seed")
+# "draft": a human author's unsubmitted work (Phase 4C, migration 0008).
 QUESTION_STATUSES = (
-    "pending_validation", "failed_validation", "validation_incomplete", "in_review",
+    "draft", "pending_validation", "failed_validation", "validation_incomplete", "in_review",
     "approved", "rejected", "suspended", "retired",
 )
 DIFFICULTIES = ("foundational", "intermediate", "advanced")
@@ -226,3 +227,39 @@ class Answer(StandardColumnsMixin, TenantMixin, Base):
     rescore_count: Mapped[int] = mapped_column(Integer, nullable=False, server_default=sql_text("0"))
 
     __table_args__ = (UniqueConstraint("attempt_id", "question_version_id"),)
+
+
+SOURCE_KINDS = ("synthetic", "source_record", "external_reference")
+
+
+class QuestionSourceReference(TenantMixin, Base):
+    """Where a question version's content comes from (Phase 4C, plan K-6). Append-only with its version.
+
+    - ``synthetic``: invented for practice; ``note`` must say so. Never presented as a citation.
+    - ``source_record``: points to an imported source record (reference only until its review is verified).
+    - ``external_reference``: title and publisher given by the author; shown as "author-provided, not verified".
+    """
+
+    __tablename__ = "question_source_references"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, server_default=sql_text("gen_random_uuid()"))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    created_by: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"))
+    question_version_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("question_versions.id"),
+                                                           nullable=False, index=True)
+    source_kind: Mapped[str] = mapped_column(Text, nullable=False)
+    source_record_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("source_records.id"))
+    title: Mapped[str | None] = mapped_column(Text)
+    publisher: Mapped[str | None] = mapped_column(Text)
+    url: Mapped[str | None] = mapped_column(Text)
+    locator: Mapped[str | None] = mapped_column(Text)
+    note: Mapped[str | None] = mapped_column(Text)
+
+    __table_args__ = (
+        CheckConstraint(check_in("source_kind", SOURCE_KINDS), name="source_kind"),
+        CheckConstraint("source_kind <> 'source_record' OR source_record_id IS NOT NULL", name="record_has_id"),
+        CheckConstraint("source_kind <> 'external_reference' OR (title IS NOT NULL AND publisher IS NOT NULL)",
+                        name="external_has_title_publisher"),
+        CheckConstraint("source_kind <> 'synthetic' OR note IS NOT NULL", name="synthetic_has_note"),
+        CheckConstraint("url IS NULL OR url ~ '^https?://'", name="url_scheme"),
+    )

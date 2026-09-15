@@ -42,29 +42,34 @@ def _new_org(db) -> Organization:
 
 def test_packs_apply_once_and_are_recorded(db_session):
     org = _new_org(db_session)
-    first = demo_packs.apply_demo_packs(db_session, org, AppEnv.ci)
+    first = demo_packs.apply_demo_packs(db_session, org, AppEnv.ci, demo_packs.CONTENT_PACKS)
     assert first["demo-1"]["action"] == "applied" and first["demo-1"]["created"]["questions"] == 10
-    row = db_session.scalar(select(SeedPackApplication).where(SeedPackApplication.organization_id == org.id))
+    row = db_session.scalar(select(SeedPackApplication).where(SeedPackApplication.organization_id == org.id,
+                                                              SeedPackApplication.pack_code == "demo-1"))
     assert (row.pack_code, row.pack_version) == ("demo-1", 1)
 
-    second = demo_packs.apply_demo_packs(db_session, org, AppEnv.ci)
-    assert second == {"demo-1": {"action": "up_to_date", "version": 1}}
-    assert demo_packs.pack_status(db_session, org)[0]["state"] == "up_to_date"
+    assert first["demo-2"]["action"] == "applied" and first["demo-2"]["created"]["questions"] == 40
+
+    second = demo_packs.apply_demo_packs(db_session, org, AppEnv.ci, demo_packs.CONTENT_PACKS)
+    assert second == {"demo-1": {"action": "up_to_date", "version": 1}, "demo-2": {"action": "up_to_date", "version": 1},
+                      "demo-3": {"action": "up_to_date", "version": 1}}
+    assert {p["code"]: p["state"] for p in demo_packs.pack_status(db_session, org)} == {
+        "demo-1": "up_to_date", "demo-2": "up_to_date", "demo-3": "up_to_date", "demo-4": "not_applied"}
     audits = db_session.scalars(select(AuditLog).where(AuditLog.organization_id == org.id,
                                                        AuditLog.action == "seed.demo_pack.apply")).all()
-    assert [a.target_id for a in audits] == ["demo-1@1"]
+    assert sorted(a.target_id for a in audits) == ["demo-1@1", "demo-2@1", "demo-3@1"]
 
 
 def test_pre_registry_demo_content_is_adopted_without_recreating(db_session):
     org = _new_org(db_session)
     seed_demo_content(db_session, org, AppEnv.ci)  # the seed as it ran before DEC-052
-    report = demo_packs.apply_demo_packs(db_session, org, AppEnv.ci)
+    report = demo_packs.apply_demo_packs(db_session, org, AppEnv.ci, demo_packs.CONTENT_PACKS)
     assert report["demo-1"] == {"action": "adopted", "version": 1, "created": {}}
 
 
 def test_newer_pack_version_is_applied_additively(db_session, monkeypatch):
     org = _new_org(db_session)
-    demo_packs.apply_demo_packs(db_session, org, AppEnv.ci)
+    demo_packs.apply_demo_packs(db_session, org, AppEnv.ci, demo_packs.CONTENT_PACKS)
     calls = []
 
     def additive(session, organization, env):
@@ -78,7 +83,8 @@ def test_newer_pack_version_is_applied_additively(db_session, monkeypatch):
     report = demo_packs.apply_demo_packs(db_session, org, AppEnv.ci)
     assert report["demo-1"] == {"action": "upgraded", "version": 2, "created": {"new_items": 2}}
     assert calls == [org.id]
-    row = db_session.scalar(select(SeedPackApplication).where(SeedPackApplication.organization_id == org.id))
+    row = db_session.scalar(select(SeedPackApplication).where(SeedPackApplication.organization_id == org.id,
+                                                              SeedPackApplication.pack_code == "demo-1"))
     assert row.pack_version == 2
 
 

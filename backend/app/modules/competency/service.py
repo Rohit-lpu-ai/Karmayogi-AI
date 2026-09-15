@@ -48,7 +48,7 @@ def job_role_in_org(db: DbSession, organization_id: uuid.UUID, job_role_id: uuid
 def framework_levels(db: DbSession, framework_id: uuid.UUID) -> tuple[scoring.LevelThreshold, ...]:
     rows = db.scalars(select(CompetencyLevel).where(CompetencyLevel.framework_id == framework_id)
                       .order_by(CompetencyLevel.level_number)).all()
-    return tuple(scoring.LevelThreshold(r.level_number, r.label, r.min_score, r.threshold_status) for r in rows)
+    return tuple(scoring.LevelThreshold(r.level_number, r.label, r.min_score, r.threshold_status, r.description) for r in rows)
 
 
 def role_requirements(db: DbSession, organization_id: uuid.UUID, job_role_id: uuid.UUID) -> list[Requirement]:
@@ -126,6 +126,8 @@ def competency_ref(competency: Competency, framework: CompetencyFramework) -> di
     return {
         "id": competency.id, "code": competency.code, "name": competency.name,
         "framework_code": framework.code, "framework_status": framework.status,
+        # Restricted frameworks (CSCD) never store a description, so this is null for them by construction.
+        "description": competency.description,
         "is_demo": is_demo_code(competency.code) or is_demo_code(framework.code),
     }
 

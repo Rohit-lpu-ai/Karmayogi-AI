@@ -17,7 +17,7 @@ from app.core.config import REPO_ROOT
 
 PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 VALIDATOR_PATH = REPO_ROOT / "scripts" / "validators" / "validate_canonical_datasets.py"
-SEED_DATASETS = ("topics", "competency_framework", "training_programmes")
+SEED_DATASETS = ("topics", "documents", "competency_framework", "training_programmes")
 
 
 class SeedRefused(Exception):

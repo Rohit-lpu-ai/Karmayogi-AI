@@ -13,7 +13,12 @@ from app.core.logging import configure_logging
 from app.core.middleware import RequestContextMiddleware
 from app.modules.assessment import api as assessment_api
 from app.modules.competency import api as competency_api
+import app.models  # noqa: F401 - register every mapper so cross-module foreign keys resolve at runtime
+from app.modules.identity import admin_api as identity_admin_api
 from app.modules.identity import api as identity_api
+from app.modules.learning import api as learning_api
+from app.modules.content_admin import api as content_admin_api
+from app.modules.insight import api as insight_api
 from app.modules.platform import api as platform_api
 from app.modules.recommendation import api as recommendation_api
 
@@ -39,9 +44,13 @@ def create_app(settings: Settings | None = None, engine_factory: Callable[[], En
     app.add_middleware(RequestContextMiddleware)
     app.include_router(platform_api.router)
     app.include_router(identity_api.router)
+    app.include_router(identity_admin_api.router)
     app.include_router(competency_api.router)
     app.include_router(assessment_api.router)
     app.include_router(recommendation_api.router)
+    app.include_router(learning_api.router)
+    app.include_router(content_admin_api.router)
+    app.include_router(insight_api.router)
     return app
 
 

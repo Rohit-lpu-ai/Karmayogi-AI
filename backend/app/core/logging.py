@@ -20,7 +20,7 @@ correlation_id_var: ContextVar[str | None] = ContextVar("correlation_id", defaul
 REDACTED = "[REDACTED]"
 
 _SENSITIVE_KEY = re.compile(
-    r"pass(word)?|secret|token|cookie|authorization|session|api[_-]?key|credential|database_url|dsn",
+    r"pass(word)?|secret|token|cookie|authorization|session|api[_-]?key|credential|database_url|dsn|registration_id",
     re.IGNORECASE,
 )
 _EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")

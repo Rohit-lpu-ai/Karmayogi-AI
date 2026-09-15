@@ -132,6 +132,24 @@ def available_assessments(db: DbSession, user: User) -> list[dict]:
     return out
 
 
+def attempt_history(db: DbSession, user: User) -> list[dict]:
+    """Own attempts, newest first (API_INTEGRATION_SPEC.md GET /me/attempts). Voided demo attempts are not history."""
+    rows = db.execute(
+        select(AssessmentAttempt, Assessment)
+        .join(Assessment, Assessment.id == AssessmentAttempt.assessment_id)
+        .where(AssessmentAttempt.organization_id == user.organization_id, AssessmentAttempt.user_id == user.id,
+               AssessmentAttempt.status != "voided")
+        .order_by(AssessmentAttempt.started_at.desc())
+    ).all()
+    return [{
+        "id": attempt.id, "status": attempt.status, "started_at": attempt.started_at,
+        "submitted_at": attempt.submitted_at, "scored_at": attempt.scored_at, "score_total": attempt.score_total,
+        "is_baseline": attempt.is_baseline,
+        "assessment": {"id": assessment.id, "title": assessment.title, "purpose": assessment.purpose,
+                       "is_demo": is_demo_assessment(assessment)},
+    } for attempt, assessment in rows]
+
+
 # --- Commands ------------------------------------------------------------------
 
 

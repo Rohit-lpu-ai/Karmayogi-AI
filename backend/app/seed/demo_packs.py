@@ -28,7 +28,7 @@ from app.modules.competency.models import CompetencyFramework
 from app.modules.governance.service import record_audit
 from app.modules.organization.models import Organization
 from app.modules.platform.models import SeedPackApplication
-from app.seed import demo_content
+from app.seed import demo_content, demo_pack_2, demo_pack_3, demo_pack_4
 from app.seed.canonical import SeedRefused
 
 DEMO_PACK_ENVS = {AppEnv.local, AppEnv.ci}
@@ -56,6 +56,21 @@ PACKS: tuple[DemoPack, ...] = (
         title="Vertical slice 1: DEMO framework, 1 job role, 2 competencies, 10 arithmetic items, 3 courses",
         apply=demo_content.seed_demo_content, detect=_demo_1_present,
     ),
+    DemoPack(
+        code="demo-2", version=1,
+        title="Statistical practice: 8 competencies, 3 job roles, 40 scenario items, 3 assessments, 12 courses",
+        apply=demo_pack_2.seed_demo_pack_2, detect=lambda session, org: False,  # never seeded before the registry
+    ),
+    DemoPack(
+        code="demo-3", version=1,
+        title="Learning content: 2 modules and 4 lessons for each demo-2 course, completion criteria, prerequisites",
+        apply=demo_pack_3.seed_demo_pack_3, detect=lambda session, org: False,
+    ),
+    DemoPack(
+        code="demo-4", version=1,
+        title="Synthetic cohort: 38 learners in 3 departments with scored baselines and some lesson progress (aggregates only)",
+        apply=demo_pack_4.seed_demo_pack_4, detect=lambda session, org: False,
+    ),
 )
 
 
@@ -73,12 +88,18 @@ def pack_status(session: Session, org: Organization) -> list[dict]:
     return out
 
 
-def apply_demo_packs(session: Session, org: Organization, app_env: AppEnv) -> dict[str, dict]:
-    """Apply every registered pack that is missing or outdated. Returns a per-pack report."""
+CONTENT_PACKS = frozenset({"demo-1", "demo-2", "demo-3"})  # everything except the insight cohort
+
+
+def apply_demo_packs(session: Session, org: Organization, app_env: AppEnv,
+                     codes: frozenset[str] | set[str] | None = None) -> dict[str, dict]:
+    """Apply every registered pack (or only ``codes``) that is missing or outdated. Returns a per-pack report."""
     if app_env not in DEMO_PACK_ENVS:
         raise SeedRefused(f"DEMO packs are not allowed in {app_env.value}")
     report: dict[str, dict] = {}
     for pack in PACKS:
+        if codes is not None and pack.code not in codes:
+            continue
         row = session.scalar(select(SeedPackApplication).where(
             SeedPackApplication.organization_id == org.id, SeedPackApplication.pack_code == pack.code))
         if row is not None and row.pack_version >= pack.version:

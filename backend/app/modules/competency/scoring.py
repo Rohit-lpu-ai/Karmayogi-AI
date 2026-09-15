@@ -46,6 +46,7 @@ class LevelThreshold:
     label: str
     min_score: Decimal | None
     threshold_status: str
+    description: str | None = None  # plain-language meaning of the level; not used in scoring
 
 
 @dataclass(frozen=True)

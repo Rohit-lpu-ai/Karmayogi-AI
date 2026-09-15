@@ -9,7 +9,6 @@
  * level-3 3.4:1 and level-5 8.1:1 on card. Levels 1-2 are fills behind text or next to a labelled track, never alone.
  */
 @import "tailwindcss";
-@import "./legacy.css";
 
 :root {
   --background: #f6f7f9;
@@ -149,6 +148,64 @@
   }
   code {
     @apply font-mono text-[0.85em];
+  }
+}
+
+/* Lesson bodies (components/product/Markdown.tsx): a readable measure, clear rhythm, tables that scroll on their own. */
+@layer components {
+  .lesson-prose {
+    @apply max-w-[68ch] text-[1.0625rem] leading-7 text-foreground;
+  }
+  .lesson-prose > * + * {
+    @apply mt-4;
+  }
+  .lesson-prose h2 {
+    @apply mt-8 text-xl font-semibold leading-snug tracking-tight;
+  }
+  .lesson-prose h3 {
+    @apply mt-6 text-lg font-semibold leading-snug;
+  }
+  .lesson-prose ul {
+    @apply list-disc space-y-1.5 pl-6;
+  }
+  .lesson-prose ol {
+    @apply list-decimal space-y-1.5 pl-6;
+  }
+  .lesson-prose li::marker {
+    @apply text-muted-foreground;
+  }
+  .lesson-prose strong {
+    @apply font-semibold;
+  }
+  .lesson-prose blockquote {
+    @apply rounded-r-md border-l-4 border-primary/50 bg-primary-soft/40 px-4 py-3 italic;
+  }
+  .lesson-prose hr {
+    @apply my-8 border-border;
+  }
+  .lesson-prose code {
+    @apply rounded bg-muted px-1.5 py-0.5;
+  }
+  .lesson-prose pre {
+    @apply whitespace-pre-wrap break-words rounded-md bg-muted px-4 py-3; /* wraps instead of scrolling on small screens */
+  }
+  .lesson-prose pre code {
+    @apply bg-transparent p-0;
+  }
+  .lesson-table {
+    @apply relative overflow-x-auto rounded-lg border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+  .lesson-table table {
+    @apply w-full border-collapse text-[0.95rem] leading-6;
+  }
+  .lesson-table th {
+    @apply border-b border-border bg-muted/60 px-3 py-2 text-left font-semibold;
+  }
+  .lesson-table td {
+    @apply border-b border-border px-3 py-2 align-top;
+  }
+  .lesson-table tr:last-child td {
+    @apply border-b-0;
   }
 }
 

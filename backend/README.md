@@ -55,6 +55,10 @@ On Windows, `start-dev.bat` in the repository root does all of this (database, m
 | Reset one synthetic account so it can take the baseline again | `.venv/Scripts/python -m app.seed.demo_reset --org-code local-demo --email learner01@example.invalid` |
 | Reset every synthetic account (and replay onboarding) | `.venv/Scripts/python -m app.seed.demo_reset --org-code local-demo --all-synthetic --clear-job-role` (or `reset-demo.bat`) |
 
+Browser journeys need a learner who has never acknowledged the notice (acknowledgements are append-only), so `scripts/e2e_learner.py` creates a new synthetic `e2e-<timestamp>@example.invalid` learner per run (local/ci only, password `DEMO_USER_PASSWORD`). These accounts are kept.
+
+Pack `demo-1` holds the original arithmetic slice; pack `demo-2` adds synthetic statistical-practice content (3 job roles, 8 competencies, 40 scenario questions, 12 courses; DEC-054).
+
 Packs are listed in `app/seed/demo_packs.py`; `seed_pack_applications` records the version applied per organisation. A pack's `apply` must be additive, and raising its `version` makes the next seed run apply it again. The reset never deletes history: attempts become `voided`, their evidence rows are voided, current estimates are removed and the action is audited. It refuses non-synthetic accounts and any environment other than `local`/`ci` (DEC-052).
 
 ## Tests

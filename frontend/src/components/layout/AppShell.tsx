@@ -1,4 +1,4 @@
-import { BookOpenCheck, BriefcaseBusiness, ChevronDown, LogOut, Menu } from "lucide-react";
+import { BookOpenCheck, BriefcaseBusiness, ChevronDown, LogOut, Menu, UserCircle, UserCog } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import type { Me } from "@/api/types";
@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Toaster } from "@/components/ui/toaster";
-import { visibleNavigation } from "@/config/navigation";
+import { areaFor, visibleNavigation, type Area } from "@/config/navigation";
 import { PRODUCT } from "@/config/product";
 import { cn } from "@/lib/utils";
 
@@ -25,8 +25,9 @@ import { cn } from "@/lib/utils";
  * screens, top bar with the user menu, the DEMO notice and one <main> landmark.
  */
 export function AppShell({ children }: { children: ReactNode }) {
-  const { user, checking } = useAuth();
-  const showDemoNotice = !user || user.is_synthetic;
+  const { user, checking, environment } = useAuth();
+  // One environment-level banner (K-2). Falls back to the account flag when the environment endpoint is unavailable.
+  const showDemoNotice = environment ? environment.synthetic_data : !user || user.is_synthetic;
   useFocusMainOnNavigation();
 
   if (checking) {
@@ -99,10 +100,16 @@ function BrandMark({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function SidebarNav({ user, onNavigate }: { user: Me; onNavigate?: () => void }) {
+function SidebarNav({ user, area, onNavigate }: { user: Me; area: Area; onNavigate?: () => void }) {
   return (
-    <nav aria-label="Main" className="flex flex-col gap-6">
-      {visibleNavigation(user).map((section) => (
+    <nav aria-label={area === "admin" ? "Administration" : "Main"} className="flex flex-col gap-6">
+      {area === "admin" ? (
+        <p className="flex items-center gap-2 rounded-md bg-muted px-3 py-2 text-sm font-semibold text-foreground">
+          <UserCog className="size-4 text-primary" aria-hidden="true" />
+          Administration
+        </p>
+      ) : null}
+      {visibleNavigation(user, area).map((section) => (
         <div key={section.label} className="flex flex-col gap-1">
           <p className="px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{section.label}</p>
           <ul className="flex flex-col gap-0.5">
@@ -146,16 +153,17 @@ function SidebarFooter() {
 function SignedInLayout({ user, showDemoNotice, children }: { user: Me; showDemoNotice: boolean; children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const area = areaFor(pathname);
   useEffect(() => setMenuOpen(false), [pathname]);
 
   return (
-    <div className="min-h-screen lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)]">
+    <div className="min-h-screen lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:bg-[linear-gradient(to_right,var(--card)_calc(var(--sidebar-width)-1px),var(--border)_calc(var(--sidebar-width)-1px),var(--border)_var(--sidebar-width),transparent_var(--sidebar-width))]">
       <aside className="hidden border-r border-border bg-card lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:gap-8 lg:px-4 lg:py-5">
         <div className="px-1">
           <BrandMark />
         </div>
         <div className="flex-1 overflow-y-auto">
-          <SidebarNav user={user} />
+          <SidebarNav user={user} area={area} />
         </div>
         <div className="px-1">
           <SidebarFooter />
@@ -181,7 +189,7 @@ function SignedInLayout({ user, showDemoNotice, children }: { user: Me; showDemo
                   <div className="pr-10">
                     <BrandMark compact />
                   </div>
-                  <SidebarNav user={user} onNavigate={() => setMenuOpen(false)} />
+                  <SidebarNav user={user} area={area} onNavigate={() => setMenuOpen(false)} />
                   <SidebarFooter />
                 </div>
               </SheetContent>
@@ -189,8 +197,13 @@ function SignedInLayout({ user, showDemoNotice, children }: { user: Me; showDemo
             <div className="min-w-0 lg:hidden">
               <BrandMark compact />
             </div>
+            {area === "admin" ? (
+              <Badge tone="primary" className="hidden sm:inline-flex">
+                Administration
+              </Badge>
+            ) : null}
             <div className="flex-1" />
-            {user.job_role ? (
+            {area === "learning" && user.job_role ? (
               <Link
                 to="/get-started"
                 className="hidden max-w-xs items-center gap-2 rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-muted hover:text-foreground md:flex"
@@ -198,8 +211,7 @@ function SignedInLayout({ user, showDemoNotice, children }: { user: Me; showDemo
                 title="Your job role - select to change"
               >
                 <BriefcaseBusiness className="size-4 shrink-0" aria-hidden="true" />
-                <span className="truncate">{user.job_role.name}</span>
-                {user.job_role.is_demo ? <Badge tone="demo">DEMO</Badge> : null}
+                <span className="truncate">{user.job_role.name.replace(/^DEMO - /, "").replace(/\s*\(synthetic[^)]*\)$/, "")}</span>
               </Link>
             ) : null}
             <UserMenu user={user} />
@@ -214,7 +226,7 @@ function SignedInLayout({ user, showDemoNotice, children }: { user: Me; showDemo
 }
 
 function initials(name: string): string {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const parts = name.replace(/\([^)]*\)/g, " ").split(/\s+/).map((part) => part.replace(/[^\p{L}\p{N}]/gu, "")).filter(Boolean);
   return ((parts[0]?.[0] ?? "") + (parts.length > 1 ? (parts[parts.length - 1]?.[0] ?? "") : "")).toUpperCase() || "?";
 }
 
@@ -223,8 +235,9 @@ function UserMenu({ user }: { user: Me }) {
   const navigate = useNavigate();
 
   async function handleSignOut() {
+    // Leave protected pages first, so no route guard records this page as "return here" for the next person.
+    navigate("/login", { replace: true, state: null });
     await logout();
-    navigate("/login", { replace: true });
   }
 
   return (
@@ -249,6 +262,10 @@ function UserMenu({ user }: { user: Me }) {
           ) : null}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <DropdownMenuItem onSelect={() => navigate("/profile")}>
+          <UserCircle aria-hidden="true" />
+          Profile
+        </DropdownMenuItem>
         {user.can_take_assessments ? (
           <DropdownMenuItem onSelect={() => navigate("/get-started")}>
             <BriefcaseBusiness aria-hidden="true" />
@@ -274,7 +291,7 @@ function SignedOutLayout({ showDemoNotice, children }: { showDemoNotice: boolean
           <BrandMark />
         </div>
       </header>
-      <main id="main" tabIndex={-1} className="flex-1 px-4 py-8 focus:outline-none sm:px-6 sm:py-12">
+      <main id="main" tabIndex={-1} className="flex flex-1 items-center px-4 py-8 focus:outline-none sm:px-6 sm:py-12">
         {children}
       </main>
       <footer className="border-t border-border bg-card">

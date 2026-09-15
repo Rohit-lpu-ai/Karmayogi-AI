@@ -1,0 +1,15 @@
+
+Running 10 tests using 1 worker
+
+  ok  1 [desktop] › e2e\assessment.spec.ts:4:1 › a learner takes the baseline assessment with the keyboard and submits it (8.6s)
+  ok  2 [desktop] › e2e\learner-loop.spec.ts:18:1 › login explains the product and is accessible (1.5s)
+  ok  3 [desktop] › e2e\learner-loop.spec.ts:38:1 › the learner loop: dashboard, competencies, gaps, catalogue and course detail (12.2s)
+  ok  4 [desktop] › e2e\onboarding.spec.ts:4:1 › a new learner completes onboarding with the keyboard (3.7s)
+  ok  5 [desktop] › e2e\results.spec.ts:4:1 › after submitting, the result explains the outcome and what to do next (8.4s)
+  ok  6 [mobile-360] › e2e\assessment.spec.ts:4:1 › a learner takes the baseline assessment with the keyboard and submits it (6.9s)
+  ok  7 [mobile-360] › e2e\learner-loop.spec.ts:18:1 › login explains the product and is accessible (1.4s)
+  ok  8 [mobile-360] › e2e\learner-loop.spec.ts:38:1 › the learner loop: dashboard, competencies, gaps, catalogue and course detail (12.0s)
+  ok  9 [mobile-360] › e2e\onboarding.spec.ts:4:1 › a new learner completes onboarding with the keyboard (3.5s)
+  ok 10 [mobile-360] › e2e\results.spec.ts:4:1 › after submitting, the result explains the outcome and what to do next (7.6s)
+
+  10 passed (1.1m)

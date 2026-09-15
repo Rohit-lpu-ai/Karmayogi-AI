@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ok 1 [desktop] › e2e\assessment.spec.ts:4:1 › a learner takes the baseline assessment with the keyboard and submits it (10.6s)
+  ok 2 [desktop] › e2e\onboarding.spec.ts:4:1 › a new learner completes onboarding with the keyboard (6.7s)
+  ok 3 [desktop] › e2e\results.spec.ts:4:1 › after submitting, the result explains the outcome and what to do next (8.9s)
+  ok 4 [mobile-360] › e2e\assessment.spec.ts:4:1 › a learner takes the baseline assessment with the keyboard and submits it (8.4s)
+  ok 5 [mobile-360] › e2e\onboarding.spec.ts:4:1 › a new learner completes onboarding with the keyboard (5.9s)
+  ok 6 [mobile-360] › e2e\results.spec.ts:4:1 › after submitting, the result explains the outcome and what to do next (6.7s)
+
+  6 passed (49.4s)
